@@ -11,9 +11,9 @@
     background-color: #0D28A6;
 }
 
-.header-nav{
+#navbar{
     background: #F1F3FF;
-    padding: 0px 136px;   
+    padding: 10px 136px;  
 }
 
 .navbar-nav {
@@ -245,12 +245,9 @@
 .why-us-section .why-content .content-card .icon-why-section{
     width: 32px;
     height: 32px;
-
     border-radius: 20px;
    
 }
-
-
 
 /* testimonial */
 
@@ -471,7 +468,7 @@ footer{
 
 
 @media only screen and  (max-width: 1200px)  {
-    .header-nav,
+    #navbar,
     .hero-section .text-content,
     .our-service-section,
     .why-us-section,
@@ -485,6 +482,11 @@ footer{
 }
 
 @media only screen and (max-width: 992px) { 
+        
+    #navbar{
+        padding: 10px 0px;
+    }
+
 
     #navbarControls{
         width: 180px;
@@ -505,19 +507,20 @@ footer{
         margin: 16px;
     }
 
-    #navbarControls .offcanvas-header i{
+    #navbarControls .offcanvas-header #closeButton{
         color: #000;
         font-size: 24px;
     }
 
-    #navbarControls .offcanvas-body {
-        list-style-type: none;
+    #navbarControls .offcanvas-body ul{    
+        margin: 0px;
+        padding: 0px;
         display: flex;
-        flex-direction: column;
         gap: 16px;
-        padding-top: 0;
+        justify-content: flex-start;
+        align-items: flex-start;
     }
-    
+
     #navbarControls .offcanvas-body li a{
         padding: 0;
         color:black;
@@ -527,18 +530,21 @@ footer{
         text-decoration: none;
     }
 
-    .header-nav .navbar-toggler:focus,
-    .header-nav .navbar-toggler:active,
-    .header-nav .navbar-toggler-icon:focus {
+    #navbar .navbar-toggler,
+    #navbar .navbar-toggler:focus,
+    #navbar .navbar-toggler:active,
+    #navbar .navbar-toggler-icon:focus {
+        border: 0px;
         outline: none;
         box-shadow: none;
+        padding: 0px;
+        margin: 0px;
     }
 }
 
 
 @media only screen and (max-width: 576px) { 
-
-    .header-nav,
+ 
     .hero-section .text-content,
     .our-service-section,
     .why-us-section,
@@ -564,9 +570,6 @@ footer{
         align-self: center;
         text-align: center;
     }
-    
- 
-    
 
     /* hero section */
 
