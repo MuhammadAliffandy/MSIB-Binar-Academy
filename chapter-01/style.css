@@ -1,0 +1,647 @@
+* , body , main{
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica;
+    
+}
+
+.logo{
+    width: 100px;
+    height: 30px;
+    background-color: #0D28A6;
+}
+
+.header-nav{
+    background: #F1F3FF;
+    padding: 0px 136px;   
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+
+.navbar-nav  li a{
+    color:black;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-decoration: none;
+
+}
+
+.navbar-nav li a:hover{
+    text-decoration: none;
+}
+
+.navbar-nav li button ,#navbarControls ul li button{
+    padding: 8px 12px;
+    background: var(--primary-lime-green-04, #5CB85F);
+    color: var(--neutral-10, #FFF);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    border-width: 0px;
+    border-radius: 2px;
+}
+
+/* hero section */
+
+.hero-section{
+    background: #F1F3FF;
+}
+
+.hero-section .text-content{
+    padding: 120px 0px 87px 136px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.hero-section .image-content{
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+}
+
+.hero-section .image-content img{
+    max-width: 100%;
+    height: auto;
+}
+
+.hero-section .text-content h1{
+    color: #000;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 54px
+}
+
+.hero-section .text-content blockquote{
+    color: #000;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+}
+
+.hero-section .text-content button{
+    padding: 8px 12px;
+    background:  #5CB85F;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    border-width: 0px;
+    border-radius: 2px;
+}
+
+.hero-section .image-content {
+    padding: 0;
+}
+
+.hero-section .image-content .background-img{
+    background: #0D28A6;
+    border-radius: 60px 0px 0px 0px;
+    width: 704px;
+    height: 243px;
+    align-self:flex-end;
+    position: relative;
+}
+
+.hero-section .image-content .car-image{
+    width: 704px;
+    height: 407px;
+    z-index: 10;
+    position: absolute;
+    bottom: 0;
+}
+
+/* our service */
+
+.our-service-section{
+    padding: 100px 206px;
+}
+
+
+.our-service-section .image-content img{
+    max-width: 100%;
+    height: auto;
+}
+
+
+.our-service-section .wrapper{
+    display: flex;
+    gap: 86;
+    align-items: center;
+}
+
+.our-service-section .text-content{
+    display: flex;
+    flex-direction: column;
+    gap: 24;
+}
+
+.our-service-section .text-content h2{
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px; 
+}
+
+.our-service-section .text-content blockquote{
+    color: #000;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;   
+}
+
+.our-service-section .text-content ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.our-service-section .text-content ul li{
+    display: flex;
+    gap: 16px;
+    justify-content: start;
+}
+
+.our-service-section .text-content ul li i{
+    color: #000;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+}
+
+.our-service-section .text-content ul li img{
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin: 0;
+}
+
+/* why us section */
+
+.why-us-section{
+    padding: 0px 136px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.why-us-section .wrap-title{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.why-us-section .wrap-title h2{
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.why-us-section .wrap-title p{
+    color: #000;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px; 
+}
+
+.why-us-section .why-content{
+    display: flex;
+    gap: 32px;
+}
+
+.why-us-section .why-content .content-card{
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid var(--neutral-02, #D0D0D0);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  ;
+}
+
+.why-us-section .why-content .content-card h4{
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px; 
+}
+
+
+.why-us-section .why-content .content-card p{
+    color: #000;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px; 
+}
+
+.why-us-section .why-content .content-card .icon-why-section{
+    width: 32px;
+    height: 32px;
+
+    border-radius: 20px;
+   
+}
+
+
+
+/* testimonial */
+
+.testimonial-section{
+    padding: 100px 304px 156px 304px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.testimonial-section .wrap-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.testimonial-section .wrap-title h2{
+    color: #000;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.testimonial .wrap-title p{
+    color: #000;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px; 
+}
+
+.testimonial-section .wrapper-carousel{
+    padding: 69px 150px;
+    border-radius: 8px;
+    background: #F1F3FF;
+}
+
+.testimonial-section .wrapper-carousel a i{
+    font-size: 60px;
+    color: black;
+}
+
+.testimonial-section .wrapper-star i{
+    color: #F9CC00;
+}
+
+.testimonial-section .wrapper-item{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+
+.testimonial-section .text-content{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.testimonial-section .text-content blockquote{
+    color: #000;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px; 
+}
+
+.testimonial-section .text-content h4{
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+/* cta banner */
+
+.cta-banner-section{
+    padding : 0px 136px;
+}
+
+.cta-banner-section .banner{
+    background-color: #0D28A6;
+    padding: 64px 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 13px;
+}
+
+.cta-banner-section .banner .separated{
+    height: 52px;
+}
+
+.cta-banner-section .banner h2{
+    color: var(--neutral-01, #FFF);
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 150%; 
+}
+
+.cta-banner-section .banner blockquote{
+    color: var(--neutral-01, #FFF);
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+}
+
+.cta-banner-section .banner button{
+    padding: 8px 12px;
+    background: var(--primary-lime-green-04, #5CB85F);
+    color: var(--neutral-10, #FFF);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    border-width: 0px;
+    border-radius: 2px;
+}
+
+/* faq */
+
+.faq-section{
+    padding: 100px 136px 150px 136px; 
+}
+
+.faq-section .title-content{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-section .title-content h2{
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px; 
+}
+
+.faq-section .title-content p{
+    color: #000;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    }
+
+.faq-section .text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.faq-section .text-content button{
+    border-radius: 4px;
+    border: 1px solid #D4D4D4;
+    background: #FFF;
+    color: #000;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+}
+
+/* footer */
+
+footer{
+    padding: 0px 136px 100px 136px;
+}
+
+.footer-wrapper{
+    display: flex;
+    gap: 86px;
+}
+
+.footer-wrapper .address,
+.footer-wrapper .navigation ul,
+.footer-wrapper .sosmed,
+.footer-wrapper .copyright{
+    display: flex ;
+    flex-direction: column;
+    gap: 16px;
+    
+}
+.footer-wrapper .address h4,
+.footer-wrapper .sosmed h4,
+.footer-wrapper .copyright h4{
+    color: #000;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px; 
+}
+
+.footer-wrapper .navigation ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.footer-wrapper .navigation ul li{
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.footer-wrapper .sosmed ul{
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: 16px;
+}
+
+.footer-wrapper .sosmed ul li img{
+    width: 32px;
+    height: 32px;
+}
+
+@media only screen and  (max-width: 768px) and (max-width: 992px) and (max-width: 1200px) {
+    .header-nav,
+    .hero-section .text-content,
+    .our-service-section,
+    .why-us-section,
+    .testimonial-section,
+    .cta-banner-section,
+    .faq-section,
+    footer{
+        padding-right:16px;
+        padding-left: 16px;
+    }
+
+  }
+
+
+
+@media only screen and (max-width: 576px) { 
+
+    .header-nav,
+    .hero-section .text-content,
+    .our-service-section,
+    .why-us-section,
+    .testimonial-section,
+    .cta-banner-section,
+    .faq-section,
+    footer{
+        padding: 0px 16px;
+    }
+
+    .our-service-section,
+    .why-us-section,
+    .testimonial-section,
+    .cta-banner-section,
+    .faq-section,
+    footer{
+        padding-top: 60px;
+    }
+
+    .why-us-section .wrap-title,
+    .testimonial-section .wrap-title,
+    .faq-section .title-content{
+        align-self: center;
+        text-align: center;
+    }
+    
+    #navbarControls{
+        width: 180px;
+    }
+
+    #navbarControls .offcanvas-header{
+        display: flex;
+        align-items: center;
+        padding: 0px;
+        padding-right: 16px;
+    }
+
+    #navbarControls .offcanvas-header h5{
+        color: #000;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 20px;
+        margin: 16px;
+    }
+
+    #navbarControls .offcanvas-header i{
+        color: #000;
+        font-size: 24px;
+    }
+
+    #navbarControls .offcanvas-body {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding-top: 0;
+    }
+    
+    #navbarControls .offcanvas-body li a{
+        padding: 0;
+        color:black;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        text-decoration: none;
+    }
+
+    .header-nav .navbar-toggler:focus,
+    .header-nav .navbar-toggler:active,
+    .header-nav .navbar-toggler-icon:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    
+
+    /* hero section */
+
+    .hero-section .text-content{
+        padding-top: 32px;
+    }
+
+    .hero-section .wrapper{
+        gap: 104px;
+    }
+
+    .hero-section .image-content .car-image{
+        width: 85%;
+        height: auto;
+        bottom: 5%;
+    }
+    
+    .hero-section .image-content  .background-img{
+        width: 100%;
+        height: 118.813px;
+    }
+
+    .hero-section .image-content{
+        padding-left: 16px;
+    }
+
+    /* our service section */
+
+    .our-service-section .wrapper{
+        gap: 24px;
+    }
+
+    .our-service-section .image-content img{
+        padding: 0px 38px;
+    }
+
+    /* testimonial section */
+
+    .carousel-control-prev i,
+    .carousel-control-next i{
+        bottom: 70%;
+        position: absolute;
+    }
+
+    .testimonial-section .wrapper-carousel{
+        padding: 40px 32px;
+    }
+
+    .testimonial-section .wrapper-item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+    
+    .testimonial-section .text-content{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    /* cta banner */
+
+    .cta-banner-section .banner{
+        padding: 64px 58px;
+    }
+
+    /* footer */
+
+    footer{
+        padding-bottom: 60px;
+    }
+
+    .footer-wrapper{ 
+        gap: 16px;
+    }
+
+}
+
+
+
+
