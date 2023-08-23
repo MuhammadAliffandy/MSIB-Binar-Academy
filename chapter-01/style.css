@@ -214,6 +214,7 @@
 .why-us-section .why-content{
     display: flex;
     gap: 32px;
+    
 }
 
 .why-us-section .why-content .content-card{
@@ -468,7 +469,8 @@ footer{
     height: 32px;
 }
 
-@media only screen and  (max-width: 768px) and (max-width: 992px) and (max-width: 1200px) {
+
+@media only screen and  (max-width: 1200px)  {
     .header-nav,
     .hero-section .text-content,
     .our-service-section,
@@ -480,40 +482,10 @@ footer{
         padding-right:16px;
         padding-left: 16px;
     }
+}
 
-  }
+@media only screen and (max-width: 992px) { 
 
-
-
-@media only screen and (max-width: 576px) { 
-
-    .header-nav,
-    .hero-section .text-content,
-    .our-service-section,
-    .why-us-section,
-    .testimonial-section,
-    .cta-banner-section,
-    .faq-section,
-    footer{
-        padding: 0px 16px;
-    }
-
-    .our-service-section,
-    .why-us-section,
-    .testimonial-section,
-    .cta-banner-section,
-    .faq-section,
-    footer{
-        padding-top: 60px;
-    }
-
-    .why-us-section .wrap-title,
-    .testimonial-section .wrap-title,
-    .faq-section .title-content{
-        align-self: center;
-        text-align: center;
-    }
-    
     #navbarControls{
         width: 180px;
     }
@@ -561,6 +533,39 @@ footer{
         outline: none;
         box-shadow: none;
     }
+}
+
+
+@media only screen and (max-width: 576px) { 
+
+    .header-nav,
+    .hero-section .text-content,
+    .our-service-section,
+    .why-us-section,
+    .testimonial-section,
+    .cta-banner-section,
+    .faq-section,
+    footer{
+        padding: 0px 16px;
+    }
+
+    .our-service-section,
+    .why-us-section,
+    .testimonial-section,
+    .cta-banner-section,
+    .faq-section,
+    footer{
+        padding-top: 60px;
+    }
+
+    .why-us-section .wrap-title,
+    .testimonial-section .wrap-title,
+    .faq-section .title-content{
+        align-self: center;
+        text-align: center;
+    }
+    
+ 
     
 
     /* hero section */
