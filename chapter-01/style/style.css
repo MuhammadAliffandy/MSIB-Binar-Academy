@@ -484,9 +484,8 @@ footer{
 @media only screen and (max-width: 992px) { 
         
     #navbar{
-        padding: 10px 0px;
+        padding: 10px 16px;
     }
-
 
     #navbarControls{
         width: 180px;
@@ -538,13 +537,25 @@ footer{
         outline: none;
         box-shadow: none;
         padding: 0px;
-        margin: 0px;
+        margin: 0px;   
+    }
+
+    #navbar .navbar-toggler i{
+        color: #000;
+    }
+
+    .cta-banner-section .banner{
+        padding: 64px 58px;
+    }
+
+    .cta-banner-section .banner .separated{
+        height: 32px;
     }
 }
 
 
 @media only screen and (max-width: 576px) { 
- 
+
     .hero-section .text-content,
     .our-service-section,
     .why-us-section,
@@ -630,12 +641,6 @@ footer{
         align-items: center;
         flex-direction: column;
         gap: 8px;
-    }
-
-    /* cta banner */
-
-    .cta-banner-section .banner{
-        padding: 64px 58px;
     }
 
     /* footer */
