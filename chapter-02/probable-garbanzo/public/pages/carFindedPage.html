@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../css/car_finded_page_style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/starter-template/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    <title>Binar Rental Car</title>
+</head>
+
+<body>
+    <nav class="header-nav navbar navbar-expand-lg sticky-top " id="navbar">
+        <div class="logo navbar-brand"></div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarControls"
+            aria-controls="navbarControls">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="offcanvas offcanvas-end" data-bs-hideresize="true" tabindex="-1" id="navbarControls"
+            aria-labelledby="navbarControls">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasLabel">BCR</h5>
+                <i type="button" class="fa-solid fa-xmark" data-bs-dismiss="offcanvas" aria-label="Close"></i>
+            </div>
+            <div class="offcanvas-body">
+                <div class="me-auto"></div>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link activ" href="#our-service">Our Service</a></li>
+                    <li class="nav-item"><a class="nav-link activ" href="#why-us">Why Us</a></li>
+                    <li class="nav-item"><a class="nav-link activ" href="#testimonial">Testimonial</a></li>
+                    <li class="nav-item"><a class="nav-link activ" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><button class="btn btn-success" type="submit">Register</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <!-- hero section -->
+        <section class="hero-section container-fluid ">
+            <div class="row wrapper d-flex flex-column d-sm-flex flex-sm-row ">
+                <div class="text-content col-12  col-sm-6 justify-content-start align-items-start ">
+                    <h1>Sewa & Rental Mobil Terbaik di kawasan Lumajang</h1>
+                    <blockquote>Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas terbaik dengan harga
+                        terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.</blockquote>
+                </div>
+                <div class="image-content col-12 col-sm-6 ">
+                    <img class="car-image" src="../images/car-image.png" alt="car-photos" />
+                    <div class="background-img"></div>
+                </div>
+            </div>
+        </section>
+        <!-- car finded container -->
+        <section class="car-finded-section">
+            <div class="car-finded-container flex flex-xl-row flex-column " >
+                <div class="wrapper-form-item col-14 col-xl-11 row " >
+                    <div class="wrapper-item col-12 col-xl-3">
+                        <label for="pickDriver">Tipe Driver</label>
+                        <select id="pickDriver" class="form-select form-child" aria-label="Default select example">
+                            <option  disabled hidden selected>Pilih Tipe Driver</option>
+                            <option>Dengan Sopir</option>
+                            <option>Tanpa Sopir</option>
+                        </select>
+                        <i id="chevronIcon" class="fa fa-chevron-down"></i>
+                    </div>
+
+                    <div class="wrapper-item col-12 col-xl-3">
+                        <label for="pickDate" class="form-label">Tanggal</label>
+                        <input id='pickDate' type="text" class="form-input form-control" placeholder="Pilih Tanggal"
+                        onfocus="(this.type='date')"/>
+                        <i id="calendarIcon"  class="fa-regular fa-calendar"></i>
+                    </div>
+
+                    <div class=" wrapper-item col-12 col-xl-3">
+                        <label for="pickTime">Waktu Jemput/Ambil</label>
+                        <select id="pickTime" class="form-select form-child" aria-label="Default select example">
+                            <option disabled selected>Pilih Tanggal</option>
+                            <option>...</option>
+                        </select>
+                        <i id="clockIcon" class="fa-regular fa-clock"></i>
+                    </div>
+
+                    <div class="wrapper-item col-12 col-xl-3">
+                        <label for="pickCountPerson" class="form-label">Jumlah Penumpang (optional)</label >
+                        <input type="number" id="pickCountPerson" class="form-input form-control" placeholder="Jumlah Penumpang"/>
+                        <i id="personGroupIcon" class="fa-solid fa-user-large"></i>
+                    </div>
+                </div>
+                <div class="wrapper-button col-auto col-xl-2">
+                    <button class="btn btn-success " type="submit" >Cari Mobil</button>
+                </div>
+            </div>
+            <div class="car-list" id="carList">
+
+                <!-- <div class="car-card">
+                    <img src="../images/car-image.png" alt= 'car-image' />
+                    <div class="car-card-text">
+                        <h5>Nama/Tipe Mobil</h5>
+                        <h2>Rp 430.000 / hari</h2> 
+                        <blockquote>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                        </blockquote>
+                        <ul class="car-list-detail">
+                            <li>
+                                <img src="../images/icon/car/icon-users.png" alt="icon-image" />
+                                <p>4 orang</p>
+                            </li>
+                            <li>
+                                <img src="../images/icon/car/icon-settings.png" alt="icon-image" />
+                                <p>4 orang</p>
+                            </li>
+                            <li>
+                                <img src="../images/icon/car/icon-calendar.png" alt="icon-image" />
+                                <p>4 orang</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <button type="button">Pilih Mobil</button>
+                </div> -->
+                
+
+            </div>
+
+        </section>
+    </main>
+    <!-- footer -->
+    <footer>
+        <div class="footer-wrapper d-flex flex-column flex-sm-column flex-lg-row">
+            <!-- address -->
+            <div class="address">
+                <h4>Jalan Suroyo No. 161 Mayangan Kota Probolinggo 672000</h4>
+                <h4>binarcarrental@gmail.com</h4>
+                <h4>081-233-334-808</h4>
+            </div>
+            <!-- navigation -->
+            <div class="navigation">
+                <ul>
+                    <li>Our Services</li>
+                    <li>Why Us</li>
+                    <li>Testimonial</li>
+                    <li>FAQ</li>
+                </ul>
+            </div>
+            <!-- sosmed -->
+            <div class="sosmed">
+                <h4>Connect with us</h4>
+                <ul>
+                    <li><img src="../images/icon/sosmed/icon-facebook.png" alt="icon-sosmed" /></li>
+                    <li><img src="../images/icon/sosmed/icon-instagram.png" alt="icon-sosmed" /></li>
+                    <li><img src="../images/icon/sosmed/icon-twitter.png" alt="icon-sosmed" /></li>
+                    <li><img src="../images/icon/sosmed/icon-mail.png" alt="icon-sosmed" /></li>
+                    <li><img src="../images/icon/sosmed/icon-twitch.png" alt="icon-sosmed" /></li>
+
+                </ul>
+            </div>
+            <!-- copyright -->
+            <div class="copyright">
+                <h4>Copyright Binar 2022</h4>
+                <div class="logo"></div>
+            </div>
+        </div>
+    </footer>
+    <!-- js fe  -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <!-- js be -->
+    <script type="text/javascript" src="../scripts/binar.js"></script>
+    <script type="text/javascript" src="../scripts/app.example.js"></script>
+    <script type="text/javascript" src="../scripts/component.js"></script>
+    <script type="text/javascript" src="../scripts/car.js"></script>
+    <script type="text/javascript" src="../scripts/main.example.js"></script>
+</body>
+
+</html>
