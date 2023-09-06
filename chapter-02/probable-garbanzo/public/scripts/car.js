@@ -24,7 +24,7 @@ class Car extends Component {
     
   }) {
     super(
-      model,
+      manufacture,
       type,
       year,
       rentPerDay,

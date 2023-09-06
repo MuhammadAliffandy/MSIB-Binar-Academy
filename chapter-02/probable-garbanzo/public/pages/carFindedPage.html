@@ -64,8 +64,8 @@
                         <label for="pickDriver">Tipe Driver</label>
                         <select id="pickDriver" class="form-select form-child" aria-label="Default select example">
                             <option  disabled hidden selected>Pilih Tipe Driver</option>
-                            <option>Dengan Sopir</option>
-                            <option>Tanpa Sopir</option>
+                            <option value="Automatic" >Dengan Sopir</option>
+                            <option value="Manual" >Tanpa Sopir</option>
                         </select>
                         <i id="chevronIcon" class="fa fa-chevron-down"></i>
                     </div>
@@ -80,8 +80,12 @@
                     <div class=" wrapper-item col-12 col-xl-3">
                         <label for="pickTime">Waktu Jemput/Ambil</label>
                         <select id="pickTime" class="form-select form-child" aria-label="Default select example">
-                            <option disabled selected>Pilih Tanggal</option>
-                            <option>...</option>
+                            <option disabled hidden selected>Pilih Waktu</option>
+                            <option value="08:00:00" class="option-time"><p>08.00</p><p>WIB</p></option>
+                            <option value="09:00:00" class="option-time"><p>09.00</p><p>WIB</p></option>
+                            <option value="10:00:00" class="option-time"><p>10.00</p><p>WIB</p></option>
+                            <option value="11:00:00" class="option-time"><p>11.00</p><p>WIB</p></option>
+                            <option value="12:00:00" class="option-time"><p>12.00</p><p>WIB</p></option>
                         </select>
                         <i id="clockIcon" class="fa-regular fa-clock"></i>
                     </div>
@@ -93,37 +97,11 @@
                     </div>
                 </div>
                 <div class="wrapper-button col-auto col-xl-2">
-                    <button class="btn btn-success " type="submit" >Cari Mobil</button>
+                    <button class="btn btn-success " type="submit" id="searchCarButton" >Cari Mobil</button>
                 </div>
             </div>
+            <!-- inject dom car list -->
             <div class="car-list" id="carList">
-
-                <!-- <div class="car-card">
-                    <img src="../images/car-image.png" alt= 'car-image' />
-                    <div class="car-card-text">
-                        <h5>Nama/Tipe Mobil</h5>
-                        <h2>Rp 430.000 / hari</h2> 
-                        <blockquote>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        </blockquote>
-                        <ul class="car-list-detail">
-                            <li>
-                                <img src="../images/icon/car/icon-users.png" alt="icon-image" />
-                                <p>4 orang</p>
-                            </li>
-                            <li>
-                                <img src="../images/icon/car/icon-settings.png" alt="icon-image" />
-                                <p>4 orang</p>
-                            </li>
-                            <li>
-                                <img src="../images/icon/car/icon-calendar.png" alt="icon-image" />
-                                <p>4 orang</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <button type="button">Pilih Mobil</button>
-                </div> -->
-                
 
             </div>
 
@@ -172,10 +150,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <!-- js be -->
     <script type="text/javascript" src="../scripts/binar.js"></script>
-    <script type="text/javascript" src="../scripts/app.example.js"></script>
+    <script type="text/javascript" src="../scripts/app.js"></script>
     <script type="text/javascript" src="../scripts/component.js"></script>
     <script type="text/javascript" src="../scripts/car.js"></script>
-    <script type="text/javascript" src="../scripts/main.example.js"></script>
+    <script type="text/javascript" src="../scripts/carFindedPage.js"></script>
 </body>
 
 </html>

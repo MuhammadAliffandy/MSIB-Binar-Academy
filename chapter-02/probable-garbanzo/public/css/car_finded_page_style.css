@@ -162,7 +162,14 @@
     color: black;
 }
 
-.car-finded-container .form-child option{
+.car-finded-container .form-child .option-time{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.car-finded-container .form-child option,
+.car-finded-container .form-child option p{
     border: none;
     border-radius: 0px ;
     font-size: 12px;
@@ -180,7 +187,6 @@
 .car-finded-container .wrapper-form-item .wrapper-item{
     position: relative;
 }
-
 
 .car-finded-container .form-child + #chevronIcon,
 .car-finded-container .form-child + #clockIcon,
@@ -240,7 +246,7 @@
     align-items: flex-start;
     max-width: min-content;
     height: 100%;
-    justify-self: stretch;
+    justify-content: space-between;
 }
 
 .car-card img{
