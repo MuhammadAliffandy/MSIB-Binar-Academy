@@ -8,9 +8,9 @@ class App {
     // property car finded page
     this.carContainerElement = document.getElementById("carList");
     this.searchCarButton = document.getElementById("searchCarButton");
-    this.pickDriver = document.getElementById("pickDriver");
+    this.pickDriver = document.querySelector("#pickDriver select");
     this.pickDate = document.getElementById("pickDate");
-    this.pickTime = document.getElementById("pickTime");
+    this.pickTime =  document.querySelector("#pickTime select");
     this.pickCountPerson = document.getElementById("pickCountPerson");  
   }
 
@@ -54,9 +54,15 @@ class App {
 
       await this.load();
       this.CarList = [];
+      
+      console.log(this.pickDate.value);
+      console.log(new Date("2023-09-20T08:00:00.563Z"))
+      console.log(new Date( `${this.pickDate.value}T${this.pickTime.value}.563Z`));
 
       Car.list.filter((car) => {
-        if( car.capacity == this.pickCountPerson.value ){
+        if(  
+            new Date(`${this.pickDate.value}T${this.pickTime.value}.563Z`) >= new Date(car.availableAt) && car.capacity == this.pickCountPerson.value 
+          ){
           this.CarList.push(car);
         } 
       })

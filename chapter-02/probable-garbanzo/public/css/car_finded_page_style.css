@@ -145,7 +145,6 @@ select:active {
     background-color: #0D28A6;
 }
 
-.car-finded-container .wrapper-form-item .wrapper-item .form-child ,
 .car-finded-container .wrapper-form-item .wrapper-item .form-input{
     border-radius: 2px;
     border: 2px solid  #D0D0D0;
@@ -163,25 +162,11 @@ select:active {
     margin: 0;
 }
 
-.car-finded-container .wrapper-form-item .wrapper-item .form-child:focus,
 .car-finded-container .wrapper-form-item .wrapper-item .form-input:focus{
     border: 2px solid #5CB85F !important;
     outline: 0;
     box-shadow: none;
     color: black;
-}
-
-.car-finded-container .form-child .option-time{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.car-finded-container .form-child option,
-.car-finded-container .form-child option p{
-    border: none;
-    border-radius: 0px ;
-    font-size: 12px;
 }
 
 .car-finded-container .form-child option:hover{
@@ -192,6 +177,7 @@ select:active {
     color:  #8A8A8A;
     font-size: 12px;
 }
+
 
 .car-finded-container .wrapper-form-item .wrapper-item{
     position: relative;
