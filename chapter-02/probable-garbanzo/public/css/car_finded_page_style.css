@@ -178,7 +178,6 @@ select:active {
     font-size: 12px;
 }
 
-
 .car-finded-container .wrapper-form-item .wrapper-item{
     position: relative;
 }
@@ -293,16 +292,18 @@ select:active {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    max-width: min-content;
     height: 100%;
     justify-content: space-between;
 }
 
+
+
 .car-card img{
-    width: 310px;
+    width: 100%;
     height: 180px;
     border-radius: 8px;
     margin-bottom: 16px;
+
 }
 
 .car-card .car-card-text h5{
@@ -432,9 +433,6 @@ footer{
         margin: 0px 20px;
     }
 
-    .car-list{
-        grid-template-columns: auto auto;
-    }
 }
 
 
@@ -502,8 +500,9 @@ footer{
     }
 
     .car-list{
-        grid-template-columns: auto ;
+        grid-template-columns: auto auto;
     }
+
 }
 
 @media only screen and (max-width: 576px) { 
@@ -550,6 +549,10 @@ footer{
 
     .footer-wrapper{ 
         gap: 16px;
+    }
+
+    .car-list{
+        grid-template-columns: auto ;
     }
 
 }

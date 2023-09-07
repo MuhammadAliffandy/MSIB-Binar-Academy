@@ -22,8 +22,8 @@ class Component {
     render(){
         return `
             <div class="car-card">
+                <img src="../${this.image}" alt= "car-image" />
                 <div>
-                    <img src="../${this.image}" alt= "car-image" />
                     <div class="car-card-text">
                         <h5>${this.name + ' / ' + this.type}</h5>
                         <h2>Rp ${this.rentPerDay.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')} / hari</h2> 
