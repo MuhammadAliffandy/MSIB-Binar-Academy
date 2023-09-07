@@ -4,6 +4,10 @@
     font-family: Helvetica;
 }
 
+button:focus{
+    box-shadow: none !important;
+}
+
 .logo{
     width: 100px;
     height: 30px;
@@ -37,13 +41,14 @@
 
 .navbar-nav li button ,#navbarControls ul li button{
     padding: 8px 12px;
-    background: var(--primary-lime-green-04, #5CB85F);
-    color: var(--neutral-10, #FFF);
+    background:  #5CB85F;
+    color: #FFF;
     font-size: 14px;
     font-weight: 700;
     line-height: 20px;
     border-width: 0px;
     border-radius: 2px;
+
 }
 
 /* hero section */
@@ -135,6 +140,10 @@
     align-self: flex-end;
 }
 
+select:active {
+    border-radius: 0; 
+    background-color: #0D28A6;
+}
 
 .car-finded-container .wrapper-form-item .wrapper-item .form-child ,
 .car-finded-container .wrapper-form-item .wrapper-item .form-input{
@@ -188,8 +197,13 @@
     position: relative;
 }
 
-.car-finded-container .form-child + #chevronIcon,
-.car-finded-container .form-child + #clockIcon,
+.car-finded-container .wrapper-form-item .wrapper-item img{
+    width: auto;
+    height: 18px;
+}
+
+.car-finded-container #pickDriver + #chevronIcon,
+.car-finded-container #pickTime + #clockIcon,
 .car-finded-container .form-input + #calendarIcon,
 .car-finded-container .form-input + #personGroupIcon{
     float: right;
@@ -224,6 +238,55 @@
     font-size: 18px;
     color: #8A8A8A;
 }
+
+/* custom select tag */
+
+.custom-select select {
+    display: none;
+}
+
+.custom-select .select-styled {
+    border-radius: 2px;
+    border: 2px solid  #D0D0D0;
+    background: #FFF;
+    font-size: 12px;
+    padding: 9px 12px;
+    position: relative;   
+    color:  #8A8A8A;
+    cursor: pointer;
+}
+
+
+.custom-select .select-options {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    margin: 9px 12px;
+    
+}
+
+.custom-select .select-options li {
+    padding: 9px 12px;
+    display: flex;
+    font-size: 12px;
+    justify-content: space-between;
+    cursor: pointer;
+    align-items: center;
+}
+
+.custom-select .select-options li:hover {
+    background-color: #5CB85F;
+    color: white;
+}
+
 
 /* car card  */
 

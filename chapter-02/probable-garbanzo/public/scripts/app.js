@@ -46,6 +46,12 @@ class App {
 
   searchMachine =  () => {
     this.searchCarButton.onclick = async () => {
+
+      this.searchCarButton.style.backgroundColor = '#fff';
+      this.searchCarButton.style.border = '1px solid #0D28A6';
+      this.searchCarButton.style.color = '#0D28A6';
+      this.searchCarButton.innerText = 'Edit';
+
       await this.load();
       this.CarList = [];
 

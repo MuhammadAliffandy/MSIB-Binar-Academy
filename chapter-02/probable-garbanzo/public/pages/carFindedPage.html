@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+    
     <title>Binar Rental Car</title>
 </head>
 
@@ -62,38 +63,57 @@
                 <div class="wrapper-form-item col-14 col-xl-11 row " >
                     <div class="wrapper-item col-12 col-xl-3">
                         <label for="pickDriver">Tipe Driver</label>
-                        <select id="pickDriver" class="form-select form-child" aria-label="Default select example">
-                            <option  disabled hidden selected>Pilih Tipe Driver</option>
-                            <option value="Automatic" >Dengan Sopir</option>
-                            <option value="Manual" >Tanpa Sopir</option>
-                        </select>
-                        <i id="chevronIcon" class="fa fa-chevron-down"></i>
+                        <form>
+                            <div class="custom-select" id="pickDriver">
+                                <select>
+                                    <option value="Dengan Sopir">Opsi 1</option>
+                                    <option value="Tanpa Sopir">Opsi 2</option>
+                                </select>
+                                <div class="select-styled">Pilih Driver</div>
+                                <ul class="select-options">
+                                    <li>Dengan Sopir</li>
+                                    <li>Tanpa Sopir</li>
+                                </ul>
+                            </div>
+                            <img id="chevronIcon" src="../images/icon/car/icon-chevron-bold.png"  alt="icon-image" />
+                        </form>
                     </div>
 
                     <div class="wrapper-item col-12 col-xl-3">
                         <label for="pickDate" class="form-label">Tanggal</label>
                         <input id='pickDate' type="text" class="form-input form-control" placeholder="Pilih Tanggal"
                         onfocus="(this.type='date')"/>
-                        <i id="calendarIcon"  class="fa-regular fa-calendar"></i>
+                        <img id="calendarIcon" src="../images/icon/car/icon-calendar-bold.png"  alt="icon-image" />
                     </div>
 
                     <div class=" wrapper-item col-12 col-xl-3">
                         <label for="pickTime">Waktu Jemput/Ambil</label>
-                        <select id="pickTime" class="form-select form-child" aria-label="Default select example">
-                            <option disabled hidden selected>Pilih Waktu</option>
-                            <option value="08:00:00" class="option-time"><p>08.00</p><p>WIB</p></option>
-                            <option value="09:00:00" class="option-time"><p>09.00</p><p>WIB</p></option>
-                            <option value="10:00:00" class="option-time"><p>10.00</p><p>WIB</p></option>
-                            <option value="11:00:00" class="option-time"><p>11.00</p><p>WIB</p></option>
-                            <option value="12:00:00" class="option-time"><p>12.00</p><p>WIB</p></option>
-                        </select>
-                        <i id="clockIcon" class="fa-regular fa-clock"></i>
+                        <form>
+                            <div class="custom-select" id="pickTime">
+                                <select>
+                                    <option value="08:00:00" >Opsi 1</option>
+                                    <option value="09:00:00" >Opsi 2</option>
+                                    <option value="10:00:00" >Opsi 3</option>
+                                    <option value="11:00:00" >Opsi 4</option>
+                                    <option value="12:00:00" >Opsi 5</option>
+                                </select>
+                                <div class="select-styled">Pilih Waktu</div>
+                                <ul class="select-options">
+                                    <li value="08:00:00"><p>08.00</p><p>WIB</p></li>
+                                    <li value="09:00:00"><p>09.00</p><p>WIB</p></li>
+                                    <li value="10:00:00"><p>10.00</p><p>WIB</p></li>
+                                    <li value="11:00:00"><p>11.00</p><p>WIB</p></li>
+                                    <li value="12:00:00"><p>12.00</p><p>WIB</p></li>
+                                </ul>
+                            </div>
+                            <img id="clockIcon" src="../images/icon/car/icon-clock-bold.png"  alt="icon-image" />
+                        </form>
                     </div>
 
                     <div class="wrapper-item col-12 col-xl-3">
                         <label for="pickCountPerson" class="form-label">Jumlah Penumpang (optional)</label >
                         <input type="number" id="pickCountPerson" class="form-input form-control" placeholder="Jumlah Penumpang"/>
-                        <i id="personGroupIcon" class="fa-solid fa-user-large"></i>
+                        <img id="personGroupIcon" src="../images/icon/car/icon-users-bold.png" alt="icon-image"/>
                     </div>
                 </div>
                 <div class="wrapper-button col-auto col-xl-2">
@@ -148,6 +168,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../scripts/index.js"></script>
     <!-- js be -->
     <script type="text/javascript" src="../scripts/binar.js"></script>
     <script type="text/javascript" src="../scripts/app.js"></script>
