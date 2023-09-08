@@ -30,7 +30,7 @@ class App {
   }
   
   loadingPage = () => {
-      window.location.href = '/public/pages/landingPage.html'
+      window.location.href = '../public/pages/landingPage.html'
   }
 
   navigateToCarPage = () => {
