@@ -14,6 +14,4 @@ console.log(params);
  * */
 const app = new App();
 
-app.loadingPage();
-app.init().then(app.run);
-
+app.navigateToCarPage();

@@ -28,10 +28,6 @@ class App {
     const cars = await Binar.listCars();
     Car.init(cars);
   }
-  
-  loadingPage = () => {
-      window.location.href = '../public/pages/landingPage.html'
-  }
 
   navigateToCarPage = () => {
     this.rentCarButton.onclick = () =>  {
