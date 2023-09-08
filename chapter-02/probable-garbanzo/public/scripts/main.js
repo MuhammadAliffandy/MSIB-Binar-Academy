@@ -14,6 +14,6 @@ console.log(params);
  * */
 const app = new App();
 
-app.init().then(app.run);
 app.loadingPage();
+app.init().then(app.run);
 

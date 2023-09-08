@@ -30,9 +30,7 @@ class App {
   }
   
   loadingPage = () => {
-    window.onload = () => {
       window.location.href = '../public/pages/landingPage.html'
-    }
   }
 
   navigateToCarPage = () => {
