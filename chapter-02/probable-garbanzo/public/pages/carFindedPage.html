@@ -59,61 +59,62 @@
         </section>
         <!-- car finded container -->
         <section class="car-finded-section">
-            <div class="car-finded-container flex flex-xl-row flex-column " >
-                <div class="wrapper-form-item col-14 col-xl-11 row " >
-                    <div class="wrapper-item col-12 col-xl-3">
-                        <label for="pickDriver">Tipe Driver</label>
-                        <form>
-                            <div class="custom-select" id="pickDriver">
-                                <div class="select-styled">Pilih Driver</div>
-                                <ul class="select-options">
-                                    <li>Dengan Sopir</li>
-                                    <li>Tanpa Sopir</li>
-                                </ul>
-                            </div>
-                            <img id="chevronIcon" src="../images/icon/car/icon-chevron-bold.png"  alt="icon-image" />
-                        </form>
+            <div id="wrapperBlur">
+                <div class="car-finded-container flex flex-xl-row flex-column " >
+                    <div class="wrapper-form-item col-14 col-xl-11 row " >
+                        <div class="wrapper-item col-12 col-xl-3">
+                            <label for="pickDriver">Tipe Driver</label>
+                            <form>
+                                <div class="custom-select" id="pickDriver">
+                                    <div class="select-styled">Pilih Driver</div>
+                                    <ul class="select-options">
+                                        <li>Dengan Sopir</li>
+                                        <li>Tanpa Sopir</li>
+                                    </ul>
+                                </div>
+                                <img id="chevronIcon" src="../images/icon/car/icon-chevron-bold.png"  alt="icon-image" />
+                            </form>
+                        </div>
+    
+                        <div class="wrapper-item col-12 col-xl-3">
+                            <label for="pickDate" class="form-label">Tanggal</label>
+                            <input id='pickDate' type="text" class="form-input form-control" placeholder="Pilih Tanggal"
+                            onfocus="(this.type='date')"/>
+                            <img id="calendarIcon" src="../images/icon/car/icon-calendar-bold.png"  alt="icon-image" />
+                        </div>
+    
+                        <div class=" wrapper-item col-12 col-xl-3">
+                            <label for="pickTime">Waktu Jemput/Ambil</label>
+                            <form>
+                                <div class="custom-select" id="pickTime">
+                                    <div class="select-styled">Pilih Waktu</div>
+                                    <ul class="select-options">
+                                        <li><p>08.00</p><p>WIB</p></li>
+                                        <li><p>09.00</p><p>WIB</p></li>
+                                        <li><p>10.00</p><p>WIB</p></li>
+                                        <li><p>11.00</p><p>WIB</p></li>
+                                        <li><p>12.00</p><p>WIB</p></li>
+                                    </ul>
+                                </div>
+                                <img id="clockIcon" src="../images/icon/car/icon-clock-bold.png"  alt="icon-image" />
+                            </form>
+                        </div>
+    
+                        <div class="wrapper-item col-12 col-xl-3">
+                            <label for="pickCountPerson" class="form-label">Jumlah Penumpang (optional)</label >
+                            <input type="number" id="pickCountPerson" class="form-input form-control" placeholder="Jumlah Penumpang"/>
+                            <img id="personGroupIcon" src="../images/icon/car/icon-users-bold.png" alt="icon-image"/>
+                        </div>
                     </div>
-
-                    <div class="wrapper-item col-12 col-xl-3">
-                        <label for="pickDate" class="form-label">Tanggal</label>
-                        <input id='pickDate' type="text" class="form-input form-control" placeholder="Pilih Tanggal"
-                        onfocus="(this.type='date')"/>
-                        <img id="calendarIcon" src="../images/icon/car/icon-calendar-bold.png"  alt="icon-image" />
-                    </div>
-
-                    <div class=" wrapper-item col-12 col-xl-3">
-                        <label for="pickTime">Waktu Jemput/Ambil</label>
-                        <form>
-                            <div class="custom-select" id="pickTime">
-                                <div class="select-styled">Pilih Waktu</div>
-                                <ul class="select-options">
-                                    <li><p>08.00</p><p>WIB</p></li>
-                                    <li><p>09.00</p><p>WIB</p></li>
-                                    <li><p>10.00</p><p>WIB</p></li>
-                                    <li><p>11.00</p><p>WIB</p></li>
-                                    <li><p>12.00</p><p>WIB</p></li>
-                                </ul>
-                            </div>
-                            <img id="clockIcon" src="../images/icon/car/icon-clock-bold.png"  alt="icon-image" />
-                        </form>
-                    </div>
-
-                    <div class="wrapper-item col-12 col-xl-3">
-                        <label for="pickCountPerson" class="form-label">Jumlah Penumpang (optional)</label >
-                        <input type="number" id="pickCountPerson" class="form-input form-control" placeholder="Jumlah Penumpang"/>
-                        <img id="personGroupIcon" src="../images/icon/car/icon-users-bold.png" alt="icon-image"/>
+                    <div class="wrapper-button col-auto col-xl-2">
+                        <button class="btn btn-success " type="submit" id="searchCarButton" >Cari Mobil</button>
                     </div>
                 </div>
-                <div class="wrapper-button col-auto col-xl-2">
-                    <button class="btn btn-success " type="submit" id="searchCarButton" >Cari Mobil</button>
-                </div>
-            </div>v
+            </div>
             <!-- inject dom car list -->
             <div class="car-list" id="carList">
 
             </div>
-
         </section>
     </main>
     <!-- footer -->
