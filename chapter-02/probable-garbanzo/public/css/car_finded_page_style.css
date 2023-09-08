@@ -259,12 +259,16 @@ select:active {
 }
 
 .custom-select .select-options li {
-    padding: 9px 12px;
+    padding: 9px 12px ;
     display: flex;
-    font-size: 12px;
     justify-content: space-between;
     cursor: pointer;
     align-items: center;
+    font-size: 12px;
+}
+
+.custom-select .select-options li p{
+    margin: 0;
 }
 
 .custom-select .select-options li:hover {

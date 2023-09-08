@@ -8,9 +8,9 @@ class App {
     // property car finded page
     this.carContainerElement = document.getElementById("carList");
     this.searchCarButton = document.getElementById("searchCarButton");
-    this.pickDriver = document.querySelector("#pickDriver select");
+    this.pickDriver = document.getElementById("pickDriver");
     this.pickDate = document.getElementById("pickDate");
-    this.pickTime =  document.querySelector("#pickTime select");
+    this.pickTime =  document.getElementById("pickTime");
     this.pickCountPerson = document.getElementById("pickCountPerson");  
   }
 
@@ -46,30 +46,29 @@ class App {
 
   searchMachine =  () => {
     this.searchCarButton.onclick = async () => {
-
-      this.searchCarButton.style.backgroundColor = '#fff';
-      this.searchCarButton.style.border = '1px solid #0D28A6';
-      this.searchCarButton.style.color = '#0D28A6';
-      this.searchCarButton.innerText = 'Edit';
-
-      await this.load();
-      this.CarList = [];
+      if(this.pickDriver.value != '' || this.pickDate.value != '' || this.pickTime.value != '' || this.pickCountPerson.value != ''){
+        this.searchCarButton.style.backgroundColor = '#fff';
+        this.searchCarButton.style.border = '1px solid #0D28A6';
+        this.searchCarButton.style.color = '#0D28A6';
+        this.searchCarButton.innerText = 'Edit';
+  
+        await this.load();
+        this.CarList = [];
       
-      console.log(this.pickDate.value);
-      console.log(new Date("2023-09-20T08:00:00.563Z"))
-      console.log(new Date( `${this.pickDate.value}T${this.pickTime.value}.563Z`));
-
-      Car.list.filter((car) => {
-        if(  
-            new Date(`${this.pickDate.value}T${this.pickTime.value}.563Z`) >= new Date(car.availableAt) && car.capacity == this.pickCountPerson.value 
-          ){
-          this.CarList.push(car);
-        } 
-      })
-      
-      Car.init(this.CarList);
-      this.carContainerElement.innerHTML = '';
-      this.run();
+        Car.list.filter((car) => {
+          if(  
+              new Date(`${this.pickDate.value}T${this.pickTime.value}.563Z`) >= new Date(car.availableAt) || car.capacity == this.pickCountPerson.value 
+            ){
+            this.CarList.push(car);
+          } 
+        })
+        
+        Car.init(this.CarList);
+        this.carContainerElement.innerHTML = '';
+        this.run();
+      }else{
+        alert("Silahkan Diisi Terlebih dahulu !!!")
+      }
     }
 
   }

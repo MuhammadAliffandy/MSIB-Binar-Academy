@@ -1,6 +1,8 @@
 const pickDriverButton = document.getElementById('pickDriver');
 const pickTimeButton = document.getElementById('pickTime');
 const selectOptions = document.querySelectorAll('.select-options');
+let pickDriverValue = document.getElementById('pickDriver').value = '';
+let pickTimeValue =  document.getElementById("pickTime").value = '';
 
 pickDriverButton.addEventListener('click', function () {
     selectOptions[0].style.display = selectOptions[0].style.display === 'block' ? 'none' : 'block';
@@ -16,16 +18,17 @@ selectOptions[0].addEventListener('click', function (e) {
     if (e.target.tagName === 'LI') {
         const selectedValue = e.target.textContent;
         document.querySelectorAll('.select-styled')[0].textContent = selectedValue;
-        document.querySelector("#pickDriver select").value = selectedValue;
-        selectOptions[0].style.display = 'none';
+        pickDriverValue.value = selectedValue;
+        selectOptions[0].style.display = 'none !important';
     }
 });
 selectOptions[1].addEventListener('click', function (e) {
+    
     if (e.target.tagName === 'LI') {
         const selectedValue = e.target.textContent;
         document.querySelectorAll('.select-styled')[1].textContent = `${selectedValue.slice(0,2)}:00 WIB`;
-        document.querySelector("#pickTime select").value = `${selectedValue.slice(0,2)}:00:00`;
-        selectOptions[1].style.display = 'none';
+        pickTimeValue = `${selectedValue.slice(0,2)}:00:00`;
+        selectOptions[1].style.display = 'none !important';
     }
 });
 
