@@ -1,39 +1,12 @@
-# Binar: Challenge 04
+## This is a challenge for chapter 2 to combine landing page from chap 01 and create some page have a search machine
+okay, In this challenge have a 2 part to clear the submission.
+For challenge 2 part 1, I create the algorithm of filter and bubble sort with Javascript Languange and dont use a sort method from js. Just create the algorithm. And part 2 have a UI to slicing with front end and add the DOM manipulation , after this dont forget to create a back end to create the search machine use data from api. 
 
-- Mulai modifikasi file `server/index.js` apabila ingin membuat HTTP server.
-- Mulai modifikasi folder `public` apabila ingin memodifikasi HTML.
+## Build With
+- [HTML](https://www.w3schools.com/html/default.asp) - HTML is the standard markup language for Web pages.
+- [CSS](https://www.w3schools.com/css/default.asp) - CSS is the language we use to style an HTML document.
+- [Bootstrap](http://getbootstrap.com/) - Extensive list of components and Bundled Javascript plugins ( Boostrap v5.2 ).
+- [JavaScript](https://www.javascript.com/) - is a scripting language that enables you to create dynamically updating content, control multimedia, animate images, and pretty much everything else.
 
-# `Binar` class
-
-Class ini berisi 1 static method saja, yang berfungsi untuk mengambil data mobil dari internet.
-
-```typescript
-interface Car {
-  id: string;
-  plate: string;
-  manufacture: string;
-  model: string;
-  image: string;
-  rentPerDay: number;
-  capacity: number;
-  description: string;
-  transmission: string;
-  available: boolean;
-  type: string;
-  year: string;
-  options: Array<string>;
-  specs: Array<string>;
-}
-
-interface Binar {
-  listCars(filterer: (car: Car) => boolean): Array<Car>
-}
-```
-
-Method `listCars` ini akan menerima fungsi yang mana harus mengembalikan `boolean` sebagai nilainya. 
-Fungsi ini akan dijalankan untuk masing-masing item di dalam list of cars, yang mana jika nilainya `true`,
-maka akan ditampilkan di dalam list tersebut.
-
-# Tips
-
-Just, hack it bro!
+## Demo
+Here is a working live demo : https://binar-car-rental-apps.netlify.app/
