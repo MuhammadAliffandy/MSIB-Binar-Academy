@@ -1,8 +1,6 @@
 class App {
 
   constructor() {
-
-    this.CarList = [];
     // property landing page
     this.rentCarButton = document.getElementById("rentCarButton");
     // property car finded page
@@ -31,7 +29,6 @@ class App {
     Car.init(cars);
   }
   
-
   loadingPage = () => {
     window.onload = () => {
       window.location.href = '../public/pages/landingPage.html'
@@ -46,28 +43,38 @@ class App {
 
   searchMachine =  () => {
     this.searchCarButton.onclick = async () => {
-      if(this.pickDriver.value != '' || this.pickDate.value != '' || this.pickTime.value != '' || this.pickCountPerson.value != ''){
-        this.searchCarButton.style.backgroundColor = '#fff';
-        this.searchCarButton.style.border = '1px solid #0D28A6';
-        this.searchCarButton.style.color = '#0D28A6';
-        this.searchCarButton.innerText = 'Edit';
-  
-        await this.load();
-        this.CarList = [];
       
-        Car.list.filter((car) => {
-          if(  
-              new Date(`${this.pickDate.value}T${this.pickTime.value}.563Z`) >= new Date(car.availableAt) || car.capacity == this.pickCountPerson.value 
-            ){
-            this.CarList.push(car);
-          } 
-        })
+      if(this.pickDate.value != '' || this.pickTime.value != '' || this.pickCountPerson.value != ''){
         
-        Car.init(this.CarList);
-        this.carContainerElement.innerHTML = '';
-        this.run();
+        this.searchCarButton.style.cssText = 'background-color: #fff; border : 1px solid #0D28A6 ; color : #0D28A6 ;';
+        this.searchCarButton.innerText = 'Edit';
+
+        if( this.pickDate.value == '') {
+          this.pickDate.value = new Date(Date.now());
+        }
+
+        if(this.pickTime.value ){
+          this.pickTime.value = "08:00:00";
+        }
+
+        const cars = await Binar.listCars((car) => {
+          if(  new Date(car.availableAt).getTime() >= new Date(`${this.pickDate.value} ${this.pickTime.value}`).getTime() && car.capacity >= this.pickCountPerson.value ){
+              return car;
+            }
+          } 
+        );
+
+        if(cars.length == 0 ){
+          this.carContainerElement.innerHTML = '<h1 class = "warning-text">Mobil yang Anda Cari Kosong</h1>';
+
+        }else{
+          Car.init(cars);
+          this.carContainerElement.innerHTML = '';
+          this.run();
+        }
+
       }else{
-        alert("Silahkan Diisi Terlebih dahulu !!!")
+        alert("Silahkan Diisi Semua Terlebih dahulu !!!")
       }
     }
 
