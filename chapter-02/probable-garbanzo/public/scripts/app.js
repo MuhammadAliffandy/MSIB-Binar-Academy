@@ -3,6 +3,7 @@ class App {
   constructor() {
     // property landing page
     this.rentCarButton = document.getElementById("rentCarButton");
+    this.rentCarButton2 = document.getElementById("rentCarButton2");
     // property car finded page
     this.carContainerElement = document.getElementById("carList");
     this.searchCarButton = document.getElementById("searchCarButton");
@@ -31,6 +32,10 @@ class App {
 
   navigateToCarPage = () => {
     this.rentCarButton.onclick = () =>  {
+      window.location.href = './pages/carFindedPage.html';
+    }
+    
+    this.rentCarButton2.onclick = () =>  {
       window.location.href = './pages/carFindedPage.html';
     }
   } 
