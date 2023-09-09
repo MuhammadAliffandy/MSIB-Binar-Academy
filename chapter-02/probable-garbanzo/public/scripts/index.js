@@ -1,5 +1,6 @@
 const wrapperBlur = document.getElementById("wrapperBlur");
 const navbar = document.getElementById("navbar");
+const hamburgerButton = document.getElementById("hamburgerButton");
 const pickDriverButton = document.getElementById('pickDriver');
 const pickTimeButton = document.getElementById('pickTime');
 const pickDateButton = document.getElementById('pickDate');
@@ -36,7 +37,7 @@ pickCountPersonButton.addEventListener('click', function () {
 
 searchCarButton.addEventListener('click', function () {
     wrapperBlur.classList.remove("wrapper-blur");
-    navbar.style.zIndex = '1 !important';
+    navbar.style.zIndex = '';
 });
 
 selectOptions[0].addEventListener('click', function (e) {
@@ -76,3 +77,4 @@ document.addEventListener('click', function (e) {
         navbar.style.cssText = 'z-index: 10 !important;'
     }
 });
+

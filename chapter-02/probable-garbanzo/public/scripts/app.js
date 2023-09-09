@@ -31,7 +31,7 @@ class App {
 
   navigateToCarPage = () => {
     this.rentCarButton.onclick = () =>  {
-      window.location.href = '../pages/carFindedPage.html';
+      window.location.href = './pages/carFindedPage.html';
     }
   } 
 
