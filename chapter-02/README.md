@@ -13,6 +13,7 @@ For challenge 2 part 1, I create the algorithm of filter and bubble sort with Ja
 -  I use Html and css to create a ui structure design to have a easy code from read and repeat write . CSS is colorful to manipulation effect and responsivble   if havent use framework
 - Boostrap is so helpful to implemen component like a offcanvas , form , navbar , dropdown , caraousel and many layouting with grid. And I combine the        boostrap with only css to make a website to be good and responsive.
 - Dont forget to use JS DOM and BE to create a search machine from page 2 and manipulation UI to many effect and aesthetic component so lets see my Website
+- To create algorthm code with js form challenge part 1 make a bublesort and filter algorithm
 
 ## Demo
 Here is a working live demo  
