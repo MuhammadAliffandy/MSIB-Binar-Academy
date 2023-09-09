@@ -8,4 +8,4 @@ My Structure code from HTML i'm use a semantic HTML to make a easy to read my co
 - [Bootstrap](http://getbootstrap.com/) - Extensive list of components and Bundled Javascript plugins.
 
 ## Demo
-Here is a working live demo : https://msib-binar-academy.vercel.app/
+Here is a working live demo : https://binar-car-rental-apps.netlify.app/
