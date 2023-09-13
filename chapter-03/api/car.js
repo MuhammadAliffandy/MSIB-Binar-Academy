@@ -83,7 +83,7 @@ router.get('/', ( req , res ) => {
 
             const newData = dataCars.map((car) => {
                 if( car.id == id ){
-                    car = body;
+                    return body;
                 }
                 return car;
             })
@@ -118,7 +118,7 @@ router.get('/', ( req , res ) => {
 
             fs.writeFile(cars, JSON.stringify(newData) , function (err) {
                 if (err) throw err;
-                return res.status(200),json({message : 'data cars has been deleted }'});
+                return res.status(200).json({message : 'data cars has been deleted '});
             });
 
         }

@@ -8,7 +8,7 @@ app.use(bp.urlencoded({extended:true}))
 app.use('/',routes);
 
 app.get('/', (req, res) => {
-    res.send('Binar Car Academy');
+    res.status(200).json({ message: "Ping successfully" });
 });
 
 app.listen(5000, () => {
