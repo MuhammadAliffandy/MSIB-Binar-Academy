@@ -1,10 +1,8 @@
 const express = require('express');
 const app = express();
-const bp = require('body-parser')
-const routes = require("./routes/route")
+const routes = require("./src/routes/route")
 
-app.use(bp.json());
-app.use(bp.urlencoded({extended:true}))
+app.use(express.json());
 app.use('/',routes);
 
 app.get('/', (req, res) => {
