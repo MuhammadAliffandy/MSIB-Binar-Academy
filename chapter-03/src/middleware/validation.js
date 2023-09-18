@@ -6,7 +6,10 @@ const validation = (req , res , next) => {
 
     const id = req.params['id'];
 
-    fs.readFile( cars , function(err, data) {       
+    fs.readFile( cars , function(err, data) {     
+        if (err) {
+            return res.status(500).json({message : `Error while reading the file: ${err} `})
+        }    
         try{
             const jsonCars = JSON.parse(data);
 
