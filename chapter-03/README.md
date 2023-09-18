@@ -47,10 +47,22 @@ Many API endpoints return the JSON representation of the resources created or ed
   "data"    : string
 }
 ```
-
 The `message` attribute contains a message commonly used to indicate errors or, in the case of deleting a resource, success that the resource was properly deleted.
 
 The `data` attribute contains any other metadata associated with the response. This will be an escaped string containing JSON data.
+
+## Method and EndPoint
+
+The method from API following :
+
+| Endpoint | Method | 
+| :--- | :--- |
+| .../| GET |
+| .../cars/ | GET |
+| .../cars/:id | GET |
+| .../cars | POST |
+| .../cars/:id | PUT |
+| .../cars/:id | DELETE |
 
 ## Status Codes
 
