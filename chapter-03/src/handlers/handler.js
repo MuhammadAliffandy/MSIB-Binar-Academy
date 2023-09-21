@@ -10,7 +10,7 @@ const handleFindCars = async (req , res ) => {
     return res.status(200).json(data);
 }
 
-const handleWriteCars = async (req , res ) => {
+const handleCreateCars = async (req , res ) => {
     const data = await new Cars().create(req.body)
     return res.status(201).json({
         message : 'data cars has been created',
@@ -19,7 +19,7 @@ const handleWriteCars = async (req , res ) => {
 }
 const handleUpdateCars = async (req , res ) => {
     const data = await new Cars().update(req.params['id'] , req.body)
-    return res.status(200).json({message : 'data cars has been updated'});
+    return res.status(200).json({message : 'data cars has been updated',data : data});
 }
 
 const handleDeleteCars = async (req , res ) => {
@@ -30,7 +30,7 @@ const handleDeleteCars = async (req , res ) => {
 module.exports = {
     handlerReadCars,
     handleFindCars,
-    handleWriteCars,
+    handleCreateCars,
     handleUpdateCars,
     handleDeleteCars,
 }

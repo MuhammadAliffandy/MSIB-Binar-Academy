@@ -1,18 +1,22 @@
 const express = require('express' );
 const router = express.Router();
-const validation = require('../middleware/validation.js');
+const {
+    validation,
+    createValidation,
+    updateValidation,
+} = require('../middleware/validation.js');
 const { 
     handlerReadCars, 
     handleFindCars , 
-    handleWriteCars,
+    handleCreateCars,
     handleUpdateCars,
     handleDeleteCars,
 } = require('../handlers/handler.js')
 
 router.get('/', handlerReadCars )
 .get('/:id' , validation , handleFindCars)
-.post('/', handleWriteCars)
-.put('/:id' ,  validation , handleUpdateCars)
+.post('/', createValidation ,handleCreateCars)
+.put('/:id' , updateValidation , handleUpdateCars)
 .delete('/:id' ,  validation , handleDeleteCars )
 
 module.exports = router;
