@@ -63,16 +63,18 @@ class Car {
     
     update = async(params , body) => {
         const data = await this.generateData();
+        const dataCreated = [];
         const newData = data.map((car) => {
             if( car.id == params ){
                 Object.keys(body).map((key)=>{
                     car[key] = body[key];
                 })
+                dataCreated.push(car)
             }
             return car;
         })
         this.changedData(newData);
-        return newData;
+        return dataCreated;
     }
     
     delete = async (params) => {

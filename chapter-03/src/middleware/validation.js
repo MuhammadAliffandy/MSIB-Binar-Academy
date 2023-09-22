@@ -48,7 +48,7 @@ const createValidation = (req , res , next) => {
                 })
     
                 if(!isCheckedData){
-                    return res.status(404).json({message : 'Invalid data structure. Please check your input and documentation'});
+                    return res.status(404).json({message : `Invalid data structure. Please check your input and must to be ${requireData} `});
                 }
             }
     
@@ -57,7 +57,7 @@ const createValidation = (req , res , next) => {
             });
     
             if(!isChecked){
-                return res.status(404).json({message : 'Invalid data structure. Please check your input'});
+                return res.status(404).json({message : `Invalid data structure. Please check your input and must to be ${requireData} `});
             }
     
             next();
@@ -72,6 +72,7 @@ const createValidation = (req , res , next) => {
 const updateValidation = (req , res , next) => {
 
     const id = req.params['id'];
+    const body = req.body;
 
     fs.readFile( cars , function(err, data) {     
         if (err) {
@@ -90,7 +91,7 @@ const updateValidation = (req , res , next) => {
             
             Object.keys(body).map((key)=>{
                 if(requireData.indexOf(key) == -1 ){
-                    return res.status(404).json({message : "Invalid data structure. Please check your input and documentation"});
+                    return res.status(404).json({message : 'Invalid data structure. Please check your input '});
                 }
             })
 
