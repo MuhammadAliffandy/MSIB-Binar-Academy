@@ -37,29 +37,28 @@ const createValidation = (req , res , next) => {
         try{
 
             const requireData = [ 'image' , 'capacity' , 'rentPerDay' , 'description' , 'availableAt'];
-            
+
             if(Array.isArray(body)){
-                const isCheckedData =    body.map((car)=> {
+                const isCheckedData = body.map((car)=> {
                     const currentData = Object.keys(car);
-                currentData.every((key , i)=>{
-                        return key === requireData[i];
-                    })
-                    
+                        return currentData.every((key , i)=>{
+                            return key === requireData[i];
+                        })
                 })
-    
-                if(!isCheckedData){
+
+                if(isCheckedData.indexOf(false) > -1){
+                    return res.status(404).json({message : `Invalid data structure. Please check your input and must to be ${requireData} `});
+                }
+            }else{
+                const isChecked = Object.keys(body).every((key , i)=>{
+                    return key === requireData[i];
+                });
+        
+                if(!isChecked){
                     return res.status(404).json({message : `Invalid data structure. Please check your input and must to be ${requireData} `});
                 }
             }
-    
-            const isChecked = Object.keys(body).every((key , i)=>{
-                return key === requireData[i];
-            });
-    
-            if(!isChecked){
-                return res.status(404).json({message : `Invalid data structure. Please check your input and must to be ${requireData} `});
-            }
-    
+
             next();
         }
         catch (err) {

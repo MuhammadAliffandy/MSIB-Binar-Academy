@@ -51,14 +51,15 @@ class Car {
                 const inputData = { id :  uuidv4() , ...car };
                 data.push(inputData);
                 newData.push(inputData);
+                this.changedData(data)
             })
             return newData;
+        }else{
+            const inputData = { id :  uuidv4() , ...body };
+            data.push(inputData);
+            this.changedData(data)
+            return inputData;
         }
-        
-        const inputData = { id :  uuidv4() , ...body };
-        data.push(inputData);
-        this.changedData(data)
-        return inputData;
     }
     
     update = async(params , body) => {
