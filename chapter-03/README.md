@@ -51,6 +51,18 @@ The `message` attribute contains a message commonly used to indicate errors or, 
 
 The `data` attribute contains any other metadata associated with the response. This will be an escaped string containing JSON data.
 
+## Data Structure ( to Create new Data )
+
+```javascript
+{
+  image: string;
+  capacity: number;
+  rentPerDay: number;
+  description: string;
+  availableAt: string;
+}
+```
+
 ## Method and EndPoint
 
 The method from API following :
