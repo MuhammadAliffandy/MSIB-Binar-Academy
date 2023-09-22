@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
-const routes = require("./src/routes/route")
+const cars = require("./src/api/cars")
 
 app.use(express.json());
-app.use('/',routes);
+app.use('/',cars);
 
 app.get('/', (req, res) => {
     res.status(200).json({ message: "Ping successfully" });

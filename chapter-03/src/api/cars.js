@@ -13,10 +13,10 @@ const {
     handleDeleteCars,
 } = require('../handlers/handler.js')
 
-router.get('/', handlerReadCars )
-.get('/:id' , validation , handleFindCars)
-.post('/', createValidation ,handleCreateCars)
-.put('/:id' , updateValidation , handleUpdateCars)
-.delete('/:id' ,  validation , handleDeleteCars )
+router.get('/cars', handlerReadCars )
+.get('/cars/:id' , validation , handleFindCars)
+.post('/cars', createValidation ,handleCreateCars)
+.put('/cars/:id' , updateValidation , handleUpdateCars)
+.delete('/cars/:id' ,  validation , handleDeleteCars )
 
 module.exports = router;
