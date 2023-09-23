@@ -34,7 +34,7 @@ before you run this you must installation package to make the program its not er
 $ npm install
 ```
 
-run the server with Node JS runtime and i am used Node JS v 16+
+run the server with Node JS runtime and i am used Node JS v 18+
 
 ```sh
 $ npm run start
