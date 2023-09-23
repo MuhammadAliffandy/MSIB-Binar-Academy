@@ -88,11 +88,13 @@ const updateValidation = (req , res , next) => {
                 return res.status(404).json({message : "car not found"})
             }
             
-            Object.keys(body).map((key)=>{
-                if(requireData.indexOf(key) == -1 ){
-                    return res.status(404).json({message : 'Invalid data structure. Please check your input '});
-                }
+            const isChecked = Object.keys(body).map((key)=>{
+                return requireData.indexOf(key) ;
             })
+
+            if( isChecked.indexOf(-1) > -1 ){
+                return res.status(404).json({message : 'Invalid data structure. Please check your input '});
+            }
 
             next();
         }
