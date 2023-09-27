@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const cars = require("./src/api/cars")
-const {Database } = require("./models/db")
+const {Database } = require("../models/db")
 
 app.use(express.json());
 app.use('/',cars);

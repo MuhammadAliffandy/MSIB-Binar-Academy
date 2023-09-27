@@ -15,6 +15,7 @@ const handleFindCars = async (req , res ) => {
             id : req.params['id'],
         }
     });
+
     return res.status(200).json(data);
 }
 
@@ -48,13 +49,20 @@ const handleUpdateCars = async (req , res ) => {
     
     const body = req.data;
     
-    const data = await Cars.update({
+    await Cars.update({
         ...body
     },{
         where : {
             id : req.params['id']
         }
     })
+
+    const data = await Cars.findAll({
+        where : {
+            id : req.params['id'],
+        }
+    });
+
 
     return res.status(200).json({message : 'data cars has been updated',data : data});
 }

@@ -1,4 +1,4 @@
-const { Cars } = require('../middleware/migration');
+const { Cars } = require('./migration');
 
 const validation = async (req , res , next) => {
 
