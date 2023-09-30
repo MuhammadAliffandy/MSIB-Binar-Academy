@@ -1,16 +1,13 @@
-const { Cars } = require('../middleware/migration');
+const { cars } = require('../middleware/migration');
+const { v4: uuidv4 } = require('uuid');
 
 const handlerReadCars = async (req , res) => {
-    const data = await Cars.findAll(
-        {
-            order: ['id'],
-        }
-    );
+    const data = await cars.findAll();
     return res.status(200).json(data);
 }
 
 const handleFindCars = async (req , res ) => {
-    const data = await Cars.findAll({
+    const data = await cars.findOne({
         where : {
             id : req.params['id'],
         }
@@ -23,13 +20,15 @@ const handleCreateCars = async (req , res ) => {
 
     const {
         name,
-        image,
         size,
         rentPerDay,
         description,
     } = req.data;
 
-    const data = await Cars.create({
+    const image = req.fileImage;
+
+    const data = await cars.create({
+        id : uuidv4(),
         name : name,
         image : image,
         size : size,
@@ -43,13 +42,14 @@ const handleCreateCars = async (req , res ) => {
         message : 'data cars has been created',
         data : data,
     });
+
 }
 
 const handleUpdateCars = async (req , res ) => {
     
     const body = req.data;
     
-    await Cars.update({
+    await cars.update({
         ...body
     },{
         where : {
@@ -57,7 +57,7 @@ const handleUpdateCars = async (req , res ) => {
         }
     })
 
-    const data = await Cars.findAll({
+    const data = await cars.findAll({
         where : {
             id : req.params['id'],
         }
@@ -68,7 +68,7 @@ const handleUpdateCars = async (req , res ) => {
 }
 
 const handleDeleteCars = async (req , res ) => {
-    await Cars.destroy({
+    await cars.destroy({
         where : {
             id : req.params['id'],
         }

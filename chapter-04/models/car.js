@@ -2,18 +2,18 @@
 const { sequelize } = require('../models/db');
 const { DataTypes } = require("sequelize");
 
-const Car = sequelize.define('Car', {
+const Car = sequelize.define('cars', {
     id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
+        type: DataTypes.UUID,
+        primaryKey: true,
+        allowNull: false
     },
     name: {
         type: DataTypes.STRING,
         allowNull: false
     },
     image: {
-        type: DataTypes.STRING,
+        type: DataTypes.BLOB,
         allowNull: false
     },
     size: {

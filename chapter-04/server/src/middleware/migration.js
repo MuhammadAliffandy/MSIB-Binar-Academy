@@ -1,6 +1,7 @@
 const { sequelize } = require('../../../models/db');
 const { Car } = require('../../../models/car');
 
-const Cars = sequelize.models.Car;
+const cars = sequelize.models.cars;
 
-module.exports = { Cars };
+
+module.exports = { cars };

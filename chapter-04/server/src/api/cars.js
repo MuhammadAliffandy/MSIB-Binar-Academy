@@ -1,5 +1,10 @@
 const express = require('express' );
 const router = express.Router();
+const multer = require('multer');
+
+const storage = multer.memoryStorage();
+const upload = multer({storage})
+
 const {
     validation,
     createValidation,
@@ -15,7 +20,7 @@ const {
 
 router.get('/cars', handlerReadCars )
 .get('/cars/:id', validation , handleFindCars)
-.post('/cars' , createValidation ,handleCreateCars)
+.post('/cars' ,   upload.single('car-image'), createValidation ,handleCreateCars)
 .put('/cars/:id', updateValidation , handleUpdateCars)
 .delete('/cars/:id', validation , handleDeleteCars )
 

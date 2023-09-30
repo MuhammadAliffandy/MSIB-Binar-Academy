@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Binar Car Rental</title>
+</head>
+<body>
+    <nav class="nav-bar">
+        <button class="left-nav"><i class="fa-solid fa-bars"></i></button>
+        <div class="right-nav">
+            <form>
+                <input type="text" placeholder="Search" />
+                <button type="button"  >Search</button>
+            </form>
+            <div>
+                <img src="./assets/user-avatar.png" alt="avatar" />
+                <h5>Hello</h5>
+                <button type="button">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <main class="main-page">
+        <!-- list car body  -->
+        <section class="list-car">
+            <!-- navigation info cars  -->
+            <div class="navigation-info">
+                <p>Cars</p>
+                <i class="fa-solid fa-chevron-right"></i>
+                <p>List Cars</p>
+            </div>
+            <!-- headline and create button -->
+            <div class="headline-with-button">
+                <h2>List Car</h2>
+                <button type="button" id="add-button">
+                    <i class="fa-solid fa-plus"></i>
+                    <p>Add New Car</p>
+                </button>
+            </div>
+            <!-- navigation car size -->
+            <ul class="nav-car-size">
+                <li class="box-size-type"><p>All</p></li>
+                <li class="box-size-type"><p>Small</p></li>
+                <li class="box-size-type"><p>Medium</p></li>
+                <li class="box-size-type"><p>Large</p></li>
+            </ul>
+            <!-- list cars -->
+            <div class="wrapper-list-car">
+                <div class="car-card">
+                    <img src="./assets/car.jpg" alt="car-images">
+                    <div class="car-detail">
+                        <div class="car-text">
+                            <p>Nama/Tipe Mobil</p>
+                            <h4>Rp 430.000 / hari</h4>
+                        </div>
+                        <div class="car-date">
+                            <img src="./assets/icon/clock.png" alt="clock-icon" /> 
+                            <p>Updated at 4 Apr 2022, 09.00</p>
+                        </div>
+                    </div>
+                    <div class="wrap-button">
+                        <button class="del-button" type="button">
+                            <img src="./assets/icon/trash.png" alt="delete-icon" /> 
+                            <p>Delete</p>
+                        </button>
+                        <button class="edit-button" type="button">
+                            <img src="./assets/icon/edit.png" alt="edit-icon" />
+                            <p>Edit</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <img src="./assets/car.jpg" alt="car-images">
+                    <div class="car-detail">
+                        <div class="car-text">
+                            <p>Nama/Tipe Mobil</p>
+                            <h4>Rp 430.000 / hari</h4>
+                        </div>
+                        <div class="car-date">
+                            <img src="./assets/icon/clock.png" alt="clock-icon" /> 
+                            <p>Updated at 4 Apr 2022, 09.00</p>
+                        </div>
+                    </div>
+                    <div class="wrap-button">
+                        <button class="del-button" type="button">
+                            <img src="./assets/icon/trash.png" alt="delete-icon" /> 
+                            <p>Delete</p>
+                        </button>
+                        <button class="edit-button" type="button">
+                            <img src="./assets/icon/edit.png" alt="edit-icon" />
+                            <p>Edit</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <img src="./assets/car.jpg" alt="car-images">
+                    <div class="car-detail">
+                        <div class="car-text">
+                            <p>Nama/Tipe Mobil</p>
+                            <h4>Rp 430.000 / hari</h4>
+                        </div>
+                        <div class="car-date">
+                            <img src="./assets/icon/clock.png" alt="clock-icon" /> 
+                            <p>Updated at 4 Apr 2022, 09.00</p>
+                        </div>
+                    </div>
+                    <div class="wrap-button">
+                        <button class="del-button" type="button">
+                            <img src="./assets/icon/trash.png" alt="delete-icon" /> 
+                            <p>Delete</p>
+                        </button>
+                        <button class="edit-button" type="button">
+                            <img src="./assets/icon/edit.png" alt="edit-icon" />
+                            <p>Edit</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <img src="./assets/car.jpg" alt="car-images">
+                    <div class="car-detail">
+                        <div class="car-text">
+                            <p>Nama/Tipe Mobil</p>
+                            <h4>Rp 430.000 / hari</h4>
+                        </div>
+                        <div class="car-date">
+                            <img src="./assets/icon/clock.png" alt="clock-icon" /> 
+                            <p>Updated at 4 Apr 2022, 09.00</p>
+                        </div>
+                    </div>
+                    <div class="wrap-button">
+                        <button class="del-button" type="button">
+                            <img src="./assets/icon/trash.png" alt="delete-icon" /> 
+                            <p>Delete</p>
+                        </button>
+                        <button class="edit-button" type="button">
+                            <img src="./assets/icon/edit.png" alt="edit-icon" />
+                            <p>Edit</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <img src="./assets/car.jpg" alt="car-images">
+                    <div class="car-detail">
+                        <div class="car-text">
+                            <p>Nama/Tipe Mobil</p>
+                            <h4>Rp 430.000 / hari</h4>
+                        </div>
+                        <div class="car-date">
+                            <img src="./assets/icon/clock.png" alt="clock-icon" /> 
+                            <p>Updated at 4 Apr 2022, 09.00</p>
+                        </div>
+                    </div>
+                    <div class="wrap-button">
+                        <button class="del-button" type="button">
+                            <img src="./assets/icon/trash.png" alt="delete-icon" /> 
+                            <p>Delete</p>
+                        </button>
+                        <button class="edit-button" type="button">
+                            <img src="./assets/icon/edit.png" alt="edit-icon" />
+                            <p>Edit</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

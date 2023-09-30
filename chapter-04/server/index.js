@@ -4,6 +4,7 @@ const cars = require("./src/api/cars")
 const {Database } = require("../models/db")
 
 app.use(express.json());
+app.use(express.urlencoded({extended: false}));
 app.use('/',cars);
 
 app.get('/', (req, res) => {
