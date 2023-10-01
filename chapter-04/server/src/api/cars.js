@@ -21,7 +21,7 @@ const {
 router.get('/cars', handlerReadCars )
 .get('/cars/:id', validation , handleFindCars)
 .post('/cars' ,   upload.single('car-image'), createValidation ,handleCreateCars)
-.put('/cars/:id', updateValidation , handleUpdateCars)
+.put('/cars/:id', upload.single('car-image') , updateValidation , handleUpdateCars)
 .delete('/cars/:id', validation , handleDeleteCars )
 
 module.exports = router;

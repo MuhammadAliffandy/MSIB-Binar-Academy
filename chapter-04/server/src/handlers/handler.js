@@ -1,5 +1,6 @@
 const { cars } = require('../middleware/migration');
 const { v4: uuidv4 } = require('uuid');
+const fs = require('fs')
 
 const handlerReadCars = async (req , res) => {
     const data = await cars.findAll();
@@ -12,6 +13,10 @@ const handleFindCars = async (req , res ) => {
             id : req.params['id'],
         }
     });
+
+    // const base64Image = data.image.toString('base64');
+    // const imgHtml = `<img src="data:image/jpeg;base64,${base64Image}" alt="Gambar">`;
+    // return res.status(200).send(imgHtml);    
 
     return res.status(200).json(data);
 }
@@ -48,7 +53,7 @@ const handleCreateCars = async (req , res ) => {
 const handleUpdateCars = async (req , res ) => {
     
     const body = req.data;
-    
+
     await cars.update({
         ...body
     },{
@@ -62,7 +67,6 @@ const handleUpdateCars = async (req , res ) => {
             id : req.params['id'],
         }
     });
-
 
     return res.status(200).json({message : 'data cars has been updated',data : data});
 }

@@ -42,8 +42,12 @@ const createValidation = (req , res , next) => {
         }
     }
 
+    if( image == null ){
+        return res.status(404).json({message : `Invalid image , Please check your input ! `});
+    }
+
     req.data = body ;
-    req.fileImage = image;
+    req.fileImage = image; 
 
     next();
 
@@ -52,9 +56,10 @@ const createValidation = (req , res , next) => {
 const updateValidation = async(req , res , next) => {
 
     const id = req.params['id'];
-    const body = req.body;
+    const body = JSON.parse((req.body.data));
+    const image = req.file;
 
-    const requireData = [ 'name' ,'image' , 'size' , 'rentPerDay' , 'description' ];
+    const requireData = [ 'name'  , 'size' , 'rentPerDay' , 'description' ];
 
     const isExisting = await cars.findOne({ where: { id: id } });
 
@@ -70,7 +75,14 @@ const updateValidation = async(req , res , next) => {
         return res.status(404).json({message : 'Invalid data structure. Please check your input '});
     }
 
-    req.data = req.body ;
+    if(image != null && body != null  ){
+        req.data = {...body , image : image.buffer  };
+    }else if(image != null && body == null){
+        req.data = { image : image.buffer };
+    }else if(image == null && body != null){
+        req.data = body;
+    }
+
 
     next();
 
