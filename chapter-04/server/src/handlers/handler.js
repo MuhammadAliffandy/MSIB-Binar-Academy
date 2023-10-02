@@ -1,6 +1,5 @@
-const { cars } = require('../middleware/migration');
+const  {cars}  = require('../../models');
 const { v4: uuidv4 } = require('uuid');
-const fs = require('fs')
 
 const handlerReadCars = async (req , res) => {
     const data = await cars.findAll();
@@ -68,7 +67,10 @@ const handleUpdateCars = async (req , res ) => {
         }
     });
 
-    return res.status(200).json({message : 'data cars has been updated',data : data});
+    return res.status(200).json({
+        message : 'data cars has been updated', 
+        data : data
+    });
 }
 
 const handleDeleteCars = async (req , res ) => {

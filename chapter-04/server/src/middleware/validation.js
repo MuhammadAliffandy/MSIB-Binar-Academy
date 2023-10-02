@@ -1,4 +1,4 @@
-const { cars } = require('./migration');
+const  {cars}  = require('../../models');
 
 const validation = async (req , res , next) => {
 
@@ -75,15 +75,13 @@ const updateValidation = async(req , res , next) => {
         return res.status(404).json({message : 'Invalid data structure. Please check your input '});
     }
 
-    if(image != null && body != null  ){
+    if(image !== null && body !== null  ){
         req.data = {...body , image : image.buffer  };
-    }else if(image != null && body == null){
+    }else if(image !== null && body === null){
         req.data = { image : image.buffer };
-    }else if(image == null && body != null){
+    }else if(image === null && body !== null){
         req.data = body;
     }
-
-
     next();
 
 }
