@@ -13,10 +13,6 @@ const handleFindCars = async (req , res ) => {
         }
     });
 
-    // const base64Image = data.image.toString('base64');
-    // const imgHtml = `<img src="data:image/jpeg;base64,${base64Image}" alt="Gambar">`;
-    // return res.status(200).send(imgHtml);    
-
     return res.status(200).json(data);
 }
 

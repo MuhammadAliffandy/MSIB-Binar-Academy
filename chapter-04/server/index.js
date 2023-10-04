@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
+const cors = require('cors')
 const cars = require("./src/api/cars")
-const {Database } = require("../models/db")
+const { Database } = require("./db/db")
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use('/',cars);

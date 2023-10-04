@@ -1,4 +1,4 @@
-const dummyImage = require('./dummyImageBlob');
+const imageBuffer = require('./dummyImageBlob');
 const { v4: uuidv4 } = require('uuid');
 
 'use strict';
@@ -9,7 +9,7 @@ module.exports = {
     return queryInterface.bulkInsert('cars', [{
       id : uuidv4(),
       name : 'Mobil VW',
-      image : JSON.stringify(dummyImage),
+      image : imageBuffer,
       size : 'Large',
       rentPerDay : 400000, 
       description : 'Volkswagen (commonly abbreviated to VW) is an automotive manufacturer based in Wolfsburg , Lower Saxony, Germany .',
