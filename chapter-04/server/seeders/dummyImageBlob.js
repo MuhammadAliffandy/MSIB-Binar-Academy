@@ -1,5 +1,5 @@
-const fs = require('')
-const imagePath = './car_vw.jpg';
+const fs = require('fs')
+const imagePath = '../public/assets/car_vw.jpg';
 const { Blob } = require('buffer');
 
 const imageBuffer = fs.readFileSync(imagePath);

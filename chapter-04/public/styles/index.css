@@ -1,11 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
 body{
     margin: 0;
     padding: 0;
     font-family: 'IBM Plex Sans', sans-serif;
+    background: #F4F5F7;
+    height: 85vh;
 }
 
 h1,h2,h3,h4,h5,h6,p{
     margin: 0;
+}
+
+.main-page{
+    height: 100%;
 }
 
 /* navbar */
@@ -85,9 +96,8 @@ h1,h2,h3,h4,h5,h6,p{
 /* list cars body */
 
 .list-car {
-    padding: 32px 25px;
+    margin: 32px 25px;
 }
-
 
 
  /* navigation info cars   */
@@ -99,10 +109,17 @@ h1,h2,h3,h4,h5,h6,p{
 }
 
 .navigation-info p {
-    margin: 0;
+   
     color: #000;
     font-size: 12px;
     font-weight: 700;
+    line-height: 18px;
+}
+
+#sub-text-nav{
+    color: #000;
+    font-size: 12px;
+    font-weight: 400 !important;
     line-height: 18px;
 }
 
@@ -176,9 +193,9 @@ h1,h2,h3,h4,h5,h6,p{
 
 .wrapper-list-car{
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 24px;
-    justify-content: flex-start;
+    justify-items: start;
     margin-top: 24px;
 }
 
@@ -195,8 +212,8 @@ h1,h2,h3,h4,h5,h6,p{
 }
 
 .car-card img{
-    width: 303px;
-    height: auto;
+    width: 100%;
+    height: 222px;
     border-radius: 8px;
 }
 
@@ -283,15 +300,113 @@ h1,h2,h3,h4,h5,h6,p{
 /* add car page */
 
 
+.add-car {
+    margin: 32px 25px;
+    height: 80%;
+}
+
+
+.form-add{
+    height: 100%;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wrapper-text-field{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: #fff ;
+    border-radius: 2px;
+    padding : 16px;
+}
+
+.wrapper-text-field .text-field label{
+    color:  #3C3C3C;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+    width: 147px;
+}
+
+.wrapper-text-field .text-field {
+    display: flex;
+    align-items: center;
+}
+
+.wrapper-text-field .text-field .wrap-text-field-upload p{
+    margin-top: 4px;
+    color: #8A8A8A;
+    font-size: 10px;
+    font-weight: 300;
+
+}
+
+
+.wrapper-text-field .text-field input,
+.wrapper-text-field .text-field .wrap-text-field-upload div input{
+    width: 20%;
+    padding: 9px 12px;
+    border-radius: 2px;
+    border: 1px solid  #D0D0D0;
+    background:  #FFF;
+    font-size: 12px;
+}
+
+
+.wrapper-text-field .text-field .wrap-text-field-upload{
+    width: 100%;
+
+}
+
+.wrapper-button{
+    display: flex;
+    gap: 17px;
+}
+
+.wrapper-button .cancel-button{
+    border-radius: 2px;
+    border: 1px solid #0D28A6;
+    background: #fff;
+    padding: 8px 12px;
+    color: #0D28A6;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px; 
+}
+
+.wrapper-button .save-button{
+    border-radius: 2px;
+    border: 0px;
+    background: #CFD4ED;
+    padding: 8px 12px;
+    color: #FFF;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px; 
+}
+
+.wrapper-button .cancel-button:hover,
+.wrapper-button .save-button:hover{
+    background-color: #0D28A6;
+    color: #fff;
+}
+
 /* custom select tag */
 
 .text-field {
     position: relative;
 }
 
+.text-field .custom-select {
+    width: 21.9%;
+}
+
 .custom-select .select-styled {
     border-radius: 2px;
-    border: 2px solid  #D0D0D0;
+    border: 1px solid  #D0D0D0;
     background: #FFF;
     font-size: 12px;
     padding: 9px 12px;
@@ -313,7 +428,8 @@ h1,h2,h3,h4,h5,h6,p{
     z-index: 1;
     list-style: none;
     padding: 0;
-    margin: 9px 12px;
+    width: 20%;
+    margin: 9px 145px;
     
 }
 
@@ -335,12 +451,12 @@ h1,h2,h3,h4,h5,h6,p{
     color: white;
 }
 
-#pickSize + #chevronIcon{
-    float: right;
-    position: absolute;
-    pointer-events: none;
-    background-color: #fff;
-    padding-right: 5px;
-    bottom: 9.5px;
-    right: 20px;
+#chevronIcon,#uploadIcon{
+    position: relative;
+    left: -30px;
+}
+
+.wrapper-custom-input{
+    background-color: #0D28A6;
+    width: 80%;
 }

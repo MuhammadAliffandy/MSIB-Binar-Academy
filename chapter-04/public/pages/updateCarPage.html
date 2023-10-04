@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Binar Car Rental</title>
+</head>
+<body>
+    <nav class="nav-bar">
+        <button class="left-nav"><i class="fa-solid fa-bars"></i></button>
+        <div class="right-nav">
+            <form>
+                <input type="text" placeholder="Search" />
+                <button type="button"  >Search</button>
+            </form>
+            <div>
+                <img src="../assets/user-avatar.png" alt="avatar" />
+                <h5>Hello</h5>
+                <button type="button">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <main class="main-page">
+        <section class="add-car">
+            <!-- navigation info cars  -->
+            <div class="navigation-info">
+                <p>Cars</p>
+                <i class="fa-solid fa-chevron-right"></i>
+                <p>List Cars</p>
+                <i class="fa-solid fa-chevron-right"></i>
+                <p id="sub-text-nav">Update Cars Information</p>
+            </div>
+            <!-- headline and create button -->
+            <div class="headline-with-button">
+                <h2>Update Cars Information</h2>
+            </div>
+            <!-- form added cars -->
+            <form class="form-add">
+                <div class="wrapper-text-field">
+                    <div class="text-field">
+                        <label>Nama</label>
+                        <input type="text" placeholder="Masukkan Nama Mobil" />
+                    </div>
+                    <div class="text-field">
+                        <label>Sewa Per Hari</label>
+                        <input type="text" placeholder="Rp0,-" />
+                    </div>
+                    <div class="text-field">
+                        <label>Ukuran</label>
+                            <div class="custom-select" id="pickSize">
+                                <div class="select-styled">Pilih Driver</div>
+                                <ul class="select-options">
+                                    <li>Small</li>
+                                    <li>Medium</li>
+                                    <li>Large</li>
+                                </ul>
+                            </div>
+                            <img id="chevronIcon" src="../assets/icon/icon-chevron-bold.png"  alt="icon-image" />
+                    </div>
+                    <div class="text-field">
+                        <label>Upload Gambar</label>
+                        <div class="wrap-text-field-upload">
+                            <div>
+                                <input type="file" id="file-input" name="file-input" />
+                                <img id="uploadIcon" src="../assets/icon/upload.png"  alt="icon-image" />
+                            </div>
+                            <p>File size max. 2MB</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="wrapper-button">
+                    <button type="button" class="cancel-button" id="cancelUpdate">Cancel</button>
+                    <button type="button" class="save-button">Save</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script type="text/javascript" src="../scripts/custom_select.js"></script>
+    <script type="text/javascript" src="../scripts/app.js"></script>
+    <script type="text/javascript" src="../scripts/carClass.js"></script>
+    <script type="text/javascript" src="../scripts/updatePage.js"></script>
+</body>
+</html>

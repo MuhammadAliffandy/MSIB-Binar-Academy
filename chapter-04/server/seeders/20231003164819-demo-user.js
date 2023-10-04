@@ -21,3 +21,5 @@ module.exports = {
     return queryInterface.bulkDelete('cars', null, {});
   }
 };
+
+console.log(uuidv4())
