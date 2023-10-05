@@ -16,10 +16,10 @@ class Car {
         this.rentPerDay = rentPerDay,
         this.description = description,
         this.createdAt = createdAt,
-        this.updatedAt = updatedAt
+        this.updatedAt = this.convertDate(updatedAt)
     }
 
-    handleButton() {
+    handleButton = () =>  {
         document.getElementById(`del${this.id}`).addEventListener("click",
         async (e)=>{
             await new App().delete(this.id);
@@ -33,6 +33,23 @@ class Car {
                 window.location.href = './pages/updateCarPage.html';
             }
         });
+    }
+
+    convertDate = (data) => {
+        const dateObject = new Date(data);
+
+        const months = [
+        "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+        "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+        ];
+        const year = dateObject.getFullYear();
+        const month = dateObject.getMonth();
+        const day = dateObject.getDate();
+        const hours = dateObject.getHours();
+        const minutes = dateObject.getMinutes()
+        const formattedDate = `${day} ${months[month]} ${year}, ${hours.toString().padStart(2, '0')}.${minutes.toString().padStart(2, '0')}`;
+        console.log(formattedDate)
+        return formattedDate;
     }
 
     render(){
