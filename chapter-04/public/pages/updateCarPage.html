@@ -33,7 +33,7 @@
     <main class="main-page">
         <section class="add-car">
             <!-- navigation info cars  -->
-            <div class="navigation-info">
+            <div class="navigation-info-list">
                 <p>Cars</p>
                 <i class="fa-solid fa-chevron-right"></i>
                 <p>List Cars</p>
@@ -49,16 +49,16 @@
                 <div class="wrapper-text-field">
                     <div class="text-field">
                         <label>Nama</label>
-                        <input type="text" placeholder="Masukkan Nama Mobil" />
+                        <input type="text" placeholder="Masukkan Nama Mobil" id="name" />
                     </div>
                     <div class="text-field">
                         <label>Sewa Per Hari</label>
-                        <input type="text" placeholder="Rp0,-" />
+                        <input type="text" placeholder="Rp0,-" id="rentPerDay" />
                     </div>
                     <div class="text-field">
                         <label>Ukuran</label>
                             <div class="custom-select" id="pickSize">
-                                <div class="select-styled">Pilih Driver</div>
+                                <div class="select-styled">Pilih Ukuran</div>
                                 <ul class="select-options">
                                     <li>Small</li>
                                     <li>Medium</li>
@@ -68,10 +68,10 @@
                             <img id="chevronIcon" src="../assets/icon/icon-chevron-bold.png"  alt="icon-image" />
                     </div>
                     <div class="text-field">
-                        <label>Upload Gambar</label>
+                        <label style="width:164px;">Upload Gambar</label>
                         <div class="wrap-text-field-upload">
                             <div>
-                                <input type="file" id="file-input" name="file-input" />
+                                <input style="width: 22.2%;" type="file" id="file-input" name="file-input" />
                                 <img id="uploadIcon" src="../assets/icon/upload.png"  alt="icon-image" />
                             </div>
                             <p>File size max. 2MB</p>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="wrapper-button">
                     <button type="button" class="cancel-button" id="cancelUpdate">Cancel</button>
-                    <button type="button" class="save-button">Save</button>
+                    <button type="button" class="save-button" id="saveUpdate">Save</button>
                 </div>
             </form>
         </section>

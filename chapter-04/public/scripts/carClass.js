@@ -29,6 +29,7 @@ class Car {
 
         document.querySelectorAll('.edit-button').forEach(element => {
             element.onclick = () =>  {
+                sessionStorage.setItem('data', this.id);
                 window.location.href = './pages/updateCarPage.html';
             }
         });
