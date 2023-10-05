@@ -33,7 +33,6 @@ const handleCreateCars = async (req , res ) => {
         image : image,
         size : size,
         rentPerDay : rentPerDay, 
-        description : description,
         createdAt : new Date(),
         updatedAt : new Date(),
     });
@@ -57,7 +56,7 @@ const handleUpdateCars = async (req , res ) => {
         }
     })
 
-    const data = await cars.findAll({
+    const data = await cars.findOne({
         where : {
             id : req.params['id'],
         }

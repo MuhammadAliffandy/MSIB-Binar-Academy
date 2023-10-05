@@ -12,7 +12,6 @@ module.exports = {
       image : imageBuffer,
       size : 'Large',
       rentPerDay : 400000, 
-      description : 'Volkswagen (commonly abbreviated to VW) is an automotive manufacturer based in Wolfsburg , Lower Saxony, Germany .',
       createdAt : new Date(),
       updatedAt : new Date(),
     }]);

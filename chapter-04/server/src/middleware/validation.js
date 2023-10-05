@@ -16,10 +16,11 @@ const validation = async (req , res , next) => {
 
 const createValidation = (req , res , next) => {
 
+    
     const body = JSON.parse((req.body.data));
     const image = req.file.buffer;
     
-    const requireData = [ 'name' , 'size' , 'rentPerDay' , 'description' ];
+    const requireData = [ 'name' , 'rentPerDay' , 'size'];
 
     if(Array.isArray(body)){
         const isCheckedData = body.map((car)=> { 
@@ -59,7 +60,9 @@ const updateValidation = async(req , res , next) => {
     const body = JSON.parse((req.body.data));
     const image = req.file;
 
-    const requireData = [ 'name'  , 'size' , 'rentPerDay' , 'description' ];
+    console.log(image)
+
+    const requireData = [ 'name' , 'rentPerDay' , 'size'  ];
 
     const isExisting = await cars.findOne({ where: { id: id } });
 
@@ -75,17 +78,16 @@ const updateValidation = async(req , res , next) => {
         return res.status(404).json({message : 'Invalid data structure. Please check your input '});
     }
 
-    if(image !== null && body !== null  ){
+    if(image != null && body != null  ){
         req.data = {...body , image : image.buffer  };
-    }else if(image !== null && body === null){
+    }else if(image != null && body == null){
         req.data = { image : image.buffer };
-    }else if(image === null && body !== null){
+    }else if(image == null && body != null){
         req.data = body;
     }
     next();
 
 }
-
 
 module.exports = {
     validation,

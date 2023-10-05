@@ -22,7 +22,6 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.BLOB,
     size: DataTypes.STRING,
     rentPerDay: DataTypes.INTEGER,
-    description: DataTypes.STRING,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE
   }, {
