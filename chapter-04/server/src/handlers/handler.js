@@ -22,7 +22,6 @@ const handleCreateCars = async (req , res ) => {
         name,
         size,
         rentPerDay,
-        description,
     } = req.data;
 
     const image = req.fileImage;

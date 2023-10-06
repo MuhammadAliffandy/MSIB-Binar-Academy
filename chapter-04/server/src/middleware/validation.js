@@ -18,6 +18,11 @@ const createValidation = (req , res , next) => {
 
     
     const body = JSON.parse((req.body.data));
+
+    if( req.file == null ){
+        return res.status(404).json({message : `Image is Undefined , Please check your input ! `});
+    }
+
     const image = req.file.buffer;
     
     const requireData = [ 'name' , 'rentPerDay' , 'size'];
@@ -34,17 +39,20 @@ const createValidation = (req , res , next) => {
             return res.status(404).json({message : `Invalid data structure. Please check your input and must to be ${requireData} `});
         }
     }else{
+
+        if(Object.keys(body).length < 3 || Object.keys(body).length > 3  ){
+
+            return res.status(404).json({message : `Invalid data structure. Please check your input  `});
+        }
+
         const isChecked = Object.keys(body).every((key , i)=>{
             return key === requireData[i];
         });
 
+
         if(!isChecked){
             return res.status(404).json({message : `Invalid data structure. Please check your input and must to be ${requireData} `});
         }
-    }
-
-    if( image == null ){
-        return res.status(404).json({message : `Invalid image , Please check your input ! `});
     }
 
     req.data = body ;
@@ -57,10 +65,8 @@ const createValidation = (req , res , next) => {
 const updateValidation = async(req , res , next) => {
 
     const id = req.params['id'];
-    const body = JSON.parse((req.body.data));
+    let body = req.body.data;
     const image = req.file;
-
-    console.log(image)
 
     const requireData = [ 'name' , 'rentPerDay' , 'size'  ];
 
@@ -70,18 +76,25 @@ const updateValidation = async(req , res , next) => {
         return res.status(404).json({message : "car not found"});
     }
     
-    const isChecked = Object.keys(body).map((key)=>{
-        return requireData.indexOf(key) ;
-    })
+    if(body != null){
 
-    if( isChecked.indexOf(-1) > -1 ){
-        return res.status(404).json({message : 'Invalid data structure. Please check your input '});
+        body = JSON.parse(req.body.data);
+    
+        const isChecked = Object.keys(body).map((key)=>{
+            return requireData.indexOf(key) ;
+        })
+    
+        if( isChecked.indexOf(-1) > -1 ){
+            return res.status(404).json({message : 'Invalid data structure. Please check your input '});
+        }
     }
 
     if(image != null && body != null  ){
         req.data = {...body , image : image.buffer  };
     }else if(image != null && body == null){
         req.data = { image : image.buffer };
+    }else if(image == null && body != null){
+        req.data = body;
     }else if(image == null && body != null){
         req.data = body;
     }
