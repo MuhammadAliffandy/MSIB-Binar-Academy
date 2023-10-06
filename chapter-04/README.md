@@ -72,7 +72,7 @@ data = {
   size: string;
 }
 ```
-![image](https://github.com/MuhammadAliffandy/MSIB-Binar-Academy/assets/94156412/38aa8320-57a3-49b1-89c1-abea89e1c702)
+![image](https://github.com/MuhammadAliffandy/MSIB-Binar-Academy/assets/94156412/d3f62351-1abe-4f51-b931-f0c942235ce9)
 
 
 ## Method and EndPoint
