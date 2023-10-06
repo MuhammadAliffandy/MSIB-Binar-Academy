@@ -63,18 +63,17 @@ if u need testing api with app test you can send req with form data and upload i
 
 ```javascript
 
-{
-  image : BLOB ,
-}
 
-{
+car-image = image : ,
+
+data = {
   name : string;
   rentPerDay: number;
   size: string;
-  createdAt: Date;
-  updatedAt: Date;
 }
 ```
+![image](https://github.com/MuhammadAliffandy/MSIB-Binar-Academy/assets/94156412/38aa8320-57a3-49b1-89c1-abea89e1c702)
+
 
 ## Method and EndPoint
 
