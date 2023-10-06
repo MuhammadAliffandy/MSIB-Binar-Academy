@@ -56,7 +56,9 @@ class Car {
 
         return `
         <div class="car-card">
-            <img src="data:image/jpeg;base64,${this.image}" alt="car-images">
+            <div class="wrap-img">
+                <img class="car-img" src="data:image/jpeg;base64,${this.image}" alt="car-images"/>
+            </div>
             <div class="car-detail">
                 <div class="car-text">
                     <p>${this.name}</p>
