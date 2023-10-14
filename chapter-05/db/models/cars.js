@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class cars extends Model {
+  class Cars extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,9 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Cars.belongsTo(models.users, { as: 'createdByUser', foreignKey: 'createdBy' });
+      Cars.belongsTo(models.users, { as: 'updatedByUser', foreignKey: 'updatedBy' });
+      Cars.belongsTo(models.users, { as: 'deletedByUser', foreignKey: 'deletedBy' });
     }
   }
-  cars.init({
+  Cars.init({
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
@@ -23,10 +26,24 @@ module.exports = (sequelize, DataTypes) => {
     size: DataTypes.STRING,
     rentPerDay: DataTypes.INTEGER,
     createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE
+    updatedAt: DataTypes.DATE,
+    createdBy: {
+      type : DataTypes.UUID,
+      foreignKey: true,
+    },
+    updatedBy: {
+      type : DataTypes.UUID,
+      foreignKey: true,
+    },
+    deletedBy: {
+      type : DataTypes.UUID,
+      foreignKey: true,
+      allowNull : true,
+    },
   }, {
     sequelize,
     modelName: 'cars',
   });
-  return cars;
+
+  return Cars;
 };

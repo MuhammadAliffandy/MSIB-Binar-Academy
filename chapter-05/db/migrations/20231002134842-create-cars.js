@@ -32,9 +32,22 @@ module.exports = {
           type: Sequelize.DATE,
           allowNull: false
       },
+      createdBy: {
+          type: Sequelize.UUID,
+          allowNull: false
+      },
+      updatedBy: {
+          type: Sequelize.UUID,
+          allowNull: false
+      },
+      deletedBy: {
+          type: Sequelize.UUID,
+          allowNull: true
+      },
     });
   },
   async down(queryInterface, Sequelize) {
     await queryInterface.dropTable('cars');
   }
 };
+
