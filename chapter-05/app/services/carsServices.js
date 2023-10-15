@@ -16,9 +16,9 @@ const getCars = (id) => {
     }
 }
 
-const createCars = (payload, image) => {
+const createCars = (payload, image ,userId) => {
     try {
-        return CarsRepository.createCars(payload, image);
+        return CarsRepository.createCars(payload, image , userId);
     } catch (error) {
         return error;
     }

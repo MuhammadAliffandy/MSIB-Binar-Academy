@@ -29,8 +29,9 @@ const getCars = async (req , res) => {
 const createCars = async (req , res) => {
     try {
         const payload = req.data;
-        const image = req.image;
-        const data = await CarsServices.createCars(payload,image);
+        const image = req.fileImage;
+        const userId = req.user.id;
+        const data = await CarsServices.createCars(payload,image,userId);
         return res.status(201).json({
             status : 'OK',
             message : 'data cars has been created',
@@ -95,6 +96,7 @@ const createCarsValidation = (req , res , next) => {
     if( req.file == null ){
         return res.status(404).json({message : `Image is Undefined , Please check your input ! `});
     }
+
     const body = JSON.parse((req.body.data));
     if( req.file == null ){
         return res.status(404).json({message : `Image is Undefined , Please check your input ! `});
