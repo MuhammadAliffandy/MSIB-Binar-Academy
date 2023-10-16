@@ -5,6 +5,7 @@ const cors = require('cors')
 const cookieParser = require("cookie-parser");
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 const sessions = require('express-session');
 const routes = require("./controller/route/route");
 const { Database } = require("../db/libs/dbStatus");
@@ -15,7 +16,6 @@ const { Database } = require("../db/libs/dbStatus");
  * 
  * */ 
 
-
 const oneHour = 1000 * 60 * 60 ;
 app.use(sessions({
     secret: process.env.SESSION_KEY,
@@ -24,10 +24,8 @@ app.use(sessions({
     resave: true,
 }));
 
-// app.use(sessions({
-//     name: 'google-auth-session',
-//     keys: ['key1', 'key2']
-// }))
+app.use(passport.initialize());
+app.use(passport.session());
 
 passport.serializeUser(function(user, done) {
     done(null, user);
@@ -38,19 +36,24 @@ passport.deserializeUser(function(user, done) {
 });
 
 passport.use(new GoogleStrategy({
-    clientID: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET,
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: 'http://localhost:5000/users/auth/google/callback',
 },
 (accessToken, refreshToken, profile, done) => {
     return done(null, profile);
 }));
 
+passport.use(new FacebookStrategy({
+    clientID: process.env.FACEBOOK_CLIENT_ID,
+    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    callbackURL: 'http://localhost:5000/users/auth/facebook/callback'
+    }, function (accessToken, refreshToken, profile, done) {
+        return done(null, profile);
+    }
+));
 
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(cookieParser());
-
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));

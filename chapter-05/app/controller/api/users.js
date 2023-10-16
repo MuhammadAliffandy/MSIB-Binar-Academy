@@ -18,6 +18,15 @@ router
         res.redirect('/dashboard');
     }
 )
+.get('/auth/facebook',
+    passport.authenticate('facebook', { scope: ['email','public_profile'] })
+)
+.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/' }),
+    (req, res) => {
+        res.redirect('/dashboard');
+    }
+)
 .get('/logout',(req,res)=>{
     req.session = null;
     res.redirect('/');
