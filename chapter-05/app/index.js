@@ -66,15 +66,6 @@ app.get('/', async(req, res) => {
     await new Database().checkConnection();
     res.status(200).json({ message: "Ping successfully" });
 })
-.get('/users/auth/google',
-    passport.authenticate('google', { scope: ['email','profile'] })
-)
-.get('/users/auth/google/callback',
-    passport.authenticate('google', { failureRedirect: '/' }),
-    (req, res) => {
-        res.redirect('/dashboard');
-    }
-)
 .get('/dashboard', (req, res) => {
     res.json({
         status : 'OK',
