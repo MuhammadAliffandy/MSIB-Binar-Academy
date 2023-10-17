@@ -1,4 +1,6 @@
-const CarsRepository = require('../repository/carsRepository')
+const fire = require('../../lib/firebase/init')
+const{ getStorage, ref, uploadBytes ,getDownloadURL } =  require("firebase/storage");
+const CarsRepository = require('../repository/carsRepository');
 
 const getListCars = () => {
     try {
@@ -32,12 +34,27 @@ const updateCars = (id, payload) => {
     }
 }
 
-const deleteCars = (id) => {
+const deleteCars = (id,deletedById ) => {
     try {
-        return CarsRepository.deleteCars(id);
+        return CarsRepository.deleteCars(id,deletedById );
     } catch (error) {
         return error;
     }
+}
+
+const uploadImage = (image) => {
+    const storage = getStorage(fire);
+    const storageRef = ref(storage, `car-${Date.now()}.jpg`);
+
+    return uploadBytes(storageRef, image).then((snapshot) => {
+        return getDownloadURL(storageRef).then((url) => {
+            return url;
+        }).catch((error) => {
+            return error;
+        });
+    }).catch((error) => {
+        return error;
+    });
 }
 
 module.exports = {
@@ -45,5 +62,6 @@ module.exports = {
     getCars,
     createCars,
     updateCars,
-    deleteCars
+    deleteCars,
+    uploadImage,
 }

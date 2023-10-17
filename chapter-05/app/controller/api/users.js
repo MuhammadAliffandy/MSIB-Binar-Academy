@@ -1,36 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
 const UsersController = require('../userController');
-
+const AuthServices = require('../../services/authServices');
 
 router
 .get('/', UsersController.getListUsers)
 .get('/current-user',UsersController.getCurrentUser)
 .post('/regis', UsersController.registrationValidation ,UsersController.registration)
+.post('/regis-member', UsersController.registrationValidation ,UsersController.registrationMember)
 .post('/auth',UsersController.loginValidation ,UsersController.login)
-.get('/auth/google',
-    passport.authenticate('google', { scope: ['email','profile'] })
-)
-.get('/auth/google/callback',
-    passport.authenticate('google', { failureRedirect: '/' }),
-    (req, res) => {
-        res.redirect('/dashboard');
-    }
-)
-.get('/auth/facebook',
-    passport.authenticate('facebook', { scope: ['email','public_profile'] })
-)
-.get('/auth/facebook/callback',
-    passport.authenticate('facebook', { failureRedirect: '/' }),
-    (req, res) => {
-        res.redirect('/dashboard');
-    }
-)
-.get('/logout',(req,res)=>{
-    req.session = null;
-    res.redirect('/');
-})
+.get('/auth/google',AuthServices.googleAuth)
+.get('/auth/google/callback',AuthServices.googleAuthCallback, UsersController.redirectDashboard)
+.get('/auth/facebook',AuthServices.facebookAuth)
+.get('/auth/facebook/callback',AuthServices.facebookAuthCallback, UsersController.redirectDashboard)
+.get('/logout',UsersController.logout)
 
 
 module.exports = router;

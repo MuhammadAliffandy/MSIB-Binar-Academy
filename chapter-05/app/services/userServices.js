@@ -17,6 +17,14 @@ const createUser = (payload) => {
     }
 }
 
+const createUserMember = (payload) => {
+    try{
+        return UserRepository.createUserMember(payload); 
+    }catch(error){
+        return error;
+    }
+}
+
 const findUserByEmail = (email) => {
     try{
         return UserRepository.findUserByEmail(email); 
@@ -36,6 +44,7 @@ const findUserById = (id) => {
 module.exports = {
     getListUsers,
     createUser,
+    createUserMember,
     findUserByEmail,
     findUserById,
 }

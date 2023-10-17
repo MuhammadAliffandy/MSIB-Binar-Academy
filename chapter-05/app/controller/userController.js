@@ -13,7 +13,6 @@ const getListUsers = async (req , res) => {
     }
 }
 
-
 /**
  * 
  * authentication method
@@ -58,11 +57,31 @@ const registration = async ( req , res ) => {
     });
 }
 
+const registrationMember = async ( req , res ) => {
+    const payload = req.user;
+    const  user = await UserServices.createUserMember(payload);
+    
+    return res.status(200).json({
+        status : 'OK',
+        message: 'registration is successfull',
+        data: user,
+    });
+}
+
+const logout = (req,res) => {
+    req.session = null;
+    res.redirect('/');
+}
+
+const redirectDashboard = (req, res) => {
+    res.redirect('/dashboard');
+}
+
 const registrationValidation = async (req, res , next ) => {
     try {
         const {  name, phone , address , role , email , password  } = req.body;
         
-        if(!name || !email || !password || !role){
+        if(!name || !email || !password ){
             return res.status(404).json({
                 status : 'FAIL',
                 message : 'Please check your input '
@@ -182,7 +201,7 @@ const authorization = (handler) => {
             const userId = decoded.id;
     
             const user = await UserServices.findUserById(userId);
-    
+
             if(!user){
                 return res.status(403).json({ 
                     status: 'FAIL',
@@ -229,6 +248,7 @@ const authorizationAdmin = authorization(
                     status: 'FAIL',
                     message: 'You dont has been permission for this action'
                 });    
+
             }
 
             next();
@@ -241,9 +261,12 @@ module.exports = {
     login,
     loginValidation,
     registration,
+    registrationMember,
     registrationValidation,
     authorization,
     authorizationAdmin,
+    redirectDashboard,
+    logout,
 }
 
 

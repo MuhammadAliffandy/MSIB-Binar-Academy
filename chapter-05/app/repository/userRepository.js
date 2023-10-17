@@ -12,7 +12,22 @@ const createUser = (payload) => {
         name : name,
         phone :phone,
         address : address,
-        role : role ,
+        role : 'admin',
+        email : email ,
+        password : password,
+        createdAt : new Date(),
+        updatedAt : new Date(),
+    });
+}
+
+const createUserMember = (payload) => {
+    const { name, phone , address , role , email , password  } = payload;
+    return users.create({
+        id : uuidv4(),
+        name : name,
+        phone :phone,
+        address : address,
+        role : 'member',
         email : email ,
         password : password,
         createdAt : new Date(),
@@ -40,6 +55,7 @@ const findUserById = ( id ) => {
 
 module.exports = {
     createUser,
+    createUserMember,
     getListUsers,
     findUserByEmail,
     findUserById,

@@ -1,6 +1,7 @@
 require('dotenv').config()
 const { compare , hash } = require('bcrypt');
 const { sign , verify } = require('jsonwebtoken');
+const passport = require('passport');
 
 const JWT_SECRET = process.env.SECRET_KEY;
 
@@ -52,6 +53,14 @@ const setSession = (session , authenticated  , token) => {
     return session;
 } 
 
+const googleAuth = passport.authenticate('google', { scope: ['email','profile'] });
+
+const googleAuthCallback = passport.authenticate('google', { failureRedirect: '/' })
+
+const facebookAuth = passport.authenticate('facebook', { scope: ['email','public_profile'] });
+
+const facebookAuthCallback = passport.authenticate('facebook', { failureRedirect: '/' })
+
 module.exports = {
     compareUserPassword,
     encryptUserPassword,
@@ -59,4 +68,8 @@ module.exports = {
     getNewToken,
     decodeToken,
     setSession,
+    googleAuth,
+    googleAuthCallback,
+    facebookAuth,
+    facebookAuthCallback,
 }

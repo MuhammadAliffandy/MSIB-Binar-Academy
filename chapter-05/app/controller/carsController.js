@@ -64,14 +64,14 @@ const updateCars = async (req , res) => {
 }
 
 const deleteCars = async (req , res) => {
-    
+    const deletedById  = req.user.id;
+
     try {
         const id = req.params['id'];
-        const data = await CarsServices.deleteCars(id);
+        const data = await CarsServices.deleteCars(id , deletedById );
         return res.status(201).json({
             status : 'OK',
             message : 'data cars has been deleted', 
-            data : data,
         });
     } catch (error) {
         return res.json({
@@ -91,18 +91,23 @@ const findCarsbyId = async (req , res , next) => {
     next()
 }
 
-const createCarsValidation = (req , res , next) => {
+const createCarsValidation = async(req , res , next) => {
 
-    if( req.file == null ){
-        return res.status(404).json({message : `Image is Undefined , Please check your input ! `});
+    if( req.body == null ){
+        return res.status(404).json({message : `req body is Undefined , Please check your input ! `});
     }
 
     const body = JSON.parse((req.body.data));
+
     if( req.file == null ){
         return res.status(404).json({message : `Image is Undefined , Please check your input ! `});
     }
+    
     const image = req.file.buffer;
+    const imageUrl  = await CarsServices.uploadImage(image);
+
     const requireData = [ 'name' , 'rentPerDay' , 'size'];
+
     if(Array.isArray(body)){
         const isCheckedData = body.map((car)=> { 
             const currentData = Object.keys(car);
@@ -128,7 +133,7 @@ const createCarsValidation = (req , res , next) => {
     }
 
     req.data = body ;
-    req.fileImage = image; 
+    req.fileImage = imageUrl; 
 
     next();
 
@@ -138,7 +143,8 @@ const updateCarsValidation = async(req , res , next) => {
 
     const id = req.params['id'];
     let body = req.body.data;
-    const image = req.file;
+    const imageUrl = await CarsServices.uploadImage(req.file.buffer);;
+
     const requireData = [ 'name' , 'rentPerDay' , 'size'  ];
 
     const isExisting = await CarsServices.getCars(id);
@@ -160,13 +166,13 @@ const updateCarsValidation = async(req , res , next) => {
         }
     }
 
-    if(image != null && body != null  ){
-        req.data = {...body , image : image.buffer  };
-    }else if(image != null && body == null){
-        req.data = { image : image.buffer };
-    }else if(image == null && body != null){
+    if(imageUrl != null && body != null  ){
+        req.data = {...body , image: imageUrl  };
+    }else if(imageUrl != null && body == null){
+        req.data = { image : imageUrl };
+    }else if(imageUrl == null && body != null){
         req.data = body;
-    }else if(image == null && body != null){
+    }else if(imageUrl == null && body != null){
         req.data = body;
     }
 

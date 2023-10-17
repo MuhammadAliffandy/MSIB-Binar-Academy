@@ -13,7 +13,7 @@ module.exports = {
           allowNull: false
       },
       image: {
-          type: Sequelize.BLOB,
+          type: Sequelize.STRING,
           allowNull: false
       },
       size: {
@@ -32,6 +32,9 @@ module.exports = {
           type: Sequelize.DATE,
           allowNull: false
       },
+      deletedAt: {
+          type: Sequelize.DATE,
+      },
       createdBy: {
           type: Sequelize.UUID,
           allowNull: false
@@ -42,7 +45,6 @@ module.exports = {
       },
       deletedBy: {
           type: Sequelize.UUID,
-          allowNull: true
       },
     });
   },

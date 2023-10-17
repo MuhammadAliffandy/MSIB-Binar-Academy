@@ -22,11 +22,12 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
     },
     name: DataTypes.STRING,
-    image: DataTypes.BLOB,
+    image: DataTypes.STRING,
     size: DataTypes.STRING,
     rentPerDay: DataTypes.INTEGER,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
+    deletedAt: DataTypes.DATE,
     createdBy: {
       type : DataTypes.UUID,
       foreignKey: true,
@@ -43,6 +44,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'cars',
+    paranoid: true,
   });
 
   return Cars;
