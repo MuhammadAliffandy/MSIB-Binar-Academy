@@ -20,69 +20,122 @@
         }
     ],
     "paths": {
-        "/users/": {
-        "post": {
-            "tags": [
-            "user"
-            ],
-            "requestBody": {
-                "content": {
-                    "application/json": {
-                    "schema": {
-                        "type": "object",
-                        "properties": {
-                            "name": {
-                                "type": "string"
-                            },
-                            "email": {
-                                "type": "string"
-                            },
-                            "password": {
-                                "type": "string"
-                            },
-                            "identity_number": {
-                                "type": "integer"
-                            },
-                            "identity_type": {
-                                "type": "string"
-                            },
-                            "address": {
-                                "type": "string"
-                            }
-                        }
-                    }
-                    }
+        "/cars": {
+            "get": {
+                "summary": "Mendapatkan daftar mobil",
+                "responses": {
+                "200": {
+                    "description": "Daftar mobil berhasil didapatkan"
+                }
                 }
             },
-            "responses": {
-            "200": {
-                "description": "Success",
+            "post": {
+                "summary": "Membuat mobil baru",
+                "requestBody": {
                 "content": {
-                "application/json": {
+                    "multipart/form-data": {
                     "schema": {
-                    "type": "object",
-                    "properties": {
-                        "data": {
                         "type": "object",
                         "properties": {
+                        "car-image": {
+                            "type": "string",
+                            "format": "binary",
+                            "description": "Gambar mobil (jenis file)"
+                        },
+                        "data": {
+                            "type": "object",
+                            "properties": {
                             "name": {
-                            "type": "string"
+                                "type": "string"
                             },
-                            "email": {
-                            "type": "string"
+                            "rentPerDay": {
+                                "type": "number"
                             },
-                            "password": {
-                            "type": "string"
+                            "size": {
+                                "type": "string"
+                            }
                             }
                         }
                         }
                     }
                     }
                 }
+                },
+                "responses": {
+                "201": {
+                    "description": "Mobil baru berhasil dibuat"
+                }
                 }
             }
-            }
-        }
+            },
+            "/cars/{id}": {
+                "get": {
+                    "summary": "Mendapatkan detail mobil berdasarkan ID",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "in": "path",
+                            "required": true,
+                            "schema": {
+                            "type": "string"
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Detail mobil berhasil didapatkan"
+                        }
+                    }
+                },
+                "put": {
+                    "summary": "Memperbarui mobil berdasarkan ID",
+                    "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                        "type": "string"
+                        }
+                    }
+                    ],
+                    "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                            "car-image": {
+                                "type": "string",
+                                "format": "binary",
+                                "description": "Gambar mobil (jenis file)"
+                            },
+                            "data": {
+                                "type": "object",
+                                "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "rentPerDay": {
+                                    "type": "number"
+                                },
+                                "size": {
+                                    "type": "string"
+                                }
+                                }
+                            }
+                            }
+                        }
+                        }
+                    }
+                    },
+                    "responses": {
+                    "200": {
+                        "description": "Mobil berhasil diperbarui"
+                    }
+                    }
+                }
+        
         }
     }
 }

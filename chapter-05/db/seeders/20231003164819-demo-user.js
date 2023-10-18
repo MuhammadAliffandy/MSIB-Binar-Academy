@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
-
+const AuthServices = require('../../app/services/authServices')
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
@@ -12,11 +12,12 @@ module.exports = {
       address: 'Tokyo, Japan',
       role: 'superadmin',
       email : 'aliffandy@gmail.com',
-      password: 'fandy12345',
+      password: AuthServices.encryptUserPasswordSync('fandy12345'),
       createdAt : new Date(),
       updatedAt : new Date(),
     }]);
   },
+  
   async down(queryInterface, Sequelize){
     return queryInterface.bulkDelete('users', null, {});
   }

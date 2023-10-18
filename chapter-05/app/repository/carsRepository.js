@@ -40,12 +40,6 @@ const updateCars = (id , payload ) => {
             id : id
         }
     })
-
-    return cars.findOne({
-        where : {
-            id : id,
-        }
-    })
 };
 
 

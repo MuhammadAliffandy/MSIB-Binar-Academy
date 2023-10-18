@@ -42,19 +42,21 @@ const deleteCars = (id,deletedById ) => {
     }
 }
 
-const uploadImage = (image) => {
+const uploadImage = async (image) => {
     const storage = getStorage(fire);
-    const storageRef = ref(storage, `car-${Date.now()}.jpg`);
+    const storageRef = ref(storage, `car-seed-${Date.now()}.jpg`);
 
-    return uploadBytes(storageRef, image).then((snapshot) => {
-        return getDownloadURL(storageRef).then((url) => {
+    try {
+        const snapshot = await uploadBytes(storageRef, image);
+        try {
+            const url = await getDownloadURL(storageRef);
             return url;
-        }).catch((error) => {
+        } catch (error) {
             return error;
-        });
-    }).catch((error) => {
-        return error;
-    });
+        }
+    } catch (error_1) {
+        return error_1;
+    }
 }
 
 module.exports = {

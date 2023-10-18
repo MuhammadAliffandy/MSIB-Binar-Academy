@@ -7,6 +7,8 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const sessions = require('express-session');
+const swaggerUi= require('swagger-ui-express')
+const swaggerJson = require('../openapi.json')
 const routes = require("./controller/route/route");
 const { Database } = require("../db/libs/dbStatus");
 
@@ -57,7 +59,9 @@ app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use('/api-documentation', swaggerUi.serve, swaggerUi.setup(swaggerJson))
 app.use('/',routes);
+
 
 /**
  * 

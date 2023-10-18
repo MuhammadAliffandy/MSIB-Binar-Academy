@@ -8,7 +8,7 @@ module.exports = {
     return queryInterface.bulkInsert('cars', [{
       id : uuidv4(),
       name : 'Mobil VW',
-      image : 'https://firebasestorage.googleapis.com/v0/b/binar-car-402108.appspot.com/o/car-1697535658059.jpg?alt=media&token=b438d8d1-cbdb-4e5c-9423-da816a7ab00d',
+      image : 'https://firebasestorage.googleapis.com/v0/b/binar-car-402108.appspot.com/o/car-seed-1697616543758.jpg?alt=media&token=fbd8f719-7387-4415-b852-9da385cb99ad',
       size : 'Large',
       rentPerDay : 400000, 
       createdAt : new Date(),

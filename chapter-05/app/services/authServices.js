@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { compare , hash } = require('bcrypt');
+const { compare , hash , hashSync} = require('bcrypt');
 const { sign , verify } = require('jsonwebtoken');
 const passport = require('passport');
 
@@ -17,6 +17,15 @@ const compareUserPassword = (password, plainText) => {
 const encryptUserPassword = (password) => {
     try{
         const passwordChecked = hash( password, 10 );
+        return passwordChecked ;
+    }catch(error){
+        return error;
+    }
+}
+
+const encryptUserPasswordSync = (password) => {
+    try{
+        const passwordChecked = hashSync( password, 10 );
         return passwordChecked ;
     }catch(error){
         return error;
@@ -63,7 +72,9 @@ const facebookAuthCallback = passport.authenticate('facebook', { failureRedirect
 
 module.exports = {
     compareUserPassword,
+    compareUserPassword,
     encryptUserPassword,
+    encryptUserPasswordSync,
     getToken,
     getNewToken,
     decodeToken,

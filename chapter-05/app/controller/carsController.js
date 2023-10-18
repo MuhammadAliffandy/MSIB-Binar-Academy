@@ -49,7 +49,8 @@ const updateCars = async (req , res) => {
     try {
         const payload = req.data;
         const id = req.params['id'];
-        const data = await CarsServices.updateCars(id , payload);
+        await CarsServices.updateCars(id , payload);
+        const data = await CarsServices.getCars(id);
         return res.status(201).json({
             status : 'OK',
             message : 'data cars has been updated', 
@@ -64,9 +65,8 @@ const updateCars = async (req , res) => {
 }
 
 const deleteCars = async (req , res) => {
-    const deletedById  = req.user.id;
-
     try {
+        const deletedById  = req.user.id;
         const id = req.params['id'];
         const data = await CarsServices.deleteCars(id , deletedById );
         return res.status(201).json({
@@ -81,26 +81,16 @@ const deleteCars = async (req , res) => {
     }
 }
 
-
-const findCarsbyId = async (req , res , next) => {
-    const id = req.params['id'];
-    const isExisting = await CarsServices.getCars(id);
-    if(isExisting === null){
-        return res.status(404).json({message : "car not found"});
-    }
-    next()
-}
-
 const createCarsValidation = async(req , res , next) => {
 
     if( req.body == null ){
-        return res.status(404).json({message : `req body is Undefined , Please check your input ! `});
+        return res.status(400).json({message : `req body is Undefined , Please check your input ! `});
     }
 
     const body = JSON.parse((req.body.data));
 
     if( req.file == null ){
-        return res.status(404).json({message : `Image is Undefined , Please check your input ! `});
+        return res.status(400).json({message : `Image is Undefined , Please check your input ! `});
     }
     
     const image = req.file.buffer;
@@ -116,19 +106,19 @@ const createCarsValidation = async(req , res , next) => {
                 })
         })
         if(isCheckedData.indexOf(false) > -1){
-            return res.status(404).json({message : `Invalid data structure. Please check your input and must to be ${requireData} `});
+            return res.status(400).json({message : `Invalid data structure. Please check your input and must to be ${requireData} `});
         }
     }else{
 
         if(Object.keys(body).length < 3 || Object.keys(body).length > 3  ){
 
-            return res.status(404).json({message : `Invalid data structure. Please check your input  `});
+            return res.status(400).json({message : `Invalid data structure. Please check your input  `});
         }
         const isChecked = Object.keys(body).every((key , i)=>{
             return key === requireData[i];
         });
         if(!isChecked){
-            return res.status(404).json({message : `Invalid data structure. Please check your input and must to be ${requireData} `});
+            return res.status(400).json({message : `Invalid data structure. Please check your input and must to be ${requireData} `});
         }
     }
 
@@ -150,7 +140,7 @@ const updateCarsValidation = async(req , res , next) => {
     const isExisting = await CarsServices.getCars(id);
 
     if(isExisting === null){
-        return res.status(404).json({message : "car not found"});
+        return res.status(400).json({message : "car not found"});
     }
     
     if(body != null){
@@ -162,7 +152,7 @@ const updateCarsValidation = async(req , res , next) => {
         })
     
         if( isChecked.indexOf(-1) > -1 ){
-            return res.status(404).json({message : 'Invalid data structure. Please check your input '});
+            return res.status(400).json({message : 'Invalid data structure. Please check your input '});
         }
     }
 
@@ -186,7 +176,6 @@ module.exports = {
     createCars,
     updateCars,
     deleteCars,
-    findCarsbyId,
     createCarsValidation,
     updateCarsValidation,
 }

@@ -46,31 +46,48 @@ const login = async (req,res) => {
     
 }
 
-const registration = async ( req , res ) => {
-    const payload = req.user;
-    const  user = await UserServices.createUser(payload);
-    
-    return res.status(200).json({
-        status : 'OK',
-        message: 'registration is successfull',
-        data: user,
-    });
+const registrationAdmin = async ( req , res ) => {
+    try {
+        const payload = req.user;
+        const  user = await UserServices.createUser(payload);
+        
+        return res.status(201).json({
+            status : 'OK',
+            message: 'registration is successfull',
+            data: user,
+        });
+    } catch (error) {
+        return res.status(404).json({
+            status: 'FAIL',
+            message: error.message,
+        })
+    }
 }
 
 const registrationMember = async ( req , res ) => {
-    const payload = req.user;
-    const  user = await UserServices.createUserMember(payload);
-    
-    return res.status(200).json({
-        status : 'OK',
-        message: 'registration is successfull',
-        data: user,
-    });
+    try {
+        const payload = req.user;
+        const  user = await UserServices.createUserMember(payload);
+        
+        return res.status(201).json({
+            status : 'OK',
+            message: 'registration is successfull',
+            data: user,
+        });
+    } catch (error) {
+        return res.status(404).json({
+            status: 'FAIL',
+            message: error.message,
+        })
+    }
 }
 
-const logout = (req,res) => {
-    req.session = null;
-    res.redirect('/');
+const logout = (req,res,next) => {
+	res.clearCookie('connect.sid');  
+	req.logout(function(err) {
+        req.session = null
+        res.redirect('/')
+	});
 }
 
 const redirectDashboard = (req, res) => {
@@ -79,10 +96,10 @@ const redirectDashboard = (req, res) => {
 
 const registrationValidation = async (req, res , next ) => {
     try {
-        const {  name, phone , address , role , email , password  } = req.body;
+        const {  name, phone , address , email , password  } = req.body;
         
         if(!name || !email || !password ){
-            return res.status(404).json({
+            return res.status(400).json({
                 status : 'FAIL',
                 message : 'Please check your input '
             })
@@ -91,7 +108,7 @@ const registrationValidation = async (req, res , next ) => {
         const emailExist = await UserServices.findUserByEmail(email);
 
         if(emailExist){
-            return res.status(403).json({
+            return res.status(400).json({
                 status : 'FAIL',
                 message : 'Email is Exist, please repeat your input'
             })
@@ -103,7 +120,6 @@ const registrationValidation = async (req, res , next ) => {
             name : name,
             phone : phone,
             address : address,
-            role : role ,
             email : email ,
             password : hashedPass, 
         };
@@ -124,7 +140,7 @@ const loginValidation = async (req,res,next) => {
         const user = req.body;
 
         if(!user.email || !user.password){
-            return res.status(404).json({
+            return res.status(400).json({
                 status : 'FAIL',
                 message: 'please input email & pasword' 
             });
@@ -133,7 +149,7 @@ const loginValidation = async (req,res,next) => {
         const emailExist = await UserServices.findUserByEmail(user.email);
     
         if(!emailExist){
-            return res.status(404).json({
+            return res.status(400).json({
                 status : 'FAIL',
                 message: 'email is not exist or not correct' 
             });
@@ -142,7 +158,7 @@ const loginValidation = async (req,res,next) => {
         const checkedPass = await AuthServices.compareUserPassword(user.password , emailExist.password );
     
         if(!checkedPass){
-            return res.status(404).json({
+            return res.status(400).json({
                 status: 'FAIL',
                 message:'password is wrong, please check your input !!'
             })
@@ -157,7 +173,6 @@ const loginValidation = async (req,res,next) => {
                 token: session.token,
             })
         }
-
 
         req.user = emailExist.dataValues;
         
@@ -178,7 +193,7 @@ const authorization = (handler) => {
         const authorizationHeader = req.headers['authorization'];
     
         if ( !authorizationHeader ) {
-            return res.status(404).json({ 
+            return res.status(401).json({ 
                 status: 'FAIL',
                 message: 'Authorization header is missing '
             });
@@ -224,7 +239,7 @@ const authorization = (handler) => {
 }
 
 const getCurrentUser = authorization(
-    handler = async (req,res)=>{
+    async (req,res)=>{
 
         const userId = req.user.id;
     
@@ -238,33 +253,50 @@ const getCurrentUser = authorization(
     }
 );
 
-const authorizationAdmin = authorization(
-        handler = async (req,res,next) =>{
+const authorizationToResource = authorization(
+    async (req,res,next) =>{
     
             const user = req.user;
 
-            if(user.role != 'admin'){
+            if(user.role != 'admin'  && user.role != 'superadmin'){
                 return res.status(403).json({ 
                     status: 'FAIL',
                     message: 'You dont has been permission for this action'
                 });    
-
             }
 
             next();
         }
     );
 
+const authorizationToAdmin = authorization(
+    async (req,res,next) =>{
+    
+            const user = req.user;
+
+            if(user.role != 'superadmin'){
+                return res.status(403).json({ 
+                    status: 'FAIL',
+                    message: 'You dont has been permission for this action'
+                });    
+            }
+
+            next();
+        }
+    );    
+
+    
 module.exports = {
     getCurrentUser,
     getListUsers,
     login,
     loginValidation,
-    registration,
+    registrationAdmin,
     registrationMember,
     registrationValidation,
     authorization,
-    authorizationAdmin,
+    authorizationToResource,
+    authorizationToAdmin,
     redirectDashboard,
     logout,
 }
