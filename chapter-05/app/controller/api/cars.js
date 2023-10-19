@@ -6,12 +6,12 @@ const storage = multer.memoryStorage();
 const upload = multer({storage})
 
 const CarsController = require('../carsController');
-const UsersController = require('../userController');
+const UsersAuthController = require('../authController');
 
-router.get('/',UsersController.authorizationToResource, CarsController.getListCars)
-.get('/:id', UsersController.authorizationToResource , CarsController.getCars)
-.post('/' ,  UsersController.authorizationToResource , upload.single('car-image'), CarsController.createCarsValidation , CarsController.createCars)
-.put('/:id', UsersController.authorizationToResource , upload.single('car-image') , CarsController.updateCarsValidation , CarsController.updateCars)
-.delete('/:id',UsersController.authorizationToResource, CarsController.deleteCars )
+router.get('/',UsersAuthController.authorizationToResource, CarsController.getListCars)
+.get('/:id', UsersAuthController.authorizationToResource , CarsController.getCars)
+.post('/' ,  UsersAuthController.authorizationToResource , upload.single('car-image'), CarsController.createCarsValidation , CarsController.createCars)
+.put('/:id', UsersAuthController.authorizationToResource , upload.single('car-image') , CarsController.updateCarsValidation , CarsController.updateCars)
+.delete('/:id',UsersAuthController.authorizationToResource, CarsController.deleteCars )
 
 module.exports = router;

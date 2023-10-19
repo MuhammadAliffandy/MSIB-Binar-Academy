@@ -10,66 +10,88 @@
     },
     "servers": [
         {
-        "url": "http://localhost:5000/api-documentation"
+        "url": "http://localhost:5000/"
         }
     ],
     "tags": [
         {
-        "name": "user",
-        "description": "User API"
+            "name": "cars",
+            "description": "cars API"
+        },
+        {
+            "name": "users",
+            "description": "users API"
         }
     ],
     "paths": {
         "/cars": {
             "get": {
-                "summary": "Mendapatkan daftar mobil",
+                "tags": [
+                    "cars"
+                ],
+                "summary": "view all car data",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "responses": {
-                "200": {
-                    "description": "Daftar mobil berhasil didapatkan"
-                }
+                    "200": {
+                    }
                 }
             },
             "post": {
-                "summary": "Membuat mobil baru",
+                "tags": [
+                    "cars"
+                ],
+                "summary": "create a new car ",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
                 "requestBody": {
-                "content": {
-                    "multipart/form-data": {
-                    "schema": {
-                        "type": "object",
-                        "properties": {
-                        "car-image": {
-                            "type": "string",
-                            "format": "binary",
-                            "description": "Gambar mobil (jenis file)"
-                        },
-                        "data": {
-                            "type": "object",
-                            "properties": {
-                            "name": {
-                                "type": "string"
-                            },
-                            "rentPerDay": {
-                                "type": "number"
-                            },
-                            "size": {
-                                "type": "string"
-                            }
+                        "content": {
+                            "multipart/form-data": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "car-image": {
+                                            "type": "string",
+                                            "format": "binary",
+                                            "description": "car image type file"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "rentPerDay": {
+                                                    "type": "number"
+                                                },
+                                                "size": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
+                    },
+                    "responses": {
+                        "201": {
+                            "description": "Mobil baru berhasil dibuat"
                         }
                     }
-                    }
                 }
-                },
-                "responses": {
-                "201": {
-                    "description": "Mobil baru berhasil dibuat"
-                }
-                }
-            }
             },
-            "/cars/{id}": {
+        "/cars/{id}": {
                 "get": {
+                    "tags": [
+                        "cars"
+                    ],
                     "summary": "Mendapatkan detail mobil berdasarkan ID",
                     "parameters": [
                         {
@@ -88,54 +110,275 @@
                     }
                 },
                 "put": {
+                    "tags": [
+                        "cars"
+                    ],
                     "summary": "Memperbarui mobil berdasarkan ID",
                     "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                        "type": "string"
+                        {
+                            "name": "id",
+                            "in": "path",
+                            "required": true,
+                            "schema": {
+                            "type": "string"
+                            }
                         }
-                    }
                     ],
                     "requestBody": {
-                    "content": {
-                        "multipart/form-data": {
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                            "car-image": {
-                                "type": "string",
-                                "format": "binary",
-                                "description": "Gambar mobil (jenis file)"
-                            },
-                            "data": {
-                                "type": "object",
-                                "properties": {
-                                "name": {
-                                    "type": "string"
-                                },
-                                "rentPerDay": {
-                                    "type": "number"
-                                },
-                                "size": {
-                                    "type": "string"
-                                }
+                        "content": {
+                            "multipart/form-data": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "car-image": {
+                                            "type": "string",
+                                            "format": "binary",
+                                            "description": "Gambar mobil (jenis file)"
+                                        },
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "rentPerDay": {
+                                                    "type": "number"
+                                                },
+                                                "size": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
-                            }
                         }
-                        }
-                    }
                     },
                     "responses": {
-                    "200": {
-                        "description": "Mobil berhasil diperbarui"
+                        "200": {
+                            "description": "Mobil berhasil diperbarui"
+                        }
                     }
+                },
+                "delete": {
+                    "tags": [
+                        "cars"
+                    ],
+                    "summary": "Memperbarui mobil berdasarkan ID",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "in": "path",
+                            "required": true,
+                            "schema": {
+                            "type": "string"
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Mobil berhasil diperbarui"
+                        }
                     }
                 }
         
+            },
+        "/users":{
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Mendapatkan daftar mobil",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Daftar mobil berhasil didapatkan"
+                    }
+                }
+            }
+        },
+        "/users/current-user":{
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Mendapatkan daftar mobil",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Daftar mobil berhasil didapatkan"
+                    }
+                }
+            }
+        },
+        "/users/register":{
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Membuat mobil baru",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "requestBody": {
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "phone": {
+                                                "type": "string"
+                                            },
+                                            "address": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["name","email","password"]
+                                    }
+                                }
+                            }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "201": {
+                            "description": "Mobil baru berhasil dibuat"
+                        }
+                    }
+                }
+        },
+        "/users/register-admin":{
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Membuat mobil baru",
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "requestBody": {
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "phone": {
+                                                "type": "string"
+                                            },
+                                            "address": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["name","email","password"]
+                                    }
+                                }
+                            }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "201": {
+                            "description": "Mobil baru berhasil dibuat"
+                        }
+                    }
+                }
+        },
+        "/users/auth":{
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Membuat mobil baru",
+                "requestBody": {
+                    "content": {
+                        "requestBody": {
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "properties": {
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["email","password"]
+                                    }
+                                }
+                            }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "201": {
+                            "description": "Mobil baru berhasil dibuat"
+                        }
+                    }
+                }
+        },
+        "/users/auth/google":{
+
+        },
+        "/users/auth/facebook":{
+
+        },
+        "/users/logout":{
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Membuat mobil baru",
+                "responses": {
+                    "201": {
+                        "description": "Mobil baru berhasil dibuat"
+                    }
+                }
+                }
         }
-    }
+    },
+    "components": {
+        "securitySchemes": {
+            "BearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }    
 }
