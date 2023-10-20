@@ -84,8 +84,17 @@ const logout = (req,res) => {
 	});
 }
 
-const redirectDashboard = (req, res) => {
-    res.redirect('/dashboard');
+const loginOAuth = async (req, res) => {
+
+    const user = req.user._json;
+
+    const token = await AuthServices.getToken({ user : { ...user , role : 'member'}});
+
+    res.status(200).json({
+        status : 'OK',
+        message : "Authentication OAuth is successfull",
+        token: token,
+    })
 }
 
 const registrationValidation = async (req, res , next ) => {
@@ -193,11 +202,11 @@ const loginValidation = async (req,res,next) => {
 module.exports = {
     getListUsers,
     login,
+    loginOAuth,
     loginValidation,
     registrationAdmin,
     registrationMember,
     registrationValidation,
-    redirectDashboard,
     logout,
 }
 

@@ -16,11 +16,11 @@
     "tags": [
         {
             "name": "cars",
-            "description": "cars API"
+            "description": "handle all CRUD cars data API with authentication and authorization"
         },
         {
             "name": "users",
-            "description": "users API"
+            "description": "handle account service to have authenticated and can authorization for access resource"
         }
     ],
     "paths": {
@@ -29,7 +29,7 @@
                 "tags": [
                     "cars"
                 ],
-                "summary": "view all car data",
+                "summary": "view car list data",
                 "security": [
                     {
                         "BearerAuth": []
@@ -39,7 +39,7 @@
                     "200": {
                     }
                 }
-            },
+                },
             "post": {
                 "tags": [
                     "cars"
@@ -82,17 +82,25 @@
                     },
                     "responses": {
                         "201": {
-                            "description": "Mobil baru berhasil dibuat"
-                        }
+                            "description": "cars data has been created"
+                        },
+                        "400": {
+                            "description": "invalid data structure. Please check your input"
+                        } 
                     }
                 }
-            },
+        },
         "/cars/{id}": {
                 "get": {
                     "tags": [
                         "cars"
                     ],
-                    "summary": "Mendapatkan detail mobil berdasarkan ID",
+                    "summary": "view cars data by id",
+                    "security": [
+                        {
+                            "BearerAuth": []
+                        }
+                    ],
                     "parameters": [
                         {
                             "name": "id",
@@ -105,7 +113,7 @@
                     ],
                     "responses": {
                         "200": {
-                            "description": "Detail mobil berhasil didapatkan"
+                            "description": "cars data by id is successfull"
                         }
                     }
                 },
@@ -113,7 +121,12 @@
                     "tags": [
                         "cars"
                     ],
-                    "summary": "Memperbarui mobil berdasarkan ID",
+                    "summary": "update car data",
+                    "security": [
+                        {
+                            "BearerAuth": []
+                        }
+                    ],
                     "parameters": [
                         {
                             "name": "id",
@@ -155,8 +168,8 @@
                         }
                     },
                     "responses": {
-                        "200": {
-                            "description": "Mobil berhasil diperbarui"
+                        "201": {
+                            "description": "cars data has been updated"
                         }
                     }
                 },
@@ -164,7 +177,12 @@
                     "tags": [
                         "cars"
                     ],
-                    "summary": "Memperbarui mobil berdasarkan ID",
+                    "summary": "delete cars data by id",
+                    "security": [
+                        {
+                            "BearerAuth": []
+                        }
+                    ],
                     "parameters": [
                         {
                             "name": "id",
@@ -177,18 +195,18 @@
                     ],
                     "responses": {
                         "200": {
-                            "description": "Mobil berhasil diperbarui"
+                            "description": "cars data has been deleted"
                         }
                     }
                 }
         
-            },
+        },
         "/users":{
             "get": {
                 "tags": [
                     "users"
                 ],
-                "summary": "Mendapatkan daftar mobil",
+                "summary": "view users data list",
                 "security": [
                     {
                         "BearerAuth": []
@@ -196,7 +214,6 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Daftar mobil berhasil didapatkan"
                     }
                 }
             }
@@ -206,7 +223,7 @@
                 "tags": [
                     "users"
                 ],
-                "summary": "Mendapatkan daftar mobil",
+                "summary": "view user data by auth with jwt token",
                 "security": [
                     {
                         "BearerAuth": []
@@ -214,7 +231,6 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Daftar mobil berhasil didapatkan"
                     }
                 }
             }
@@ -224,7 +240,7 @@
                 "tags": [
                     "users"
                 ],
-                "summary": "Membuat mobil baru",
+                "summary": "registration for users member with auth by admin",
                 "security": [
                     {
                         "BearerAuth": []
@@ -263,7 +279,7 @@
                     },
                     "responses": {
                         "201": {
-                            "description": "Mobil baru berhasil dibuat"
+                            "description": "registration is successfull"
                         }
                     }
                 }
@@ -273,7 +289,7 @@
                 "tags": [
                     "users"
                 ],
-                "summary": "Membuat mobil baru",
+                "summary": "registration for users admin with auth by superadmin",
                 "security": [
                     {
                         "BearerAuth": []
@@ -312,7 +328,7 @@
                     },
                     "responses": {
                         "201": {
-                            "description": "Mobil baru berhasil dibuat"
+                            "description": "registration is successfull"
                         }
                     }
                 }
@@ -322,7 +338,7 @@
                 "tags": [
                     "users"
                 ],
-                "summary": "Membuat mobil baru",
+                "summary": "login user account and get jwt token form authentication",
                 "requestBody": {
                     "content": {
                         "requestBody": {
@@ -346,8 +362,8 @@
                         }
                     },
                     "responses": {
-                        "201": {
-                            "description": "Mobil baru berhasil dibuat"
+                        "200": {
+                            "description": "Authentication is successfull"
                         }
                     }
                 }
@@ -363,13 +379,13 @@
                 "tags": [
                     "users"
                 ],
-                "summary": "Membuat mobil baru",
+                "summary": "logout user account ",
                 "responses": {
                     "201": {
                         "description": "Mobil baru berhasil dibuat"
                     }
                 }
-                }
+            }
         }
     },
     "components": {

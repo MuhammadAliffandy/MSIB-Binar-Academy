@@ -11,10 +11,9 @@ router
 .post('/register-admin', UsersAuthController.authorizationToAdmin , UsersController.registrationValidation ,UsersController.registrationAdmin)
 .post('/auth',UsersController.loginValidation ,UsersController.login)
 .get('/auth/google',AuthServices.googleAuth)
-.get('/auth/google/callback',AuthServices.googleAuthCallback, UsersController.redirectDashboard)
+.get('/auth/google/callback',AuthServices.googleAuthCallback, UsersController.loginOAuth)
 .get('/auth/facebook',AuthServices.facebookAuth)
-.get('/auth/facebook/callback',AuthServices.facebookAuthCallback, UsersController.redirectDashboard)
+.get('/auth/facebook/callback',AuthServices.facebookAuthCallback, UsersController.loginOAuth)
 .post('/logout',UsersController.logout)
-
 
 module.exports = router;

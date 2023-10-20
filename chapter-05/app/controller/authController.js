@@ -52,7 +52,6 @@ const authorization = (handler) => {
 
 }
 
-
 const authorizationToResource = authorization(
     async (req,res,next) =>{
     
