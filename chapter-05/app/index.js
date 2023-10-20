@@ -55,9 +55,15 @@ passport.use(new FacebookStrategy({
     }
 ));
 
+const corsOptions = {
+    origin: 'http://localhost:5000', 
+    methods: 'GET,POST,DELETE,PUT', 
+    allowedHeaders: 'Content-Type,Authorization' 
+}
+
 app.use(cookieParser());
-app.use(cors());
 app.use(express.json());
+app.use(cors(corsOptions));
 app.use(express.urlencoded({extended: false}));
 app.use('/api-documentation', swaggerUi.serve, swaggerUi.setup(swaggerJson))
 app.use('/',routes);

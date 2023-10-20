@@ -16,7 +16,7 @@ const authorization = (handler) => {
         const token = authorizationHeader.replace('Bearer ', '');
     
         try{
-            const decoded = AuthServices.decodeToken(token);
+            const decoded = await AuthServices.decodeToken(token);
     
             const now = Math.floor(Date.now() / 1000);
     
@@ -27,30 +27,52 @@ const authorization = (handler) => {
                 res.setHeader('Authorization', `Bearer ${newToken}`);
             }
     
-            const userId = decoded.id;
+            if( req.user != null ){
+                if(req.user.provider === 'google' && req.user.provider === 'facebook'){
+                    req.user = req.user._json
+                }
+            }else{
+                const userId = decoded.id;
     
-            const user = await UserServices.findUserById(userId);
-
-            if(!user){
-                return res.status(403).json({ 
-                    status: 'FAIL',
-                    message: 'You do not have permission to access this resource.'
-                });            
+                const user = await UserServices.findUserById(userId);
+    
+                if(!user){
+                    return res.status(403).json({ 
+                        status: 'FAIL',
+                        message: 'You do not have permission to access this resource.'
+                    });            
+                }
+                req.user = user;
             }
-    
-            req.user = user;
+            
             return handler(req , res ,next )
                 
         }catch( error ){
             return res.status(401).json({ 
                 status:'FAIL',
-                message: 'invalid token'
+                message: error.message
             });
         }
         
     }
 
 }
+
+const authorizationToAllUsers = authorization(
+    async (req,res,next) =>{
+    
+            const user = req.user;
+
+            if(user.role != 'admin'  && user.role != 'superadmin' && user.role != 'member'){
+                return res.status(403).json({ 
+                    status: 'FAIL',
+                    message: 'You dont has been permission for this action'
+                });    
+            }
+
+            next();
+        }
+    );
 
 const authorizationToResource = authorization(
     async (req,res,next) =>{
@@ -84,7 +106,7 @@ const authorizationToAdmin = authorization(
         }
     );
 
-    const getCurrentUser = authorization(
+const getCurrentUser = authorization(
         async (req,res)=>{
     
             const userId = req.user.id;
@@ -102,6 +124,7 @@ const authorizationToAdmin = authorization(
 module.exports = {
     authorizationToAdmin,
     authorizationToResource,
+    authorizationToAllUsers,
     getCurrentUser,
     
 }

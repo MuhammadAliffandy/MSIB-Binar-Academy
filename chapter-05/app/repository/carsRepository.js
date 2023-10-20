@@ -1,4 +1,4 @@
-const  { cars }  = require('../models/models');
+const  { users, cars }  = require('../models/models');
 const { v4: uuidv4 } = require('uuid');
 const { sequelize } = require('../../db/libs/dbStatus');
 
@@ -10,7 +10,12 @@ const getCars = (id ) => {
     return cars.findOne({
         where : {
             id : id,
-        }
+        },include : [
+            { model: users, as: 'createdByUser' , attributes: ['id', 'name' , 'phone', 'address' ,'role'] },
+            { model: users, as: 'updatedByUser' , attributes: ['id', 'name' , 'phone', 'address' ,'role'] },
+            { model: users, as: 'deletedByUser' , attributes: ['id', 'name' , 'phone', 'address' ,'role'] },
+        ],
+        attributes: { exclude: ['createdBy,updatedBy,deletedBy'] }
     });
 }
 
@@ -33,12 +38,13 @@ const createCars = (payload , image , userId) => {
 }
 
 const updateCars = (id , payload ) => {
-    cars.update({
+    return cars.update({
         ...payload
     },{
         where : {
             id : id
-        }
+        },
+        returning : true,
     })
 };
 

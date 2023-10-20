@@ -86,7 +86,7 @@ const logout = (req,res) => {
 
 const loginOAuth = async (req, res) => {
 
-    const user = req.user._json;
+    const user = req.user;
 
     const token = await AuthServices.getToken({ user : { ...user , role : 'member'}});
 

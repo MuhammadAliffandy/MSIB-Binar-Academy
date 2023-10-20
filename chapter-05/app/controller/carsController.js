@@ -1,3 +1,4 @@
+const { cars } = require('../models/models');
 const CarsServices = require('../services/carsServices');
 
 const getListCars = async (req , res) => {
@@ -49,12 +50,14 @@ const updateCars = async (req , res) => {
     try {
         const payload = req.data;
         const id = req.params['id'];
-        await CarsServices.updateCars(id , payload);
-        const data = await CarsServices.getCars(id);
+        
+        const data =  await CarsServices.updateCars(id , payload);
+    
+
         return res.status(201).json({
             status : 'OK',
             message : 'cars data has been updated', 
-            data : data,
+            data : data[1][0].dataValues,
         });
     } catch (error) {
         return res.status(404).json({
@@ -148,7 +151,8 @@ const updateCarsValidation = async(req , res , next) => {
 
     const id = req.params['id'];
     let body = req.body.data;
-    const imageUrl = await CarsServices.uploadImage(req.file.buffer);;
+
+    const imageUrl = req.file;
 
     const requireData = [ 'name' , 'rentPerDay' , 'size'  ];
 
@@ -178,9 +182,9 @@ const updateCarsValidation = async(req , res , next) => {
     }
 
     if(imageUrl != null && body != null  ){
-        req.data = {...body , image: imageUrl  };
+        req.data = {...body , image: await CarsServices.uploadImage(imageUrl.buffer) };
     }else if(imageUrl != null && body == null){
-        req.data = { image : imageUrl };
+        req.data = { image : await CarsServices.uploadImage(imageUrl.buffer) };
     }else if(imageUrl == null && body != null){
         req.data = body;
     }else if(imageUrl == null && body != null){

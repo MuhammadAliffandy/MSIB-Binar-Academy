@@ -240,7 +240,7 @@
                 "tags": [
                     "users"
                 ],
-                "summary": "login user account and get jwt token form authentication",
+                "summary": "login user account and get jwt token from authentication",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -265,12 +265,6 @@
                         }
                     }
                 }
-        },
-        "/users/auth/google":{
-
-        },
-        "/users/auth/facebook":{
-
         },
         "/users/register":{
             "post": {
@@ -362,7 +356,62 @@
                     }
                 }
         },
-        
+        "/users/auth/google":{
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "initialization google process auth",
+                "operationId": "initiateGoogleAuth",
+                "responses": {
+                    "200": {
+                        "description": "google auth process is successfull"
+                    }
+                }
+            }
+        },
+        "/users/auth/google/callback": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Callback from google authentication",
+                "operationId": "googleAuthCallback",
+                "responses": {
+                        "200": {
+                        "description": "google callback is successfull"
+                    }
+                }
+            }
+        },
+        "/users/auth/facebook":{
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "initialization facebook process auth",
+                "operationId": "initiateFacebookAuth",
+                "responses": {
+                    "200": {
+                        "description": "facebook auth process is successfull"
+                    }
+                }
+            }
+        },
+        "/users/auth/facebook/callback": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Callback from google authentication",
+                "operationId": "googleAuthCallback",
+                "responses": {
+                        "200": {
+                        "description": "google callback is successfull"
+                    }
+                }
+            }
+        },
         "/users/logout":{
             "post": {
                 "tags": [

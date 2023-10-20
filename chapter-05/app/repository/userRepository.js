@@ -44,11 +44,7 @@ const findUserByEmail = ( email ) => {
 
 const findUserById = ( id ) => {
     return users.findOne({ 
-        where : {id : id,},
-        include : [
-            { model: cars, as: 'createdCars' },
-            { model: cars, as: 'updatedCars' },
-        ],
+        where : {id : id,}
 });
 }
 
