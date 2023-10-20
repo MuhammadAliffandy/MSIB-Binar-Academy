@@ -77,24 +77,38 @@ const registrationMember = async ( req , res ) => {
 }
 
 const logout = (req,res) => {
-	res.clearCookie('connect.sid');  
-	req.logout(function(err) {
-        req.session = null
-        res.redirect('/')
-	});
+    try {
+        res.clearCookie('connect.sid');  
+        req.logout(function(err) {
+            req.session = null
+            res.redirect('/')
+        });
+    } catch (error) {
+        return res.status(404).json({
+            status: 'FAIL',
+            message: error.message,
+        })
+    }
 }
 
 const loginOAuth = async (req, res) => {
 
-    const user = req.user;
+    try {
+        const user = req.user;
 
-    const token = await AuthServices.getToken({ user : { ...user , role : 'member'}});
-
-    res.status(200).json({
-        status : 'OK',
-        message : "Authentication OAuth is successfull",
-        token: token,
-    })
+        const token = await AuthServices.getToken({ user : { ...user , role : 'member'}});
+    
+        res.status(200).json({
+            status : 'OK',
+            message : "Authentication OAuth is successfull",
+            token: token,
+        })
+    } catch (error) {
+        return res.status(404).json({
+            status: 'FAIL',
+            message: error.message,
+        })
+    }
 }
 
 const registrationValidation = async (req, res , next ) => {
