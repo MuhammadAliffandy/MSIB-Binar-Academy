@@ -13,6 +13,10 @@ module.exports = {
       rentPerDay : 400000, 
       createdAt : new Date(),
       updatedAt : new Date(),
+      deletedAt:null,
+      createdBy: 'superadmin',
+      updatedBy: 'superadmin',
+      deletedBy: 'superadmin',
     }]);
   },
   async down(queryInterface, Sequelize){

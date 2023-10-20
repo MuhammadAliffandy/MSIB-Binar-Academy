@@ -552,6 +552,10 @@
                             "type": "string",
                             "example": "Mobil Avanza"
                         },
+                        "image": {
+                            "type": "string",
+                            "example": "https://firebasestorage.googleapis.com/v0/b/binar-car-402108.appspot.com/o/car-seed-1697616543758.jpg?alt=media&token=fbd8f719-7387-4415-b852-9da385cb99ad"
+                        },
                         "rentPerDay": {
                             "type": "integer",
                             "example": 100000
