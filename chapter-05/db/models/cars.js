@@ -11,9 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Cars.belongsTo(models.users, { as: 'createdByUser', foreignKey: 'createdBy' });
-      Cars.belongsTo(models.users, { as: 'updatedByUser', foreignKey: 'updatedBy' });
-      Cars.belongsTo(models.users, { as: 'deletedByUser', foreignKey: 'deletedBy' });
+      Cars.belongsTo(models.users, { as: 'createdByUser', foreignKey: 'createdBy' , targetKey : 'id' });
+      Cars.belongsTo(models.users, { as: 'updatedByUser', foreignKey: 'updatedBy' , targetKey : 'id' });
+      Cars.belongsTo(models.users, { as: 'deletedByUser', foreignKey: 'deletedBy' , targetKey : 'id' });
     }
   }
   Cars.init({
@@ -31,14 +31,32 @@ module.exports = (sequelize, DataTypes) => {
     createdBy: {
       type : DataTypes.UUID,
       foreignKey: true,
+      references: {
+        model: {
+          tableName: 'users',
+        },
+        key: 'id'
+      },
     },
     updatedBy: {
       type : DataTypes.UUID,
       foreignKey: true,
+      references: {
+        model: {
+          tableName: 'users',
+        },
+        key: 'id'
+      },
     },
     deletedBy: {
       type : DataTypes.UUID,
       foreignKey: true,
+      references: {
+        model: {
+          tableName: 'users',
+        },
+        key: 'id'
+      },
       allowNull : true,
     },
   }, {

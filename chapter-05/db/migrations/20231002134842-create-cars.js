@@ -37,14 +37,29 @@ module.exports = {
       },
       createdBy: {
           type: Sequelize.UUID,
-          allowNull: false
+          allowNull: false,
+          references: {
+            model: 'users',
+            key: 'id',
+            as: 'createdByUser',
+          }
       },
       updatedBy: {
           type: Sequelize.UUID,
-          allowNull: false
+          allowNull: false,
+          references: {
+            model: 'users',
+            key: 'id',
+            as: 'updatedByUser',
+          }
       },
       deletedBy: {
           type: Sequelize.UUID,
+          references: {
+            model: 'users',
+            key: 'id',
+            as: 'deletedByUser',
+          }
       },
     });
   },
