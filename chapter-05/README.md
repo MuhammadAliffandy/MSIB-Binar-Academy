@@ -69,5 +69,20 @@ http://localhost:5000/api-documentation
 ```
 NB : To using the google and facebook auth you can using in web machine like this
 
+To using the api you can add the superadmin account from seeders 
+you can run the syntax CLI like this : 
+
+```sh
+npx sequelize-cli db:seed --seed 20231003164819-demo-user
+```
+Email and password Account : 
+
+```javascript
+{
+  "email": "aliffandy@gmail.com",
+  "password": "fandy12345"
+}
+
+```
 
 
