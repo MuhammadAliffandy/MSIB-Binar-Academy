@@ -73,12 +73,6 @@ app.get('/', async(req, res) => {
     await new Database().checkConnection();
     res.status(200).json({ message: "Ping successfully" });
 })
-.get('/dashboard', (req, res) => {
-    res.json({
-        status : 'OK',
-        message : 'Welcome And Enjoy your activity'
-    });
-})
 .all('*', (req, res) => {
     res.status(404).json({ message : 'method and endpoint its not available' })
 })
