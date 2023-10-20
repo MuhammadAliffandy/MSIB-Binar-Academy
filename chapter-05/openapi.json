@@ -235,6 +235,43 @@
                 }
             }
         },
+        "/users/auth":{
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "login user account and get jwt token form authentication",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": ["email","password"]
+                            }
+                        }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "Authentication is successfull"
+                        }
+                    }
+                }
+        },
+        "/users/auth/google":{
+
+        },
+        "/users/auth/facebook":{
+
+        },
         "/users/register":{
             "post": {
                 "tags": [
@@ -247,9 +284,7 @@
                     }
                 ],
                 "requestBody": {
-                    "content": {
-                        "requestBody": {
-                            "content": {
+                        "content": {
                                 "application/json": {
                                     "schema": {
                                         "type": "object",
@@ -274,8 +309,6 @@
                                     }
                                 }
                             }
-                            }
-                        }
                     },
                     "responses": {
                         "201": {
@@ -296,9 +329,7 @@
                     }
                 ],
                 "requestBody": {
-                    "content": {
-                        "requestBody": {
-                            "content": {
+                        "content": {
                                 "application/json": {
                                     "schema": {
                                         "type": "object",
@@ -323,8 +354,6 @@
                                     }
                                 }
                             }
-                            }
-                        }
                     },
                     "responses": {
                         "201": {
@@ -333,47 +362,7 @@
                     }
                 }
         },
-        "/users/auth":{
-            "post": {
-                "tags": [
-                    "users"
-                ],
-                "summary": "login user account and get jwt token form authentication",
-                "requestBody": {
-                    "content": {
-                        "requestBody": {
-                            "content": {
-                                "application/json": {
-                                    "schema": {
-                                        "type": "object",
-                                        "properties": {
-                                            "email": {
-                                                "type": "string"
-                                            },
-                                            "password": {
-                                                "type": "string"
-                                            }
-                                        },
-                                        "required": ["email","password"]
-                                    }
-                                }
-                            }
-                            }
-                        }
-                    },
-                    "responses": {
-                        "200": {
-                            "description": "Authentication is successfull"
-                        }
-                    }
-                }
-        },
-        "/users/auth/google":{
-
-        },
-        "/users/auth/facebook":{
-
-        },
+        
         "/users/logout":{
             "post": {
                 "tags": [
@@ -382,7 +371,7 @@
                 "summary": "logout user account ",
                 "responses": {
                     "201": {
-                        "description": "Mobil baru berhasil dibuat"
+                        "description": "logout is sucessfull"
                     }
                 }
             }
