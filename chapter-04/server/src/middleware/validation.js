@@ -16,6 +16,9 @@ const validation = async (req , res , next) => {
 
 const createValidation = (req , res , next) => {
 
+    if( req.file == null ){
+        return res.status(404).json({message : `Image is Undefined , Please check your input ! `});
+    }
     
     const body = JSON.parse((req.body.data));
 

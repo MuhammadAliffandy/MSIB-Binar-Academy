@@ -48,7 +48,6 @@ class Car extends Component {
     this.options = options;
     this.specs = specs;
     this.availableAt = availableAt;
-
   }
 
 }
