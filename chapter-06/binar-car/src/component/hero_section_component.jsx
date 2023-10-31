@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
+import { useNavigate } from "react-router-dom";
 import '../style/home.css'
 
 const HeroSectionComponent = (props) => {
+    const navigate = useNavigate();
     return (
         <>
             <section className="hero-section container-fluid ">
@@ -15,7 +17,7 @@ const HeroSectionComponent = (props) => {
                         </blockquote>
                         <button id="rentCarButton" type="button" style={{
                             display: props.buttonDisplay == 'true' ? '' : 'none'
-                        }}>
+                        }} onClick={()=>{  navigate('/searchCar')  }} >
                             Mulai Sewa Mobil
                         </button>
                     </div>

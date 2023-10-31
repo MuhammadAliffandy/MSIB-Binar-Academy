@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
-import '../style/searchCar.css';
+import '../../style/searchCar.css';
 
 const SearchFormComponent = () => {
 
     useEffect(()=>{
         formAnimation();
     })
-
 
     const formAnimation = () => {
         const wrapperBlur = document.getElementById("wrapperBlur");
@@ -19,73 +18,63 @@ const SearchFormComponent = () => {
         const selectOptions = document.querySelectorAll('.select-options');
         let pickDriverValue = document.getElementById('pickDriver').value = '';
 
-        pickDriverButton.addEventListener('click', function () {
+        pickDriverButton.onclick = function () {
             selectOptions[0].style.display = selectOptions[0].style.display === 'block' ? 'none' : 'block';
             document.querySelectorAll('.select-styled')[0].style.border = '2px solid #5CB85F';
             wrapperBlur.classList.add("wrapper-blur");
             navbar.style.cssText = 'z-index: 0 !important;'
-        });
+        }
 
-        pickTimeButton.addEventListener('click', function () {
+        pickTimeButton.onclick = function () {
             selectOptions[1].style.display = selectOptions[1].style.display === 'block' ? 'none' : 'block';
             document.querySelectorAll('.select-styled')[1].style.border = '2px solid #5CB85F';
             wrapperBlur.classList.add("wrapper-blur");
             navbar.style.cssText = 'z-index: 0 !important;'
             
-        });
+        };
 
-        pickDateButton.addEventListener('focus', function (event) {
+        pickDateButton.onfocus = function (event) {
             event.target.type = "date";
             wrapperBlur.classList.add("wrapper-blur");
             navbar.style.cssText = 'z-index: 0 !important;'
-        });
+        };
 
-        pickCountPersonButton.addEventListener('click', function () {
+        pickCountPersonButton.onclick = function () {
             wrapperBlur.classList.add("wrapper-blur");
             navbar.style.cssText = 'z-index: 0 !important;'
-        });
+        };
 
-        searchCarButton.addEventListener('click', function () {
+        searchCarButton.onclick = function () {
             wrapperBlur.classList.remove("wrapper-blur");
             navbar.style.zIndex = '';
-        });
+        };
 
-        selectOptions[0].addEventListener('click', function (e) {
+        selectOptions[0].onclick = function (e) {
             if (e.target.tagName === 'LI') {
                 const selectedValue = e.target.textContent;
                 document.querySelectorAll('.select-styled')[0].textContent = selectedValue;
                 pickDriverValue.value = selectedValue;
                 selectOptions[0].style.display = 'none !important';
             }
-        });
-        selectOptions[1].addEventListener('click', function (e) {
+        };
+        selectOptions[1].onclick = function (e) {
             if (e.target.tagName === 'LI') {
                 const selectedValue = e.target.textContent;
                 document.querySelectorAll('.select-styled')[1].textContent = `${selectedValue.slice(0,2)}:00 WIB`;
                 selectOptions[1].style.display = 'none !important';
             }
-        });
+        };
 
-        document.addEventListener('click', function (e) {
-            if (!pickDriverButton.contains(e.target)) {
-                selectOptions[0].style.display = 'none';
-                document.querySelectorAll('.select-styled')[0].style.border = '2px solid #ccc';
-            }
-        });
-
-        document.addEventListener('click', function (e) {
-            if (!pickTimeButton.contains(e.target)) {
-                selectOptions[1].style.display = 'none';
-                document.querySelectorAll('.select-styled')[1].style.border = '2px solid #ccc';
-            }
-        });
-
-        document.addEventListener('click', function (e) {
+        document.onclick = function (e) {
             if(e.target.classList[0] == "wrapper-blur"){
                 wrapperBlur.classList.remove("wrapper-blur");
                 navbar.style.cssText = 'z-index: 10 !important;'
+                selectOptions[0].style.display = 'none';
+                document.querySelectorAll('.select-styled')[0].style.border = '2px solid #ccc';
+                selectOptions[1].style.display = 'none';
+                document.querySelectorAll('.select-styled')[1].style.border = '2px solid #ccc';
             }
-        });
+        };
     }
 
 

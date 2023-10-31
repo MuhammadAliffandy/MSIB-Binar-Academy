@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import '../style/searchCar.css';
+import '../../style/searchCar.css';
 
 const CarCardComponent = (props) => {
     return (

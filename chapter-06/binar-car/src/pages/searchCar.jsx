@@ -2,8 +2,8 @@ import { useState , useEffect } from 'react';
 import FooterComponent from '../component/footer_component';
 import NavbarComponent from '../component/navbar_component';
 import HeroSectionComponent from '../component/hero_section_component';
-import SearchFormComponent from '../component/search_form_component';
-import CarCardComponent from '../component/carCard_component';
+import SearchFormComponent from '../component/search_car_component/search_form_component';
+import CarCardComponent from '../component/search_car_component/carCard_component';
 import '../style/searchCar.css';
 
 const SearchCar = () => {
