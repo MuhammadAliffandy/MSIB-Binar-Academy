@@ -14,18 +14,17 @@ const SearchFormComponent = () => {
         const pickTimeButton = document.getElementById('pickTime');
         const pickDateButton = document.getElementById('pickDate');
         const pickCountPersonButton = document.getElementById('pickCountPerson');
-        const searchCarButton = document.getElementById('searchCarButton');
         const selectOptions = document.querySelectorAll('.select-options');
         let pickDriverValue = document.getElementById('pickDriver').value = '';
 
-        pickDriverButton.onclick = function () {
+        pickDriverButton.onclick =  () =>{
             selectOptions[0].style.display = selectOptions[0].style.display === 'block' ? 'none' : 'block';
             document.querySelectorAll('.select-styled')[0].style.border = '2px solid #5CB85F';
             wrapperBlur.classList.add("wrapper-blur");
             navbar.style.cssText = 'z-index: 0 !important;'
         }
 
-        pickTimeButton.onclick = function () {
+        pickTimeButton.onclick =  () =>{
             selectOptions[1].style.display = selectOptions[1].style.display === 'block' ? 'none' : 'block';
             document.querySelectorAll('.select-styled')[1].style.border = '2px solid #5CB85F';
             wrapperBlur.classList.add("wrapper-blur");
@@ -33,23 +32,18 @@ const SearchFormComponent = () => {
             
         };
 
-        pickDateButton.onfocus = function (event) {
+        pickDateButton.onfocus = (event) => {
             event.target.type = "date";
             wrapperBlur.classList.add("wrapper-blur");
             navbar.style.cssText = 'z-index: 0 !important;'
         };
 
-        pickCountPersonButton.onclick = function () {
+        pickCountPersonButton.onclick = () =>{
             wrapperBlur.classList.add("wrapper-blur");
             navbar.style.cssText = 'z-index: 0 !important;'
         };
 
-        searchCarButton.onclick = function () {
-            wrapperBlur.classList.remove("wrapper-blur");
-            navbar.style.zIndex = '';
-        };
-
-        selectOptions[0].onclick = function (e) {
+        selectOptions[0].onclick = (e) => {
             if (e.target.tagName === 'LI') {
                 const selectedValue = e.target.textContent;
                 document.querySelectorAll('.select-styled')[0].textContent = selectedValue;
@@ -57,7 +51,7 @@ const SearchFormComponent = () => {
                 selectOptions[0].style.display = 'none !important';
             }
         };
-        selectOptions[1].onclick = function (e) {
+        selectOptions[1].onclick = (e) => {
             if (e.target.tagName === 'LI') {
                 const selectedValue = e.target.textContent;
                 document.querySelectorAll('.select-styled')[1].textContent = `${selectedValue.slice(0,2)}:00 WIB`;
@@ -65,7 +59,7 @@ const SearchFormComponent = () => {
             }
         };
 
-        document.onclick = function (e) {
+        document.onclick = (e) => {
             if(e.target.classList[0] == "wrapper-blur"){
                 wrapperBlur.classList.remove("wrapper-blur");
                 navbar.style.cssText = 'z-index: 10 !important;'
