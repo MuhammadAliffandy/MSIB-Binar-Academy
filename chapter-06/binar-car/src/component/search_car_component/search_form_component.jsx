@@ -15,7 +15,7 @@ const SearchFormComponent = () => {
         const pickDateButton = document.getElementById('pickDate');
         const pickCountPersonButton = document.getElementById('pickCountPerson');
         const selectOptions = document.querySelectorAll('.select-options');
-        let pickDriverValue = document.getElementById('pickDriver').value = '';
+        let pickDriverValue = document.getElementById('pickDriver');
 
         pickDriverButton.onclick =  () =>{
             selectOptions[0].style.display = selectOptions[0].style.display === 'block' ? 'none' : 'block';
@@ -55,6 +55,7 @@ const SearchFormComponent = () => {
             if (e.target.tagName === 'LI') {
                 const selectedValue = e.target.textContent;
                 document.querySelectorAll('.select-styled')[1].textContent = `${selectedValue.slice(0,2)}:00 WIB`;
+                pickTimeButton.value = `${selectedValue.slice(0,2)}:00`;
                 selectOptions[1].style.display = 'none !important';
             }
         };

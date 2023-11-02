@@ -4,7 +4,7 @@ import '../../style/searchCar.css';
 const CarCardComponent = (props) => {
     return (
         <>
-            <div key = {props.name} className="car-card">
+            <div className="car-card">
                 <img src={`../src/assets/${props.image}`} alt= "car-image" />
                 <div>
                     <div className="car-card-text">

@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, Fragment } from 'react';
 import FooterComponent from '../component/footer_component';
 import NavbarComponent from '../component/navbar_component';
 import HeroSectionComponent from '../component/hero_section_component';
@@ -33,9 +33,8 @@ const SearchCar = () => {
                         {
                             carData.map((car)=>{
                                 return (
-                                    <>
+                                    <Fragment key={car.id}>
                                         <CarCardComponent
-                                            key = {car.id}
                                             image = {car.image}
                                             name = {car.manufacture}
                                             type = {car.type}
@@ -45,7 +44,7 @@ const SearchCar = () => {
                                             transmission = {car.transmission}
                                             year = {car.year}
                                         />
-                                    </>
+                                    </Fragment>
                                 )
                             })
                         }

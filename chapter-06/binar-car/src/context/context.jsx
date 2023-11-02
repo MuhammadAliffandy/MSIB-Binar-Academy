@@ -22,14 +22,18 @@ const CarContextProvider = (props) => {
     }
 
     const GetCarToLocalData = () => {
-        reqGetCars().then((data)=>{
+        if(carData.length <= 0  ){
+            reqGetCars().then((data)=>{
 
-            data.map((car)=>{
-                return car.availableAt = generateRandomTime();
-            });
-
-            setCarData(data);
-        })
+                data.map((car)=>{
+                    return car.availableAt = generateRandomTime();
+                });
+    
+                setCarData(data);
+            })
+        }else{
+            return carData;
+        }
     }
 
     const filteringCarData = () => {
@@ -52,13 +56,12 @@ const CarContextProvider = (props) => {
                     pickDate.value = new Date(Date.now());
                 }
 
-                if(pickTime.value == ''){
+                if(pickTime.value == null){
                     pickTime.value = "08:00:00";
                 }
 
                 const cars = carData.filter((car) => {
-
-                        if( new Date(car.availableAt).getTime() >= new Date(`${pickDate.value.toISOString().split('T')[0]}T${pickTime.value}Z`).getTime() && car.capacity >= pickCountPerson.value ){
+                    if( new Date(car.availableAt).getTime() >= new Date(`${new Date(pickDate.value).toISOString().split('T')[0]}T${pickTime.value}Z`).getTime() && car.capacity >= pickCountPerson.value ){
                             return car;
                         }
                     } 
