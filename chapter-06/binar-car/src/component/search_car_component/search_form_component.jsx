@@ -88,14 +88,14 @@ const SearchFormComponent = () => {
                                         <li>Tanpa Sopir</li>
                                     </ul>
                                 </div>
-                                <img id="chevronIcon" src="../src/assets/images/icon/car/icon-chevron-bold.png" alt="icon-image" />
+                                <img id="chevronIcon" src="/static/images/icon/car/icon-chevron-bold.png" alt="icon-image" />
                             </form>
                         </div>
                         <div className="wrapper-item col-12 col-xl-3">
                             <label htmlFor="pickDate" className="form-label">Tanggal</label>
                             <input id="pickDate" type="text" className="form-input form-control"
                                 placeholder="Pilih Tanggal"/>
-                            <img id="calendarIcon" src="../src/assets/images/icon/car/icon-calendar-bold.png" alt="icon-image" />
+                            <img id="calendarIcon" src="/static/images/icon/car/icon-calendar-bold.png" alt="icon-image" />
                         </div>
                         <div className=" wrapper-item col-12 col-xl-3">
                             <label htmlFor="pickTime">Waktu Jemput/Ambil</label>
@@ -125,14 +125,14 @@ const SearchFormComponent = () => {
                                         </li>
                                     </ul>
                                 </div>
-                                <img id="clockIcon" src="../src/assets/images/icon/car/icon-clock-bold.png" alt="icon-image" />
+                                <img id="clockIcon" src="/static/images/icon/car/icon-clock-bold.png" alt="icon-image" />
                             </form>
                         </div>
                         <div className="wrapper-item col-12 col-xl-3">
                             <label htmlFor="pickCountPerson" className="form-label">Jumlah Penumpang (optional)</label>
                             <input type="number" id="pickCountPerson" className="form-input form-control"
                                 placeholder="Jumlah Penumpang" />
-                            <img id="personGroupIcon" src="../src/assets/images/icon/car/icon-users-bold.png" alt="icon-image" />
+                            <img id="personGroupIcon" src="/static/images/icon/car/icon-users-bold.png" alt="icon-image" />
                         </div>
                     </div>
                     <div className="wrapper-button col-auto col-xl-2">

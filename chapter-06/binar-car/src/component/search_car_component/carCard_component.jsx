@@ -15,15 +15,15 @@ const CarCardComponent = (props) => {
                         </blockquote>
                         <ul className="car-list-detail">
                             <li>
-                                <img src="../src/assets/images/icon/car/icon-users.png" alt="icon-image" />
+                                <img src="/static/images/icon/car/icon-users.png" alt="icon-image" />
                                 <p>{props.capacity} orang</p>
                             </li>
                             <li>
-                                <img src="../src/assets/images/icon/car/icon-settings.png" alt="icon-image" />
+                                <img src="/static/images/icon/car/icon-settings.png" alt="icon-image" />
                                 <p>{props.transmission}</p>
                             </li>
                             <li>
-                                <img src="../src/assets/images/icon/car/icon-calendar.png" alt="icon-image" />
+                                <img src="/static/images/icon/car/icon-calendar.png" alt="icon-image" />
                                 <p>Tahun {props.year}</p>
                             </li>
                         </ul>

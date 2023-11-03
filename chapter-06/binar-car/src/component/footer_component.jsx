@@ -25,19 +25,19 @@ const FooterComponent = () => {
                         <h4>Connect with us</h4>
                         <ul>
                             <li>
-                                <img src="/src/assets/images/icon/sosmed/icon-facebook.png" alt="icon-sosmed" />
+                                <img src="/static/images/icon/sosmed/icon-facebook.png" alt="icon-sosmed" />
                             </li>
                             <li>
-                                <img src="/src/assets/images/icon/sosmed/icon-instagram.png" alt="icon-sosmed" />
+                                <img src="/static/images/icon/sosmed/icon-instagram.png" alt="icon-sosmed" />
                             </li>
                             <li>
-                                <img src="/src/assets/images/icon/sosmed/icon-twitter.png" alt="icon-sosmed" />
+                                <img src="/static/images/icon/sosmed/icon-twitter.png" alt="icon-sosmed" />
                             </li>
                             <li>
-                                <img src="/src/assets/images/icon/sosmed/icon-mail.png" alt="icon-sosmed" />
+                                <img src="/static/images/icon/sosmed/icon-mail.png" alt="icon-sosmed" />
                             </li>
                             <li>
-                                <img src="/src/assets/images/icon/sosmed/icon-twitch.png" alt="icon-sosmed" />
+                                <img src="/static/images/icon/sosmed/icon-twitch.png" alt="icon-sosmed" />
                             </li>
                         </ul>
                     </div>

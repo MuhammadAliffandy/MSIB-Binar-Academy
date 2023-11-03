@@ -21,7 +21,7 @@ const WhySectionComponent = () => {
                     flex-xl-nowrap
                     ">
                         <div className="content-card col-12 col-sm-5 col-lg-3 ">
-                            <img className="icon-why-section" src="../src/assets/images/icon/icon-thumbs.png" alt="icon" />
+                            <img className="icon-why-section" src="/static/images/icon/icon-thumbs.png" alt="icon" />
                             <h4>Mobil Lengkap</h4>
                             <blockquote>
                                 Tersedia banyak pilihan mobil, kondisi masih baru, bersih dan
@@ -29,7 +29,7 @@ const WhySectionComponent = () => {
                             </blockquote>
                         </div>
                         <div className="content-card col-12 col-sm-5 col-lg-3">
-                            <img className="icon-why-section" src="../src/assets/images/icon/icon-price.png" alt="icon" />
+                            <img className="icon-why-section" src="/static/images/icon/icon-price.png" alt="icon" />
                             <h4>Harga Murah</h4>
                             <blockquote>
                                 Harga murah dan bersaing, bisa bandingkan harga kami dengan rental
@@ -37,7 +37,7 @@ const WhySectionComponent = () => {
                             </blockquote>
                         </div>
                         <div className="content-card col-12 col-sm-5 col-lg-3">
-                            <img className="icon-why-section" src="../src/assets/images/icon/icon-clock.png" alt="icon" />
+                            <img className="icon-why-section" src="/static/images/icon/icon-clock.png" alt="icon" />
                             <h4>Layanan 24 Jam</h4>
                             <blockquote>
                                 Siap melayani kebutuhan Anda selama 24 jam nonstop. Kami juga
@@ -45,7 +45,7 @@ const WhySectionComponent = () => {
                             </blockquote>
                         </div>
                         <div className="content-card col-12 col-sm-5 col-lg-3">
-                            <img className="icon-why-section" src="../src/assets/images/icon/icon-medal.png" alt="icon" />
+                            <img className="icon-why-section" src="/static/images/icon/icon-medal.png" alt="icon" />
                             <h4>Sopir Profesional</h4>
                             <blockquote>
                                 Sopir yang profesional, berpengalaman, jujur, ramah dan selalu tepat
