@@ -39,6 +39,9 @@ run the server with Node JS runtime and i am used Node JS v 18+ and React JS v 1
 ```sh
 $ npm run dev
 ```
+
+# NB : TO TESTING THE SEARCH FILTER YOU ONLY TEST DATE IN MONTH NOW  
+
 ## Demo
 Here is a working live demo  
 https://msib-binar-academy-react.vercel.app/
