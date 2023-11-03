@@ -13,7 +13,7 @@ const TestimonialSectionComponent = () => {
                         <div className="carousel-inner">
                             <div className="carousel-item active">
                                 <div className="wrapper-item">
-                                    <img src="../src/assets/images/user-image.png" alt="First slide" />
+                                    <img src="/static/images/user-image.png" alt="First slide" />
                                     <div className="text-content">
                                         <div className="wrapper-star">
                                             <i className="fa-solid fa-star" />
@@ -35,7 +35,7 @@ const TestimonialSectionComponent = () => {
                             {/* */}
                             <div className="carousel-item">
                                 <div className="wrapper-item">
-                                    <img src="../src/assets/images/user-image.png" alt="two slide" />
+                                    <img src="/static/images/user-image.png" alt="two slide" />
                                     <div className="text-content">
                                         <div className="wrapper-star">
                                             <i className="fa-solid fa-star" />
@@ -57,7 +57,7 @@ const TestimonialSectionComponent = () => {
                             {/* */}
                             <div className="carousel-item">
                                 <div className="wrapper-item">
-                                    <img src="../src/assets/images/user-image.png" alt="Third slide" />
+                                    <img src="/static/images/user-image.png" alt="Third slide" />
                                     <div className="text-content">
                                         <div className="wrapper-star">
                                             <i className="fa-solid fa-star" />
