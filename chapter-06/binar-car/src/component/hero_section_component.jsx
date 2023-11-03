@@ -22,7 +22,7 @@ const HeroSectionComponent = (props) => {
                         </button>
                     </div>
                     <div className="image-content col-12 col-sm-6 ">
-                        <img className="car-image" src="/src/assets/images/car-image.png" alt="car-photos" />
+                        <img className="car-image" src={"/src/assets/images/car-image.png"} alt="car-photos" />
                         <div className="background-img" />
                     </div>
                 </div>
