@@ -23,7 +23,7 @@ if you need to start api from your local and you want to change more algorithm f
 
 ```sh
 $ git clone https://github.com/MuhammadAliffandy/MSIB-Binar-Academy.git
-$ cd chapter-06
+$ cd chapter-06/binar-car
 ```
 
 ## Usage
