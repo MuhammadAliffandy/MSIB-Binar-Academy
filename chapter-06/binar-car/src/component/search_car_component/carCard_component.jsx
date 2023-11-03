@@ -5,7 +5,7 @@ const CarCardComponent = (props) => {
     return (
         <>
             <div className="car-card">
-                <img src={`../src/assets/${props.image}`} alt= "car-image" />
+                <img src={`/static/${props.image}`} alt= "car-image" />
                 <div>
                     <div className="car-card-text">
                         <h5>{props.name + ' / ' + props.type}</h5>
