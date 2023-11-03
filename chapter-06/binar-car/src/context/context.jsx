@@ -7,6 +7,7 @@ export const CarContext = createContext();
 const CarContextProvider = (props) => {
 
     const [ carData , setCarData  ] = useState([]);
+    const [ carDataUsed , setCarDataUsed  ] = useState([]);
 
     const reqGetCars =  async () => {
         try {
@@ -30,6 +31,8 @@ const CarContextProvider = (props) => {
                 });
     
                 setCarData(data);
+                setCarDataUsed(data);
+                
             })
         }else{
             return carData;
@@ -45,6 +48,7 @@ const CarContextProvider = (props) => {
         const pickCountPerson = document.getElementById("pickCountPerson");  
 
         searchCarButton.onclick = async () => {
+
             if(pickDate.value != '' || pickTime.value != '' || pickCountPerson.value != ''){
             
                 searchCarButton.style.cssText = 'background-color: #fff; border : 1px solid #0D28A6 ; color : #0D28A6 ;';
@@ -71,7 +75,7 @@ const CarContextProvider = (props) => {
                     carContainerElement.innerHTML = '<h1 class = "warning-text">Mobil yang Anda Cari Kosong</h1>';
 
                 }else{
-                    setCarData(cars);
+                    setCarDataUsed(cars);
                 }
 
             }else{
@@ -82,7 +86,7 @@ const CarContextProvider = (props) => {
     }
 
     return(
-        <CarContext.Provider value={{ carData, GetCarToLocalData , filteringCarData}}>
+        <CarContext.Provider value={{ carDataUsed ,  GetCarToLocalData , filteringCarData}}>
             {props.children}
         </CarContext.Provider>
     ) 

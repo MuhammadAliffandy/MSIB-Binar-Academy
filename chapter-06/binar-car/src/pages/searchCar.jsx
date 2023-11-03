@@ -9,7 +9,7 @@ import { CarContext } from '../context/context';
 
 const SearchCar = () => {
 
-    const { carData , GetCarToLocalData , filteringCarData } = useContext(CarContext);
+    const { carDataUsed , GetCarToLocalData , filteringCarData } = useContext(CarContext);
 
     useEffect(()=>{
         GetCarToLocalData();
@@ -31,7 +31,7 @@ const SearchCar = () => {
                     {/* inject dom car list */}
                     <div className="car-list" id="carList">
                         {
-                            carData.map((car)=>{
+                            carDataUsed.map((car)=>{
                                 return (
                                     <Fragment key={car.id}>
                                         <CarCardComponent
