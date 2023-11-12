@@ -77,18 +77,13 @@ const registrationMember = async ( req , res ) => {
 }
 
 const logout = (req,res) => {
-    try {
-        res.clearCookie('connect.sid');  
-        req.logout(function(err) {
-            req.session = null
-            res.redirect('/')
-        });
-    } catch (error) {
-        return res.status(404).json({
-            status: 'FAIL',
-            message: error.message,
-        })
-    }
+
+    res.clearCookie('connect.sid');  
+    req.logout(function(err) {
+        req.session = null
+        res.redirect('/')
+    });
+
 }
 
 const loginOAuth = async (req, res) => {
