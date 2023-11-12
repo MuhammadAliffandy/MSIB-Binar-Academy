@@ -1,7 +1,7 @@
 const UsersController = require('../userController')
 const AuthController = require('../authController')
-const UsersServices = require('../../services/userServices')
 const AuthServices = require('../../services/authServices')
+const UsersServices = require('../../services/userServices')
 
 jest.mock( '../../services/userServices' , () => ({
     getListUsers : jest.fn(),
@@ -16,7 +16,6 @@ jest.mock( '../../services/authServices' , () => ({
     getNewToken: jest.fn(),
     setSession: jest.fn()
 }))
-
 
 
 describe('users API', () => {
@@ -195,8 +194,6 @@ describe('users API', () => {
                 status : jest.fn().mockReturnThis(),
                 json : jest.fn().mockReturnThis()
             }
-
-            const token = 'this is token';
 
             AuthServices.getToken.mockRejectedValue(mockError);
             AuthServices.setSession.mockRejectedValue(mockError);
