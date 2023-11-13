@@ -12,9 +12,7 @@ jest.mock('../../services/carsServices', () => ({
 
 describe('#carsController ', () => {
 
-    // Get list Cars
-
-    describe('GET /cars', () => {
+    describe('#getListCars', () => {
         it('should return car data and status code 200', async () => {
             
             const cars = [{
@@ -30,7 +28,7 @@ describe('#carsController ', () => {
             const mockReq = {
                 query: {}
             };
-            
+
             const mockRes = {
                 status: jest.fn().mockReturnThis(),
                 json: jest.fn().mockReturnThis()
@@ -64,9 +62,7 @@ describe('#carsController ', () => {
         });
     });
 
-    // Get Cars
-
-    describe('GET /cars/:id', () => {
+    describe('#getCars', () => {
         it('should return car data and status code 200', async () => {
             
             const cars = {
@@ -92,6 +88,7 @@ describe('#carsController ', () => {
             CarsServices.getCars.mockReturnValue(cars)
             await CarsController.getCars(mockReq, mockRes);
 
+            expect(CarsServices.getCars).toHaveBeenCalledWith('1');
             expect(mockRes.status).toHaveBeenCalledWith(200);
             expect(mockRes.json).toHaveBeenCalledWith(cars);
         });
@@ -123,12 +120,11 @@ describe('#carsController ', () => {
         });
     });
 
-    // Post Cars
 
-    describe('POST /cars', () => {
+    describe('#createCars', () => {
         it('should create car data and status code 201', async () => {
             
-            const cars = [{
+            const cars = {
                 id : '1',
                 name : 'Batman Cars',
                 image: 'https://images.com',
@@ -136,7 +132,7 @@ describe('#carsController ', () => {
                 rentPerDay: '100000',
                 createdAt: new Date(),
                 updatedAt: new Date(),
-            }];
+            };
 
             const mockReq = {
                 data: {
@@ -158,6 +154,9 @@ describe('#carsController ', () => {
             CarsServices.createCars.mockReturnValue(cars)
             await CarsController.createCars(mockReq, mockRes);
 
+            expect(CarsServices.createCars).toHaveBeenCalledWith(
+                mockReq.data,mockReq.fileImage,mockReq.user.id
+            );
             expect(mockRes.status).toHaveBeenCalledWith(201);
             expect(mockRes.json).toHaveBeenCalledWith({
                 status : 'OK',
@@ -199,9 +198,8 @@ describe('#carsController ', () => {
         });
     });
 
-    // PUT cars
 
-    describe('PUT /cars/:id', () => {
+    describe('#updateCars', () => {
         it('should update car data and status code 201', async () => {
             
             const cars =   [
@@ -274,8 +272,7 @@ describe('#carsController ', () => {
         });
     });
 
-    // DELETE cars 
-    describe('DELETE /cars/:id', () => {
+    describe('#deleteCars', () => {
         it('should delete car data and status code 200', async () => {
 
             
