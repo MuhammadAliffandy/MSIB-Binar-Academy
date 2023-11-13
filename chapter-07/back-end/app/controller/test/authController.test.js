@@ -1,3 +1,4 @@
+
 const AuthController = require('../authController')
 const AuthServices = require('../../services/authServices')
 
@@ -12,7 +13,7 @@ jest.mock( '../../services/userServices' , () => ({
 }))
 
 
-describe('#Authorization Controller', () => {
+describe('#authorizationController', () => {
 
     // auth for all user role
 

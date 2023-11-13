@@ -1,3 +1,4 @@
+
 const UsersController = require('../userController')
 const AuthController = require('../authController')
 const AuthServices = require('../../services/authServices')
@@ -18,7 +19,7 @@ jest.mock( '../../services/authServices' , () => ({
 }))
 
 
-describe('users API', () => {
+describe('#userController', () => {
     // GET users
     describe('GET /users', () => {
         it(' should return list users and status code 200', async () => {
