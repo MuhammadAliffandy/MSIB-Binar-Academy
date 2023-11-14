@@ -16,7 +16,8 @@ jest.mock( '../../services/authServices' , () => ({
     decodeToken: jest.fn(),
     getNewToken: jest.fn(),
     setSession: jest.fn(),
-    encryptUserPassword: jest.fn()
+    encryptUserPassword: jest.fn(),
+    compareUserPassword : jest.fn()
 }))
 
 
@@ -490,5 +491,238 @@ describe('#userController', () => {
 
         
     })
+
+    describe('#loginValidation', () => {
+        it('should return next method', async () => {
+
+
+            const user = {
+                id : 1,
+                name: "Aliffandy",
+                phone: "083456785678",
+                address: "Tokyo, Japan",
+                email: "aliffandy@gmail.com",
+                password: "43sadasdh0and209h20h",
+            }
+
+            const mockReq = {
+                body : {
+                    email: "aliffandy@gmail.com",
+                    password: "fandy123",
+                },
+
+                session : {
+                    id : 1,
+                    token: 'this is token',
+                    authenticated : false
+                }
+            }
+
+            const mockRes = {
+                status : jest.fn().mockReturnThis(),
+                json : jest.fn().mockReturnThis()
+            }
+            
+            const mockNext = jest.fn()
+
+            UserServices.findUserByEmail.mockReturnValue(user);
+            AuthServices.compareUserPassword.mockReturnValue(true);
+            AuthServices.decodeToken.mockReturnValue('');
+            UserServices.findUserById.mockReturnValue({})
+
+            await UsersController.loginValidation(mockReq,mockRes,mockNext);
+
+            expect(UserServices.findUserByEmail).toHaveBeenCalledWith(mockReq.body.email)
+            expect( AuthServices.compareUserPassword).toHaveBeenCalledWith(mockReq.body.password,user.password)
+            expect(mockNext).toHaveBeenCalled()
+
+        });
+
+        it('should return email is not exist and status code 400', async () => {
+
+
+            const user = {
+                id : 1,
+                name: "Aliffandy",
+                phone: "083456785678",
+                address: "Tokyo, Japan",
+                email: "aliffandy@gmail.com",
+                password: "43sadasdh0and209h20h",
+            }
+
+            const mockReq = {
+                body : {
+                    email: "aliffandy@gmail.com",
+                    password: "fandy123",
+                },
+
+                session : {
+                    id : 1,
+                    token: 'this is token',
+                    authenticated : false
+                }
+            }
+
+            const mockRes = {
+                status : jest.fn().mockReturnThis(),
+                json : jest.fn().mockReturnThis()
+            }
+            
+            const mockNext = jest.fn()
+
+            UserServices.findUserByEmail.mockReturnValue(null);
+
+            await UsersController.loginValidation(mockReq,mockRes,mockNext);
+
+            expect(UserServices.findUserByEmail).toHaveBeenCalledWith(mockReq.body.email)
+            expect(mockRes.status).toHaveBeenCalledWith(400)
+            expect(mockRes.json).toHaveBeenCalledWith({
+                status : 'FAIL',
+                message: 'email is not exist or not correct' 
+            })
+            expect(mockNext).not.toHaveBeenCalled()
+
+        });
+        
+        it('should return compared password is failed and status code 400', async () => {
+
+
+            const user = {
+                id : 1,
+                name: "Aliffandy",
+                phone: "083456785678",
+                address: "Tokyo, Japan",
+                email: "aliffandy@gmail.com",
+                password: "43sadasdh0and209h20h",
+            }
+
+            const mockReq = {
+                body : {
+                    email: "aliffandy@gmail.com",
+                    password: "fandy123",
+                },
+
+                session : {
+                    id : 1,
+                    token: 'this is token',
+                    authenticated : false
+                }
+            }
+
+            const mockRes = {
+                status : jest.fn().mockReturnThis(),
+                json : jest.fn().mockReturnThis()
+            }
+            
+            const mockNext = jest.fn()
+
+            UserServices.findUserByEmail.mockReturnValue(user);
+            AuthServices.compareUserPassword.mockReturnValue(false);
+
+            await UsersController.loginValidation(mockReq,mockRes,mockNext);
+
+            expect(UserServices.findUserByEmail).toHaveBeenCalledWith(mockReq.body.email)
+            expect( AuthServices.compareUserPassword).toHaveBeenCalledWith(mockReq.body.password,user.password)
+            expect(mockRes.status).toHaveBeenCalledWith(400)
+            expect(mockRes.json).toHaveBeenCalledWith({
+                status: 'FAIL',
+                message:'password is wrong, please check your input !!'
+            })
+            expect(mockNext).not.toHaveBeenCalled()
+
+        });
+    });
+
+    it('should return authenticated is true and status code 200', async () => {
+
+
+        const user = {
+            id : 1,
+            name: "Aliffandy",
+            phone: "083456785678",
+            address: "Tokyo, Japan",
+            email: "aliffandy@gmail.com",
+            password: "43sadasdh0and209h20h",
+        }
+
+        const mockReq = {
+            body : {
+                email: "aliffandy@gmail.com",
+                password: "fandy123",
+            },
+
+            session : {
+                id : 1,
+                token: 'this is token',
+                authenticated : true
+            }
+        }
+
+        const mockRes = {
+            status : jest.fn().mockReturnThis(),
+            json : jest.fn().mockReturnThis()
+        }
+        
+        const mockNext = jest.fn()
+
+        UserServices.findUserByEmail.mockReturnValue(user);
+        AuthServices.compareUserPassword.mockReturnValue(true);
+        AuthServices.decodeToken.mockReturnValue(user);
+        UserServices.findUserById.mockReturnValue(user)
+
+        await UsersController.loginValidation(mockReq,mockRes,mockNext);
+
+        expect(UserServices.findUserByEmail).toHaveBeenCalledWith(mockReq.body.email)
+        expect( AuthServices.compareUserPassword).toHaveBeenCalledWith(mockReq.body.password,user.password)
+        expect(AuthServices.decodeToken).toHaveBeenCalledWith(mockReq.session.token)
+        expect(UserServices.findUserById).toHaveBeenCalledWith(user.id)
+        expect(mockRes.status).toHaveBeenCalledWith(200)
+        expect(mockRes.json).toHaveBeenCalledWith({
+            status : 'OK',
+            message : 'Your account has been authenticated',
+            token: mockReq.session.token,
+        })
+        expect(mockNext).not.toHaveBeenCalled()
+
+    });
+    
+    it('should return fail and status code 404', async () => {
+
+        const mockError = new Error();
+
+        const mockReq = {
+            body : {
+                email: "aliffandy@gmail.com",
+                password: "fandy123",
+            },
+
+            session : {
+                id : 1,
+                token: 'this is token',
+                authenticated : true
+            }
+        }
+
+        const mockRes = {
+            status : jest.fn().mockReturnThis(),
+            json : jest.fn().mockReturnThis()
+        }
+        
+        const mockNext = jest.fn()
+
+        UserServices.findUserByEmail.mockRejectedValue(mockError);
+
+        await UsersController.loginValidation(mockReq,mockRes,mockNext);
+
+        expect(UserServices.findUserByEmail).toHaveBeenCalledWith(mockReq.body.email)
+        expect(mockRes.status).toHaveBeenCalledWith(404)
+        expect(mockRes.json).toHaveBeenCalledWith({
+            status: 'FAIL',
+            message: mockError.message,
+        })
+        expect(mockNext).not.toHaveBeenCalled()
+
+    });
+    
 
 });
