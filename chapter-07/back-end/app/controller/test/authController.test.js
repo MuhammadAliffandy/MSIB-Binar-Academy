@@ -16,8 +16,6 @@ jest.mock( '../../services/userServices' , () => ({
 
 describe('#authorizationController', () => {
 
-    // auth for all user role
-
     describe('#Authorization middleware to all users', () => {
         it(' authorizationToAllUsers should for all role', async () => {
 
@@ -41,6 +39,33 @@ describe('#authorizationController', () => {
             expect(mockNext).toHaveBeenCalled();
 
         });
+        
+        it(' authorizationToAllUsers invalid header and status code 401', async () => {
+
+            const mockReq = {
+                user : {
+                    role : 'member'
+                },
+                headers: { authorization: null }, 
+            }
+
+            const mockRes = {
+                status : jest.fn().mockReturnThis(),
+                json : jest.fn().mockReturnThis()
+            }
+
+            const mockNext = jest.fn()
+
+            await AuthController.authorizationToAllUsers(mockReq,mockRes,mockNext)
+            
+            expect(mockRes.status).toHaveBeenCalledWith(401)
+            expect(mockRes.json).toHaveBeenCalledWith({
+                status: 'FAIL',
+                message: 'Authorization header is missing '
+            })
+            expect(mockNext).not.toHaveBeenCalled();
+
+        });
 
         it('authorizationToAllUsers should return 403 for invalid role', async () => {
 
@@ -67,13 +92,38 @@ describe('#authorizationController', () => {
             });
 
         });
+
+
+        it('authorizationToAllUsers should return user is not exist invalid role', async () => {
+
+            const mockReq = {
+                user : null,
+                headers: { authorization: 'Bearer mockToken' }, 
+            }
+
+            const mockRes = {
+                status : jest.fn().mockReturnThis(),
+                json : jest.fn().mockReturnThis()
+            }
+
+            const mockNext = jest.fn()
+
+            AuthServices.decodeToken.mockReturnValue({ id : '1' })
+            UsersServices.findUserById.mockReturnValue(null)
+            await AuthController.authorizationToAllUsers(mockReq,mockRes,mockNext)
+            
+            expect(mockRes.status).toHaveBeenCalledWith(403);
+            expect(mockRes.json).toHaveBeenCalledWith({
+                status: 'FAIL',
+                message: 'You do not have permission to access this resource.' 
+            });
+
+        });
         
     });
 
-    //  auth for resource 
-
     describe('#Authorization middleware for user to resource', () => {
-        it(' authorizationToAllUsers should user role  to resource', async () => {
+        it('  authorizationToResource should user role  to resource', async () => {
 
             const mockReq = {
                 user : {
@@ -95,7 +145,57 @@ describe('#authorizationController', () => {
 
         });
 
-        it('authorizationToAllUsers should return 403 for invalid role', async () => {
+
+        it(' authorizationToResource invalid header and status code 401', async () => {
+
+            const mockReq = {
+                user : {
+                    role : 'admin'
+                },
+                headers: { authorization: null }, 
+            }
+
+            const mockRes = {
+                status : jest.fn().mockReturnThis(),
+                json : jest.fn().mockReturnThis()
+            }
+
+            const mockNext = jest.fn()
+
+            await AuthController.authorizationToResource(mockReq,mockRes,mockNext)
+            
+            expect(mockRes.status).toHaveBeenCalledWith(401)
+            expect(mockRes.json).toHaveBeenCalledWith({
+                status: 'FAIL',
+                message: 'Authorization header is missing '
+            })
+            expect(mockNext).not.toHaveBeenCalled();
+
+        });
+
+        it('  authorizationToResource should user role  to resource', async () => {
+
+            const mockReq = {
+                user : {
+                    role : 'admin'
+                },
+                headers: { authorization: 'Bearer mockToken' }, 
+            }
+
+            const mockRes = {}
+
+            const mockNext = jest.fn()
+
+            AuthServices.getNewToken.mockResolvedValue({ id: '1', exp: Math.floor(Date.now() / 1000) + 3600 });
+            AuthServices.decodeToken.mockReturnValue('newMockToken');
+
+            await AuthController.authorizationToResource(mockReq,mockRes,mockNext)
+            
+            expect(mockNext).toHaveBeenCalled();
+
+        });
+
+        it(' authorizationToResource should return 403 for invalid role', async () => {
 
             const mockReq = {
                 user : {
@@ -120,13 +220,37 @@ describe('#authorizationController', () => {
             });
 
         });
+
+        it('authorizationToResource should return user is not exist invalid role', async () => {
+
+            const mockReq = {
+                user : null,
+                headers: { authorization: 'Bearer mockToken' }, 
+            }
+
+            const mockRes = {
+                status : jest.fn().mockReturnThis(),
+                json : jest.fn().mockReturnThis()
+            }
+
+            const mockNext = jest.fn()
+
+            AuthServices.decodeToken.mockReturnValue({ id : '1' })
+            UsersServices.findUserById.mockReturnValue(null)
+            await AuthController.authorizationToResource(mockReq,mockRes,mockNext)
+            
+            expect(mockRes.status).toHaveBeenCalledWith(403);
+            expect(mockRes.json).toHaveBeenCalledWith({
+                status: 'FAIL',
+                message: 'You do not have permission to access this resource.' 
+            });
+
+        });
         
     });
-
-    // auth for superadmin
-
+    
     describe('#Authorization middleware for superadmin role', () => {
-        it(' authorizationToAllUsers should user role for superadmin', async () => {
+        it(' authorizationToAdmin should user role for superadmin', async () => {
 
             const mockReq = {
                 user : {
@@ -148,7 +272,34 @@ describe('#authorizationController', () => {
 
         });
 
-        it('authorizationToAllUsers should return 403 for invalid role', async () => {
+        it(' authorizationTo invalid header and status code 401', async () => {
+
+            const mockReq = {
+                user : {
+                    role : 'superadmin'
+                },
+                headers: { authorization: null }, 
+            }
+
+            const mockRes = {
+                status : jest.fn().mockReturnThis(),
+                json : jest.fn().mockReturnThis()
+            }
+
+            const mockNext = jest.fn()
+
+            await AuthController.authorizationToAdmin(mockReq,mockRes,mockNext)
+            
+            expect(mockRes.status).toHaveBeenCalledWith(401)
+            expect(mockRes.json).toHaveBeenCalledWith({
+                status: 'FAIL',
+                message: 'Authorization header is missing '
+            })
+            expect(mockNext).not.toHaveBeenCalled();
+
+        });
+
+        it('authorizationToAdmin should return 403 for invalid role', async () => {
 
             const mockReq = {
                 user : {
@@ -170,6 +321,32 @@ describe('#authorizationController', () => {
             expect(mockRes.json).toHaveBeenCalledWith({
                 status: 'FAIL',
                 message: 'You dont has been permission for this action'  
+            });
+
+        });
+
+        it('authorizationToAdmin should return user is not exist invalid role', async () => {
+
+            const mockReq = {
+                user : null,
+                headers: { authorization: 'Bearer mockToken' }, 
+            }
+
+            const mockRes = {
+                status : jest.fn().mockReturnThis(),
+                json : jest.fn().mockReturnThis()
+            }
+
+            const mockNext = jest.fn()
+
+            AuthServices.decodeToken.mockReturnValue({ id : '1' })
+            UsersServices.findUserById.mockReturnValue(null)
+            await AuthController.authorizationToAdmin(mockReq,mockRes,mockNext)
+            
+            expect(mockRes.status).toHaveBeenCalledWith(403);
+            expect(mockRes.json).toHaveBeenCalledWith({
+                status: 'FAIL',
+                message: 'You do not have permission to access this resource.' 
             });
 
         });

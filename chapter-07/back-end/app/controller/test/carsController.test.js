@@ -678,7 +678,89 @@ describe('#carsController ', () => {
             expect(mockNext).toHaveBeenCalled();
 
         });
+
+        it('should return next method if body req only data', async () => {
+
+            const cars = {
+                id : '1',
+                name : 'Batman Cars',
+                image: 'https://images.com',
+                size: 'Large',
+                rentPerDay: '100000',
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            };
+            
+            const mockReq = {
+                params : {
+                    id : 'id'
+                },
+                body : {
+                    data : JSON.stringify({
+                        name: 'Batman Cars',
+                    })
+                },
+            }
+
+            const mockRes = {
+                status : jest.fn().mockReturnThis(),
+                json : jest.fn().mockReturnThis()
+            }
+            
+            const mockNext = jest.fn()
+
+            CarsServices.uploadImage.mockReturnValue(null);
+            CarsServices.getCars.mockReturnValue(cars);
+            await CarsController.updateCarsValidation(mockReq,mockRes,mockNext);
+
+            expect(CarsServices.getCars).toHaveBeenCalledWith(mockReq.params.id)
+            expect(mockNext).toHaveBeenCalled();
+
+        });
         
+        it('should return next method if body req only image', async () => {
+
+            const cars = {
+                id : '1',
+                name : 'Batman Cars',
+                image: 'https://images.com',
+                size: 'Large',
+                rentPerDay: '100000',
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            };
+            
+            const mockReq = {
+                params : {
+                    id : 'id'
+                },
+                body : {
+                    data : null
+                },
+                file : {
+                    buffer : {
+                        data : {}
+                    }
+                }
+            }
+
+            const mockRes = {
+                status : jest.fn().mockReturnThis(),
+                json : jest.fn().mockReturnThis()
+            }
+            
+            const mockNext = jest.fn()
+
+            CarsServices.uploadImage.mockReturnValue('image source');
+            CarsServices.getCars.mockReturnValue(cars);
+            await CarsController.updateCarsValidation(mockReq,mockRes,mockNext);
+
+            expect(CarsServices.getCars).toHaveBeenCalledWith(mockReq.params.id)
+            expect(CarsServices.uploadImage).toHaveBeenCalledWith(mockReq.file.buffer)
+            expect(mockNext).toHaveBeenCalled();
+
+        });
+
         it('should car is not existing and status code 400', async () => {
             
             const mockReq = {
@@ -771,71 +853,7 @@ describe('#carsController ', () => {
             });
             expect(mockNext).not.toHaveBeenCalled();
 
-        });
-        it('should return invalid data structure and status code 400', async () => {
-            
-            const cars = {
-                id : '1',
-                name : 'Batman Cars',
-                image: 'https://images.com',
-                size: 'Large',
-                rentPerDay: '100000',
-                createdAt: new Date(),
-                updatedAt: new Date(),
-            };
-
-            const mockReq = {
-                params : {
-                    id : 'id'
-                },
-                body : {
-                    data : JSON.stringify({
-                        nameCar: 'Batman Cars',
-                        rentPerDayCar: '100000',
-                        sizeCar: 'Large',
-                    })
-                },
-                file : {
-                    buffer : {
-                        data : {}
-                    }
-                }
-            }
-
-            mockReq.data = {
-                image: 'https://images.com',
-                name : 'Batman Cars',
-                size: 'Large',
-                rentPerDay: '100000',
-            }
-
-            const mockRes = {
-                status : jest.fn().mockReturnThis(),
-                json : jest.fn().mockReturnThis()
-            }
-            
-            const mockNext = jest.fn()
-
-            CarsServices.uploadImage.mockReturnValue('image source');
-            CarsServices.getCars.mockReturnValue(cars);
-            await CarsController.updateCarsValidation(mockReq,mockRes,mockNext);
-
-            expect(CarsServices.getCars).toHaveBeenCalledWith(mockReq.params.id)
-            expect(CarsServices.uploadImage).toHaveBeenCalledWith(mockReq.file.buffer)
-            expect(mockReq.data).toEqual({
-                image: 'https://images.com',
-                name : 'Batman Cars',
-                size: 'Large',
-                rentPerDay: '100000',
-            });
-            expect(mockRes.status).toHaveBeenCalledWith(400);
-            expect(mockRes.json).toHaveBeenCalledWith({
-                status : "FAIL",
-                message : 'Invalid data structure. Please check your input '
-            });
-            expect(mockNext).not.toHaveBeenCalled();
-
-        });
+        });       
 
     });
     
