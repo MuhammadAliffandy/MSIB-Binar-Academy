@@ -190,7 +190,6 @@ const updateCarsValidation = async(req , res , next) => {
         req.data = body;
     }
 
-
     next();
 
 }
