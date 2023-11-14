@@ -1,9 +1,9 @@
 
-const UsersController = require('../userController')
-const AuthServices = require('../../services/authServices')
-const UserServices = require('../../services/userServices')
+const UsersController = require('../../userController')
+const AuthServices = require('../../../services/authServices')
+const UserServices = require('../../../services/userServices')
 
-jest.mock( '../../services/userServices' , () => ({
+jest.mock( '../../../services/userServices' , () => ({
     getListUsers : jest.fn(),
     findUserById : jest.fn(),
     createUserMember: jest.fn(),
@@ -11,7 +11,7 @@ jest.mock( '../../services/userServices' , () => ({
     findUserByEmail: jest.fn(),
 }))
 
-jest.mock( '../../services/authServices' , () => ({
+jest.mock( '../../../services/authServices' , () => ({
     getToken : jest.fn(),
     decodeToken: jest.fn(),
     getNewToken: jest.fn(),
