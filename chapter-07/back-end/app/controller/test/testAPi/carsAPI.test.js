@@ -1,6 +1,6 @@
 const request = require('supertest');
 const app = require('../../../../app');
-const imagePath = 'MSIB-Binar-Academy/chapter-07/back-end/app/view/car_view.jpg';
+const imagePath = 'D:/Holiday Project/MSIB-Binar-Academy/chapter-07/back-end/app/controller/test/car_vw.jpg';
 
 
 beforeAll(async () => {
@@ -22,13 +22,34 @@ beforeAll(async () => {
         })   
 
     tokenAdmin = auth1.body.token;
+
+    const auth2 = await request(app)
+        .post('/users/auth')
+        .send({
+            email: "sandy@gmail.com",
+            password: "sandy123"
+        })   
+
+    tokenMember = auth2.body.token;
+
+    // const createCar = await request(app)
+    //     .post('/cars')
+    //     .set('Authorization',`Bearer ${token}`)
+    //     .field('data', JSON.stringify({
+    //         name: "car dummy",
+    //         rentPerDay: 0,
+    //         size: "car dummy"
+    //     }))
+    //     .attach('car-image', imagePath)
+
+    // carDummy = createCar.body.data.id
 });
 
 
 describe('cars API', () => {
     describe('GET /cars', () => {
         it('should return cars list and status code 200', async () => {
-            await request(app)
+            return request(app)
                 .get('/cars')
                 .set('Authorization',`Bearer ${token}`)
                 .then((res)=>{
@@ -59,19 +80,40 @@ describe('cars API', () => {
                 })
         });
 
-        it('should return cars data if not auth  and status code 200', async () => {
+        it('should return cars data if not auth  and status code 401', async () => {
             await request(app)
                 .get('/cars/280ec708-3bcb-4bb8-8aeb-39a72bec3193')
                 .then((res)=>{
                     expect(res.statusCode).toBe(401)
                     expect(res.body).toHaveProperty('status')
                     expect(res.body).toHaveProperty('message')
+                    
                 })
         });
     });
 
     describe('POST /cars', () => {
-        it('should create cars data and status code 200', async () => {
+        // it('should create cars data and status code 200', async () => {
+        //     await request(app)
+        //         .post('/cars')
+        //         .set('Authorization',`Bearer ${token}`)
+        //         .field('data', JSON.stringify({
+        //             name: "car dummy",
+        //             rentPerDay: 0,
+        //             size: "car dummy"
+        //         }))
+        //         .attach('car-image', imagePath)
+        //         .then((res)=>{
+        //             expect(res.statusCode).toBe(201)
+        //             expect(res.body).toHaveProperty('status')
+        //             expect(res.body).toHaveProperty('message')
+        //             expect(res.body).toHaveProperty('data')
+        //             expect(res.body.status).toBe('OK')
+        //             expect(res.body.message).toBe('cars data has been created')
+        //         })
+        // });
+        
+        it('should create cars data if image not exits and status code 400', async () => {
             await request(app)
                 .post('/cars')
                 .set('Authorization',`Bearer ${token}`)
@@ -80,25 +122,150 @@ describe('cars API', () => {
                     rentPerDay: 0,
                     size: "car dummy"
                 }))
+                .then((res)=>{
+                    expect(res.statusCode).toBe(400)
+                    expect(res.body).toHaveProperty('status')
+                    expect(res.body).toHaveProperty('message')
+                    expect(res.body.status).toBe('FAIL')
+                    expect(res.body.message).toBe('Image is Undefined , Please check your input ! ')
+                })
+        });
+        
+        it('should create cars data if data structure invalid and status code 400', async () => {
+
+            const requireData = [ 'name' , 'rentPerDay' , 'size'];
+
+            await request(app)
+                .post('/cars')
+                .set('Authorization',`Bearer ${token}`)
+                .field('data', JSON.stringify({
+                    nameCar: "car dummy",
+                    size: "car dummy",
+                    rentPerDay: 0
+                }))
                 .attach('car-image', imagePath)
                 .then((res)=>{
-                    expect(res.statusCode).toBe(200)
+                    expect(res.statusCode).toBe(400)
+                    expect(res.body).toHaveProperty('status')
+                    expect(res.body).toHaveProperty('message')
+                    expect(res.body.status).toBe('FAIL')
+                    expect(res.body.message).toBe(`Invalid data structure. Please check your input and must to be ${requireData} `)
+                })
+        });
+
+    });
+
+    describe('UPDATE /cars/:id', () => {
+        it('should update cars data and status code 200', async () => {
+            await request(app)
+                .put('/cars/306e96bb-2aa4-4032-bfbc-14a68129e8df')
+                .set('Authorization',`Bearer ${token}`)
+                .field('data', JSON.stringify({
+                    name: "car dummy",
+                }))
+                .then((res)=>{
+                    expect(res.statusCode).toBe(201)
                     expect(res.body).toHaveProperty('status')
                     expect(res.body).toHaveProperty('message')
                     expect(res.body).toHaveProperty('data')
                     expect(res.body.status).toBe('OK')
-                    expect(res.body.message).toBe('cars data has been created')
+                    expect(res.body.message).toBe('cars data has been updated')
                 })
         });
-        
-    });
 
-    describe('UPDATE /cars/:id', () => {
-        
+        it('should update cars if cars is null data and status code 400', async () => {
+            await request(app)
+                .put('/cars/306e96bb-2aa4-4032-bfbc-14a68129e8d6')
+                .set('Authorization',`Bearer ${token}`)
+                .field('data', JSON.stringify({
+                    name: "car dummy",
+                }))
+                .then((res)=>{
+                    expect(res.statusCode).toBe(400)
+                    expect(res.body).toHaveProperty('status')
+                    expect(res.body).toHaveProperty('message')
+                    expect(res.body.status).toBe('FAIL')
+                    expect(res.body.message).toBe('car not found')
+                })
+        });
+
+        it('should update cars if req body is invalid and status code 400', async () => {
+            await request(app)
+                .put('/cars/306e96bb-2aa4-4032-bfbc-14a68129e8df')
+                .set('Authorization',`Bearer ${token}`)
+                .field('data', JSON.stringify({
+                    nameC: "car dummy",
+                }))
+                .then((res)=>{
+                    expect(res.statusCode).toBe(400)
+                    expect(res.body).toHaveProperty('status')
+                    expect(res.body).toHaveProperty('message')
+                    expect(res.body.status).toBe('FAIL')
+                    expect(res.body.message).toBe('Invalid data structure. Please check your input ')
+                })
+        });
+
+        it('should update cars if not authentication and status code 401', async () => {
+            await request(app)
+                .put('/cars/306e96bb-2aa4-4032-bfbc-14a68129e8df')
+                .field('data', JSON.stringify({
+                    nameC: "car dummy",
+                }))
+                .then((res)=>{
+                    expect(res.statusCode).toBe(401)
+                    expect(res.body).toHaveProperty('status')
+                    expect(res.body).toHaveProperty('message')
+                })
+        });
     });
 
     describe('DELETE /cars/:id', () => {
+        it('should delete cars and status code 200', async () => {
+            await request(app)
+                .delete(`/cars/f5e64b9c-fcee-4e44-abd1-7bf8d3f6a9aa`)
+                .set('Authorization',`Bearer ${token}`)
+                .then((res)=>{
+                    expect(res.statusCode).toBe(201)
+                    expect(res.body).toHaveProperty('status')
+                    expect(res.body).toHaveProperty('message')
+                    expect(res.body.status).toBe('OK')
+                    expect(res.body.message).toBe('cars data has been deleted')
+                })
+        });
+
+        it('should delete cars if not authorization and status code 401', async () => {
+            await request(app)
+                .delete(`/cars/f5e64b9c-fcee-4e44-abd1-7bf8d3f6a9aa`)
+                .set('Authorization',`Bearer ${token}`)
+                .then((res)=>{
+                    expect(res.statusCode).toBe(201)
+                    expect(res.body).toHaveProperty('status')
+                    expect(res.body).toHaveProperty('message')
+                    expect(res.body.status).toBe('OK')
+                    expect(res.body.message).toBe('cars data has been deleted')
+                })
+        });
+
+        it('should delete cars if user invalid access and status code 401', async () => {
+            await request(app)
+                .delete(`/cars/f5e64b9c-fcee-4e44-abd1-7bf8d3f6a9aa`)
+                .set('Authorization',`Bearer ${tokenMember}`)
+                .then((res)=>{
+                    expect(res.statusCode).toBe(403)
+                    expect(res.body).toHaveProperty('status')
+                    expect(res.body).toHaveProperty('message')
+                })
+        });
         
+        it('should delete cars if users not authorization and status code 401', async () => {
+            await request(app)
+                .delete(`/cars/f5e64b9c-fcee-4e44-abd1-7bf8d3f6a9aa`)
+                .then((res)=>{
+                    expect(res.statusCode).toBe(401)
+                    expect(res.body).toHaveProperty('status')
+                    expect(res.body).toHaveProperty('message')
+                })
+        });
     });
     
 });

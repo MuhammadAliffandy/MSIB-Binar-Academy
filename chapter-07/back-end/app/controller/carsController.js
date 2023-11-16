@@ -83,7 +83,7 @@ const deleteCars = async (req , res) => {
 }
 
 const createCarsValidation = async(req , res , next) => {
-
+    
     if( req.body == null ){
         return res.status(400).json({
             status : "FAIL",
@@ -149,6 +149,7 @@ const createCarsValidation = async(req , res , next) => {
 const updateCarsValidation = async(req , res , next) => {
 
     const id = req.params['id'];
+
     let body = req.body.data;
 
     const imageUrl = req.file;
