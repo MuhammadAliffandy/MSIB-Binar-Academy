@@ -1,7 +1,6 @@
 const request = require('supertest');
-const app = require('../../../../app');
-const imagePath = 'D:/Holiday Project/MSIB-Binar-Academy/chapter-07/back-end/app/controller/test/car_vw.jpg';
-
+const app = require('../../app');
+const imagePath = 'D:/Holiday Project/MSIB-Binar-Academy/chapter-07/back-end/test/car_vw.jpg';
 
 beforeAll(async () => {
 
@@ -32,17 +31,17 @@ beforeAll(async () => {
 
     tokenMember = auth2.body.token;
 
-    // const createCar = await request(app)
-    //     .post('/cars')
-    //     .set('Authorization',`Bearer ${token}`)
-    //     .field('data', JSON.stringify({
-    //         name: "car dummy",
-    //         rentPerDay: 0,
-    //         size: "car dummy"
-    //     }))
-    //     .attach('car-image', imagePath)
+    const createCar = await request(app)
+        .post('/cars')
+        .set('Authorization',`Bearer ${token}`)
+        .field('data', JSON.stringify({
+            name: "car dummy",
+            rentPerDay: 0,
+            size: "car dummy"
+        }))
+        .attach('car-image', imagePath)
 
-    // carDummy = createCar.body.data.id
+    carDummy = createCar.body.data.id
 });
 
 
@@ -93,25 +92,25 @@ describe('cars API', () => {
     });
 
     describe('POST /cars', () => {
-        // it('should create cars data and status code 200', async () => {
-        //     await request(app)
-        //         .post('/cars')
-        //         .set('Authorization',`Bearer ${token}`)
-        //         .field('data', JSON.stringify({
-        //             name: "car dummy",
-        //             rentPerDay: 0,
-        //             size: "car dummy"
-        //         }))
-        //         .attach('car-image', imagePath)
-        //         .then((res)=>{
-        //             expect(res.statusCode).toBe(201)
-        //             expect(res.body).toHaveProperty('status')
-        //             expect(res.body).toHaveProperty('message')
-        //             expect(res.body).toHaveProperty('data')
-        //             expect(res.body.status).toBe('OK')
-        //             expect(res.body.message).toBe('cars data has been created')
-        //         })
-        // });
+        it('should create cars data and status code 200', async () => {
+            await request(app)
+                .post('/cars')
+                .set('Authorization',`Bearer ${token}`)
+                .field('data', JSON.stringify({
+                    name: "car dummy",
+                    rentPerDay: 0,
+                    size: "car dummy"
+                }))
+                .attach('car-image', imagePath)
+                .then((res)=>{
+                    expect(res.statusCode).toBe(201)
+                    expect(res.body).toHaveProperty('status')
+                    expect(res.body).toHaveProperty('message')
+                    expect(res.body).toHaveProperty('data')
+                    expect(res.body.status).toBe('OK')
+                    expect(res.body.message).toBe('cars data has been created')
+                })
+        });
         
         it('should create cars data if image not exits and status code 400', async () => {
             await request(app)

@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../../../../app');
+const app = require('../../app');
 
 beforeAll(async () => {
 
@@ -136,24 +136,24 @@ describe('users API', () => {
     });    
         
     describe('POST /users/register', () => {
-        // it('should register or add new account and return status code 200', async () => {
-        //     await request(app)
-        //     .post("/users/register")
-        //     .send({
-        //         name: "test",
-        //         phone: "66666666666",
-        //         address: "test",
-        //         email: "test@gmail.com",
-        //         password: "test"
-        //     })            
-        //     .then((res) => {
-        //         expect(res.statusCode).toBe(201)
-        //         expect(res.body).toHaveProperty('status')
-        //         expect(res.body).toHaveProperty('message')
-        //         expect(res.body.status).toBe('OK')
-        //         expect(res.body.message).toBe('registration is successfull')
-        //     })
-        // });
+        it('should register or add new account and return status code 200', async () => {
+            await request(app)
+            .post("/users/register")
+            .send({
+                name: "test",
+                phone: "66666666666",
+                address: "test",
+                email: "test@gmail.com",
+                password: "test"
+            })            
+            .then((res) => {
+                expect(res.statusCode).toBe(201)
+                expect(res.body).toHaveProperty('status')
+                expect(res.body).toHaveProperty('message')
+                expect(res.body.status).toBe('OK')
+                expect(res.body.message).toBe('registration is successfull')
+            })
+        });
         
         it('should register user is failed and return status 400', async () => {
             await request(app)
@@ -189,25 +189,25 @@ describe('users API', () => {
     });
     
     describe('POST /users/register-admin', () => {
-        // it('should register or add new account and return status code 200', async () => {
-        //     await request(app)
-        //     .post("/users/register-admin")
-        //     .set('Authorization', `Bearer ${token}`) 
-        //     .send({
-        //         name: "test",
-        //         phone: "66666666666",
-        //         address: "test",
-        //         email: "test@gmail.com",
-        //         password: "test"
-        //     })            
-        //     .then((res) => {
-        //         expect(res.statusCode).toBe(201)
-        //         expect(res.body).toHaveProperty('status')
-        //         expect(res.body).toHaveProperty('message')
-        //         expect(res.body.status).toBe('OK')
-        //         expect(res.body.message).toBe('registration is successfull')
-        //     })
-        // });
+        it('should register or add new account and return status code 200', async () => {
+            await request(app)
+            .post("/users/register-admin")
+            .set('Authorization', `Bearer ${token}`) 
+            .send({
+                name: "test",
+                phone: "66666666666",
+                address: "test",
+                email: "test@gmail.com",
+                password: "test"
+            })            
+            .then((res) => {
+                expect(res.statusCode).toBe(201)
+                expect(res.body).toHaveProperty('status')
+                expect(res.body).toHaveProperty('message')
+                expect(res.body.status).toBe('OK')
+                expect(res.body.message).toBe('registration is successfull')
+            })
+        });
         
         it('should register admin is failed and return status 400', async () => {
             await request(app)

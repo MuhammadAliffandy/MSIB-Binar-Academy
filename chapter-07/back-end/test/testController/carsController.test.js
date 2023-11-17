@@ -1,8 +1,8 @@
 
-const CarsController = require('../../carsController');
-const CarsServices = require('../../../services/carsServices');
+const CarsController = require('../../app/controller/carsController');
+const CarsServices = require('../../app/services/carsServices');
 
-jest.mock('../../../services/carsServices', () => ({ 
+jest.mock('../../app/services/carsServices', () => ({ 
     getListCars: jest.fn(),
     getCars: jest.fn(),
     createCars : jest.fn(),

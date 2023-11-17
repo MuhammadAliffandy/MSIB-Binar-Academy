@@ -1,10 +1,10 @@
 {
   "development": {
     "username": "postgres",
-    "password": "fandy123",
-    "database": "binar_car",
-    "host": "localhost",
-    "port":"12345",
+    "password": "33aB1be3FAbggG3Ad6*bG3f-6*B1dE3e",
+    "database": "railway",
+    "host": "monorail.proxy.rlwy.net",
+    "port":"19711",
     "dialect": "postgres"
   },
   "test": {
@@ -16,10 +16,11 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "postgres",
+    "password": "33aB1be3FAbggG3Ad6*bG3f-6*B1dE3e",
+    "database": "railway",
+    "host": "monorail.proxy.rlwy.net",
+    "port":"19711",
+    "dialect": "postgres"
   }
 }
