@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --silent",
+    "test": "jest --coverage",
     "start": "nodemon ./app/index.js"
   },
   "keywords": [],
@@ -37,6 +37,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.3.1",
     "eslint": "^8.53.0"
   }
 }

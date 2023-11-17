@@ -1,5 +1,11 @@
 const request = require('supertest');
+const { faker } = require('@faker-js/faker')
 const app = require('../../app');
+
+const fakeName = faker.person.fullName();
+const fakeEmail = faker.internet.email();
+const fakeAddress = faker.location.streetAddress();
+const fakePhoneNumber = faker.phone.number();
 
 beforeAll(async () => {
 
@@ -140,10 +146,10 @@ describe('users API', () => {
             await request(app)
             .post("/users/register")
             .send({
-                name: "test",
-                phone: "66666666666",
-                address: "test",
-                email: "test@gmail.com",
+                name: fakeName,
+                phone: fakePhoneNumber,
+                address: fakeAddress,
+                email: fakeEmail,
                 password: "test"
             })            
             .then((res) => {
@@ -175,7 +181,7 @@ describe('users API', () => {
                 name: "test",
                 phone: "66666666666",
                 address: "test",
-                email: "test@gmail.com",
+                email: "test1@gmail.com",
                 password: "test"
             })            
             .then((res) => {
@@ -194,13 +200,14 @@ describe('users API', () => {
             .post("/users/register-admin")
             .set('Authorization', `Bearer ${token}`) 
             .send({
-                name: "test",
-                phone: "66666666666",
-                address: "test",
-                email: "test@gmail.com",
+                name: fakeName,
+                phone: fakePhoneNumber,
+                address: fakeAddress,
+                email: `admin${fakeEmail}`,
                 password: "test"
             })            
             .then((res) => {
+                console.log(res.body)
                 expect(res.statusCode).toBe(201)
                 expect(res.body).toHaveProperty('status')
                 expect(res.body).toHaveProperty('message')
@@ -244,7 +251,7 @@ describe('users API', () => {
         });
 
 
-        it('should register or add new account and return status code 200', async () => {
+        it('should register or add new account if wrong role auth and return status code 200', async () => {
             await request(app)
             .post("/users/register-admin")
             .set('Authorization', `Bearer ${tokenAdmin}`) 

@@ -72,7 +72,7 @@ describe('cars API', () => {
     describe('GET /cars/:id', () => {
         it('should return cars data and status code 200', async () => {
             await request(app)
-                .get('/cars/280ec708-3bcb-4bb8-8aeb-39a72bec3193')
+                .get(`/cars/${carDummy}`)
                 .set('Authorization',`Bearer ${token}`)
                 .then((res)=>{
                     expect(res.statusCode).toBe(200)
@@ -81,7 +81,7 @@ describe('cars API', () => {
 
         it('should return cars data if not auth  and status code 401', async () => {
             await request(app)
-                .get('/cars/280ec708-3bcb-4bb8-8aeb-39a72bec3193')
+                .get(`/cars/${carDummy}`)
                 .then((res)=>{
                     expect(res.statusCode).toBe(401)
                     expect(res.body).toHaveProperty('status')
@@ -157,7 +157,7 @@ describe('cars API', () => {
     describe('UPDATE /cars/:id', () => {
         it('should update cars data and status code 200', async () => {
             await request(app)
-                .put('/cars/306e96bb-2aa4-4032-bfbc-14a68129e8df')
+                .put(`/cars/${carDummy}`)
                 .set('Authorization',`Bearer ${token}`)
                 .field('data', JSON.stringify({
                     name: "car dummy",
@@ -190,7 +190,7 @@ describe('cars API', () => {
 
         it('should update cars if req body is invalid and status code 400', async () => {
             await request(app)
-                .put('/cars/306e96bb-2aa4-4032-bfbc-14a68129e8df')
+                .put(`/cars/${carDummy}`)
                 .set('Authorization',`Bearer ${token}`)
                 .field('data', JSON.stringify({
                     nameC: "car dummy",
@@ -206,7 +206,7 @@ describe('cars API', () => {
 
         it('should update cars if not authentication and status code 401', async () => {
             await request(app)
-                .put('/cars/306e96bb-2aa4-4032-bfbc-14a68129e8df')
+                .put(`/cars/${carDummy}`)
                 .field('data', JSON.stringify({
                     nameC: "car dummy",
                 }))
@@ -221,7 +221,7 @@ describe('cars API', () => {
     describe('DELETE /cars/:id', () => {
         it('should delete cars and status code 200', async () => {
             await request(app)
-                .delete(`/cars/f5e64b9c-fcee-4e44-abd1-7bf8d3f6a9aa`)
+                .delete(`/cars/${carDummy}`)
                 .set('Authorization',`Bearer ${token}`)
                 .then((res)=>{
                     expect(res.statusCode).toBe(201)
@@ -234,7 +234,7 @@ describe('cars API', () => {
 
         it('should delete cars if not authorization and status code 401', async () => {
             await request(app)
-                .delete(`/cars/f5e64b9c-fcee-4e44-abd1-7bf8d3f6a9aa`)
+                .delete(`/cars/${carDummy}`)
                 .set('Authorization',`Bearer ${token}`)
                 .then((res)=>{
                     expect(res.statusCode).toBe(201)
@@ -247,7 +247,7 @@ describe('cars API', () => {
 
         it('should delete cars if user invalid access and status code 401', async () => {
             await request(app)
-                .delete(`/cars/f5e64b9c-fcee-4e44-abd1-7bf8d3f6a9aa`)
+                .delete(`/cars/${carDummy}`)
                 .set('Authorization',`Bearer ${tokenMember}`)
                 .then((res)=>{
                     expect(res.statusCode).toBe(403)
@@ -258,7 +258,7 @@ describe('cars API', () => {
         
         it('should delete cars if users not authorization and status code 401', async () => {
             await request(app)
-                .delete(`/cars/f5e64b9c-fcee-4e44-abd1-7bf8d3f6a9aa`)
+                .delete(`/cars/${carDummy}`)
                 .then((res)=>{
                     expect(res.statusCode).toBe(401)
                     expect(res.body).toHaveProperty('status')
