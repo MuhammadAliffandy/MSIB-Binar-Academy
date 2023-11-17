@@ -18,6 +18,11 @@ Okay , My back end project is same like chapter 05 and i want to testing any pro
 - Deployment? yes i deploy my project in railway
 - I use dbms from railway to public db and deploy my back end to be create easy used my rest Api.
 
+## Test Coverage
+
+![image](https://github.com/MuhammadAliffandy/MSIB-Binar-Academy/assets/94156412/a3f76dd8-39e6-4025-909c-7709c0ca083d)
+
+
 
 ## Getting Started
 
