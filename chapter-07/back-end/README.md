@@ -1,28 +1,22 @@
-## This is a challenge for chapter 5 to create API with Authentication and Authorization with Postgress 
-Okay , now the REST API have many refactor from code program. I use Design pattern MVC to reusable and DRY from this. And i added a new algorithm to use of authentication and authorization for 2 table have a relation. It is users and cars model. 
+## This is a challenge for chapter 7 , about testing and deployment backend project
+Okay , My back end project is same like chapter 05 and i want to testing any program , after this i will deployment to usefull accessed from local to public used the REST API.
 
 ## Build With
 - [JavaScript](https://www.javascript.com/) - is a scripting language that enables you to create dynamically updating content, control multimedia, animate      images, and pretty much everything else.
 - [Node JS](https://nodejs.org/en) - Node.js® is an open-source, cross-platform JavaScript runtime environment.
 - [Express JS](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js.
-- [uuid](https://www.npmjs.com/package/uuid) - Creating UUID code with useful package in Node js.
-- [Sequelize](https://sequelize.org) - Sequelize is a modern TypeScript and Node.js ORM for Oracle, Postgres, MySQL, MariaDB, SQLite and SQL Server, and more.
-- [Multer](https://www.npmjs.com/package/multer) - Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. It is written on top of busboy for maximum efficiency
-- [JsonWebToken](https://jwt.io/) - is a compact URL-safe means of representing claims to be transferred between two parties.
-- [bcrypt](https://www.npmjs.com/package/bcrypt) - bcrypt is a password hashing function designed by two computer security researchers Niels Provos and David Mazières, the Blowfish cipher is the basis for bcrypt, and was presented at USENIX in 1999.
-- [Passport JS](https://www.passportjs.org/) - Passport is authentication middleware for Node.js.
-- [Swagger](https://swagger.io/) - API Documentation & Design Tools for Teams.
-- [Firebase](https://firebase.google.com/) - Firebase is an app development platform that helps you build and grow apps and games users love.
+- [ESLint](https://eslint.org) - ESLint statically analyzes your code to quickly find problems. It is built into most text editors and you can run ESLint as part of your continuous integration pipeline.
+- [Jest](https://jestjs.io) - Jest is a JavaScript testing framework designed to ensure correctness of any JavaScript codebase
+- [Supertest](https://www.npmjs.com/package/supertest) - The motivation with this module is to provide a high-level abstraction for testing HTTP, while still allowing you to drop down to the lower-level API provided by superagent.
+- [Railway](https://railway.app) - Railway is an infrastructure platform where you can provision infrastructure, develop with that infrastructure locally, and then deploy to the cloud.
 
 ## FYI 
-- For this project i refactory code to create a design pattern of MVC
-- In this project i change my code from updated cars, becasue before this chapter 05 i used BLOB type data in image and now i used firebase storage cloud to management this file image and in databse i change string type data form image.
-- To authentication i manage the jsonwebtoken to get token and auth form user login, After this i compare the passowrd user from registration user.
-- And all many api from cars this is needed to authorization from role admin and superadmin. This is need to authentication form user to define permission form role user
-- I also added authentication form third party or using the OAuth with passport js. and you can test the api to copy the address url then u can login form google or facebook account and get your token 
-- For Api documentation i created with swagger and you can try it if you run the server okay. 
-
-## ERD
+- For this project i not refactor many code but i only set configuration
+- First i set the configuration for eslint to be good structure in my program
+- And then i testing my controller to unit testing and api to be integration testing for this
+- I get the coverage to see the presentace for good or not , i launch my testing
+- Deployment? yes i deploy my project in railway
+- I use dbms from railway to public db and deploy my back end to be create easy used my rest Api.
 
 
 ## Getting Started
@@ -31,7 +25,7 @@ if you need to start api from your local and you want to change more algorithm f
 
 ```sh
 $ git clone https://github.com/MuhammadAliffandy/MSIB-Binar-Academy.git
-$ cd chapter-05
+$ cd chapter-07/back-end
 ```
 
 ## Usage
