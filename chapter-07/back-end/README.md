@@ -84,4 +84,12 @@ Email and password Account :
 
 ```
 
+## Demo
+Here is a working live demo  
+https://msib-binar-academy-production.up.railway.app/
+
+this is Documentation Swagger Api
+https://msib-binar-academy-production.up.railway.app/api-documentation/
+
+
 
